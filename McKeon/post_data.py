@@ -13,17 +13,6 @@ def load_data(file_path, file_name):
         sys.exit(1)
     return np.load(full_path)
 
-def plot_contour(X, Y, Z, title, file_name):
-    plt.figure()
-    plt.contourf(X, Y, Z, levels=50, cmap="viridis")
-    plt.colorbar(label=title)
-    plt.xlabel("X")
-    plt.ylabel("Y")
-    plt.title(title)
-    plt.savefig(file_name)
-    print(f"Saved plot: {file_name}")
-    plt.close()
-
 def save_data(data, file_name):
     np.save(file_name, data)
     print(f"Saved data: {file_name}")
@@ -70,13 +59,6 @@ def main():
         v_t = v[:,:,t]
         w_t = w[:,:,t]
 
-        # Plot and save contour plots
-        #plot_contour(X, Y, H2_t, f"H2 Concentration (Time {t})", f"H2_concentration_time_{index_str}.png")
-        #plot_contour(X, Y, u_t, f"u Velocity (Time {t})", f"u_velocity_time_{index_str}.png")
-        #plot_contour(X, Y, v_t, f"v Velocity (Time {t})", f"v_velocity_time_{index_str}.png")
-        #plot_contour(X, Y, w_t, f"w Velocity (Time {t})", f"w_velocity_time_{index_str}.png")
-
-        # Save the data for the current timestep
         save_data(H2_t, f"H2_time_{index_str}.npy")
         save_data(u_t, f"u_time_{index_str}.npy")
         save_data(v_t, f"v_time_{index_str}.npy")
