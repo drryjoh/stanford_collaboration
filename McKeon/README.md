@@ -42,4 +42,6 @@ will post prcoess `H2` array
 ```
 will post process `u` array. And create images that result in the following videos
 
-https://github.com/drryjoh/stanford_collaboration/blob/main/McKeon/output_video.mp4
+https://github.com/user-attachments/assets/b370bf7f-7ecf-49b7-a369-04892fc38f1a
+
+
