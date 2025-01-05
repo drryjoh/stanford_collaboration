@@ -63,7 +63,6 @@ def plot_contour(X, Y, Z, title, file_name):
     plt.savefig(file_name, bbox_inches='tight', pad_inches=0.1, dpi=300)
     print(f"Saved plot: {file_name}")
     plt.close()
-    exit()
 
 def main():
     # Argument parser setup
@@ -85,7 +84,7 @@ def main():
     Y = load_data(data_location, "Y.npy")
 
     # Variables to process
-    variables = ["H2", "u", "v", "w"]
+    variables = ["H2"]#, "u", "v", "w"]
 
     for variable in variables:
         # Find time-dependent files for the current variable
