@@ -42,7 +42,4 @@ will post prcoess `H2` array
 ```
 will post process `u` array. And create images that result in the following videos
 
-<video controls width="640">
-  <source src="output_video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[H2](output_video.mp4)
