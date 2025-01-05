@@ -32,26 +32,16 @@ def load_data(file_path, file_name):
         print(f"Error: {file_name} not found in {file_path}.")
         sys.exit(1)
     return np.load(full_path)
-def plot_contour(X, Y, Z, title, file_name):
+def plot_contour(X, Y, Z, title, file_name, figsize):
     """
     Create and save a contour plot with the true aspect ratio and dynamic figure size.
     """
-    # Compute the aspect ratio
-    width = X.max() - X.min()
-    height = Y.max() - Y.min()
-    aspect_ratio = width / height
-    print(f"Aspect Ratio: {aspect_ratio}")
-
-    # Define the desired width or height of the figure
-    base_width = 10  # Desired width in inches
-    figsize = (base_width, base_width / aspect_ratio)  # Adjust height based on aspect ratio
-
     # Create the figure with the specified size
     fig, ax = plt.subplots(figsize=figsize)
     
     # Create the contour plot
     contour = ax.contourf(X, Y, Z, levels=50, cmap="viridis")
-    cbar = fig.colorbar(contour, ax=ax, label=title)
+    #cbar = fig.colorbar(contour, ax=ax, label=title)
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
     ax.set_title(title)
@@ -82,6 +72,17 @@ def main():
     print(data_location)
     X = load_data(data_location, "X.npy")
     Y = load_data(data_location, "Y.npy")
+    
+    # Compute the aspect ratio
+    width = X.max() - X.min()
+    height = Y.max() - Y.min()
+    aspect_ratio = width / height
+    print(f"Aspect Ratio: {aspect_ratio}")
+
+    # Define the desired width or height of the figure
+    base_width = 10  # Desired width in inches
+    figsize = (base_width, base_width / aspect_ratio)  # Adjust height based on aspect ratio
+
 
     # Variables to process
     variables = ["H2"]#, "u", "v", "w"]
@@ -110,7 +111,8 @@ def main():
             plot_contour(
                 X, Y, data,
                 f"{variable} (Time {timestep_index})",
-                f"{variable}_replot_time_{timestep_index}.png"
+                f"{variable}_replot_time_{timestep_index}.png",
+                figsize
             )
 
 if __name__ == "__main__":
