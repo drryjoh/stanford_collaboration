@@ -1,3 +1,9 @@
 [submodule "Wang/nn_chemistry/detonationFoam"]
 	path = Wang/nn_chemistry/detonationFoam
 	url = https://github.com/JieSun-pku/detonationFoam
+[submodule "Wang/nn_chemistry/OpenFOAM6"]
+	path = Wang/nn_chemistry/OpenFOAM6
+	url = https://github.com/OpenFOAM/OpenFOAM-6.git
+[submodule "Wang/nn_chemistry/ThirdParty6"]
+	path = Wang/nn_chemistry/ThirdParty6
+	url = https://github.com/OpenFOAM/ThirdParty-6.git
