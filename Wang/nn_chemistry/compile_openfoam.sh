@@ -13,9 +13,9 @@ module load llvm
 module load python/3.12.1
 module load cmake
 
-source ./OpenFOAM6/etc/bashrc
-cd ./OpenFOAM6/
+source ./OpenFOAM-6/etc/bashrc
+cd ./OpenFOAM-6/
 ./Allwmake -j 16
-cd ../ThirdParty6/
+cd ../ThirdParty-6/
 ./Allwmake -j 16
 
