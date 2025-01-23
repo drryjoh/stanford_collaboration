@@ -1,0 +1,6 @@
+[submodule "Wang/nn_chemistry/Wang/nn_chemistry/detonationFoam"]
+	path = Wang/nn_chemistry/Wang/nn_chemistry/detonationFoam
+	url = https://github.com/JieSun-pku/detonationFoam
+[submodule "Wang/nn_chemistry/detonationFoam"]
+	path = Wang/nn_chemistry/detonationFoam
+	url = https://github.com/JieSun-pku/detonationFoam
