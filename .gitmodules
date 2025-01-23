@@ -4,3 +4,9 @@
 [submodule "Wang/nn_chemistry/CodeJeNN"]
 	path = Wang/nn_chemistry/CodeJeNN
 	url = git@github.com:kingjarred/CodeJeNN.git
+[submodule "Wang/nn_chemistry/OpenFOAM-6"]
+	path = Wang/nn_chemistry/OpenFOAM-6
+	url = https://github.com/OpenFOAM/OpenFOAM-6.git
+[submodule "Wang/nn_chemistry/ThirdParty-6"]
+	path = Wang/nn_chemistry/ThirdParty-6
+	url = https://github.com/OpenFOAM/ThirdParty-6.git
