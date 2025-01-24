@@ -23,6 +23,16 @@ note this will navigate to the submodules included and compile if directly submi
 
 It should take a few hours to compile
 
+Once compiled we need to compile detonationFoam which is rather fast and can probably be done in the front end
+
+```terminal
+module load openmpi
+cd detonationFoam/applications/solvers
+./Allwmake -j 16
+```
+
+I tried to incudle `sherlock_modules.sh` but that hasn't been working too well...for some reason.
+
 ** NN Generation/Location
 
 
