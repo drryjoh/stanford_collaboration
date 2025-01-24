@@ -1,1 +1,2 @@
-source ./OpenFOAM6/etc/bashrc
+
+source ./OpenFOAM-6/etc/bashrc
