@@ -41,6 +41,9 @@ Description
 #include "basicSpecieMixture.H"
 #include "cellModeller.H"
 #include "thermoTypeFunctions.H"
+//CodeJeNN 
+//#include "codeJeNN.H"
+//
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -63,6 +66,9 @@ int main(int argc, char *argv[])
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
+    //CodeJeNN 
+    //#include "codeJeNN_execute.H"
+    //
 
     while (runTime.run())
     {
