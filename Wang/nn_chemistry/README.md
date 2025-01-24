@@ -2,6 +2,8 @@ We are going to utilize OpenFOAM version 6 and detonation foam to include a NN f
 
 In the stanford_collaboration directory (where this repo exists)
 
+** Compiling Necessary Dependencies
+
 run
 
 ```
@@ -18,6 +20,10 @@ sbatch compile_openfoam.sh
 ```
 
 note this will navigate to the submodules included and compile if directly submitted from where `compile_openfoam.sh` is located
+
+It should take a few hours to compile
+
+** NN Generation/Location
 
 
 
