@@ -1,3 +1,6 @@
+
+
+    
     std::array<Scalar, 12> input = { 
         1800.0, // Temperature, K 
         5.0, // Pressure, atm 
@@ -13,10 +16,23 @@
         -9.0 // log10(time step, s) 
     }; // State properties at current time
     
-    for(int i=0; i<1000; i++)
+    Info << "Start State y = (" << input[0];
+    for(int i=1; i<12; i++)
+    {
+        Info <<", "<<input[i];
+    }
+    Info << ");" << endl;
+    
+    for(int i=0; i<100; i++)
     {
         auto output = predict_combustion(input);
         append_state(input, output);
     }
 
-    Info << input << endl;
+    Info << "End State y = (" << input[0];
+
+    for(int i=1; i<12; i++)
+    {
+        Info <<", "<<input[i];
+    }
+    Infow << ");" << endl;
