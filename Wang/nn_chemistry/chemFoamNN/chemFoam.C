@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     Info<< "\nStarting time loop\n" << endl;
     //CodeJeNN 
-    //#include "codeJeNN_execute.H"
+    #include "codeJeNN_execute.H"
     //
 
     while (runTime.run())
