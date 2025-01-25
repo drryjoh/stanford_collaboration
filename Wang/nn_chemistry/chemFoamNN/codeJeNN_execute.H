@@ -23,7 +23,7 @@
     }
     Info << ");" << endl;
 
-    for(int i=0; i<100; i++)
+    for(int i=0; i<1000; i++)
     {
         auto output = predict_combustion(input);
         append_state(input, output);
