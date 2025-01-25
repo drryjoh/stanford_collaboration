@@ -1,51 +1,3 @@
-#include <iostream>
-#include <array>
-#include <random>
-#include <cmath>
-
-template<typename Scalar>
-using activationFunction = void(*)(Scalar*, const Scalar*, size_t, Scalar);
-
-// - -
-
-template<typename Scalar>
-void relu(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
-    for (size_t i = 0; i < size; ++i) {
-        outputs[i] = inputs[i] > 0 ? inputs[i] : 0;
-    }
-}
-
-template<typename Scalar>
-void linear(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
-    for (size_t i = 0; i < size; ++i) {
-        outputs[i] = inputs[i];
-    }
-}
-
-template<typename Scalar>
-void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
-    for (int i = 0; i < output_size; i++) {
-        outputs[i] = 0;
-        for (int j = 0; j < input_size; j++) {
-            outputs[i] += inputs[j] * weights[j * output_size + i];
-        }
-    }
-}
-
-template<typename Scalar>
-void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
-    for (int i = 0; i < size; i++) {
-        outputs[i] += biases[i];
-    }
-}
-
-template<typename Scalar, int output_size>
-void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, const Scalar* biases, int input_size, void (*activation_function)(Scalar*, const Scalar*, size_t, Scalar), Scalar alpha) noexcept {
-    std::array<Scalar, output_size> temp_outputs;
-    dotProduct(temp_outputs.data(), inputs, weights, input_size, output_size);
-    addBias(temp_outputs.data(), biases, output_size);
-    activation_function(outputs, temp_outputs.data(), output_size, alpha);
-}
 
 // - -
 
@@ -82,16 +34,16 @@ auto ffcm2_h2(const std::array<Scalar, 12>& initial_input) {
     // - -
 
     std::array<Scalar, 1024> layer_1_output;
-    forwardPass<Scalar, 1024>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 12, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 1024>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 12, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 10> layer_2_output;
-    forwardPass<Scalar, 10>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 1024, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 10>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 1024, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 1024> layer_3_output;
-    forwardPass<Scalar, 1024>(layer_3_output.data(), layer_2_output.data(), weights_3.data(), biases_3.data(), 10, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 1024>(layer_3_output.data(), layer_2_output.data(), weights_3.data(), biases_3.data(), 10, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 11> layer_4_output;
-    forwardPass<Scalar, 11>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear<Scalar>, 0.0);
+    forwardPass<Scalar, 11>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear_nn<Scalar>, 0.0);
 
     std::array<Scalar, 11> output_norms = {6.618284127e+00, 1.484254815e-02, 2.105046271e-01, 1.550626079e-02, 2.814502995e-01, 2.244889510e-02, 3.153211662e-01, 3.662108155e-01, 2.871888183e-01, 2.467127348e-01, 9.224268516e-02};
 

@@ -8,14 +8,14 @@ using activationFunction = void(*)(Scalar*, const Scalar*, size_t, Scalar);
 // - -
 
 template<typename Scalar>
-void relu(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
     for (size_t i = 0; i < size; ++i) {
         outputs[i] = inputs[i] > 0 ? inputs[i] : 0;
     }
 }
 
 template<typename Scalar>
-void linear(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
     for (size_t i = 0; i < size; ++i) {
         outputs[i] = inputs[i];
     }
