@@ -1,4 +1,6 @@
 #include <array>
+#include <cmath>
+
 
 using Scalar = scalar;
 
