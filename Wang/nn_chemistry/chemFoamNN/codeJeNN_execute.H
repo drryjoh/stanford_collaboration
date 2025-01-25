@@ -22,7 +22,7 @@
         Info <<", "<<input[i];
     }
     Info << ");" << endl;
-    
+
     for(int i=0; i<100; i++)
     {
         auto output = predict_combustion(input);
@@ -35,4 +35,4 @@
     {
         Info <<", "<<input[i];
     }
-    Infow << ");" << endl;
+    Info << ");" << endl;
