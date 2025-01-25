@@ -42,7 +42,7 @@ Description
 #include "cellModeller.H"
 #include "thermoTypeFunctions.H"
 //CodeJeNN 
-//#include "codeJeNN.H"
+#include "codeJeNN.H"
 //
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
