@@ -1,3 +1,5 @@
+#include <array>
+
 using Scalar = scalar;
 
 template<typename Scalar>
