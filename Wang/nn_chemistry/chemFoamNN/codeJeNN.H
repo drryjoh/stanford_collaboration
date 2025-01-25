@@ -60,7 +60,7 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
     std::array<Scalar, 12> input_real;
     for (int i = 0; i < 12; i++) {
         if (i >= 2 && i < 11) {
-            input_real[i] = (pow(input[i], 0.1) - 1) / 0.1; // Boxcox lambda = 0.1
+            input_real[i] = (std::pow(input[i], 0.1) - 1) / 0.1; // Boxcox lambda = 0.1
         } else {
             input_real[i] = input[i];
         }
@@ -76,7 +76,7 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
     std::array<Scalar, 11> output;
     for (int i = 0; i < 11; i++) {
         if (i >= 2 && i < 11) {
-            output[i] = pow(output_real[i] * 0.1 + 1, 10.0); // Inverse Boxcox transformation
+            output[i] = std::pow(output_real[i] * 0.1 + 1, 10.0); // Inverse Boxcox transformation
         } else {
             output[i] = output_real[i];
         }
