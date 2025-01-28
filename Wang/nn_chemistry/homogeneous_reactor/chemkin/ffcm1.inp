@@ -1,13 +1,9 @@
-!Chemkin file converted from solution object: gas
-
 ELEMENTS
 H  O
 END
-
 SPECIES
 H  H2  O  O2  OH  H2O  HO2  H2O2  O3
 END
-
 REACTIONS
 H+O2<=>O+OH                                         9.8410e+13  0.000  15310.00
 H2+O<=>H+OH                                         3.8480e+12  0.000  7950.00
