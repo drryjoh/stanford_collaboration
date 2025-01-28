@@ -60,16 +60,14 @@ int main(int argc, char *argv[])
     #include "createSingleCellMesh.H"
     #include "createFields.H"
     #include "createFieldRefs.H"
+    Info << "1" << endl;
     #include "readInitialConditions.H"
+    Info << "2" << endl;
     #include "createControls.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
-    //CodeJeNN 
-    #include "codeJeNN_execute.H"
-    //
-
     while (runTime.run())
     {
         #include "readControls.H"
