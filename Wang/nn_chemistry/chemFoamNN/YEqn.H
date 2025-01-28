@@ -1,5 +1,5 @@
 {
-    nnInterface.solve(Y,p,T,dt);
+    nnInterface.solve(Y, p, T, runTime.deltaT().value() );
     //forAll(Y, specieI)
     //{
     //    volScalarField& Yi = Y[specieI];
