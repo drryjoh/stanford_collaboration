@@ -92,27 +92,27 @@ const int n_species = 10;
 using Species = std::array<scalar, n_species>;
 
 
-//fix these numbers
+
 constexpr Species molecular_weights()
 {
-    return {scalar(2.016),scalar(1.008),scalar(31.998),scalar(15.999),scalar(17.007),scalar(33.006),scalar(34.014),scalar(18.015),scalar(39.95),scalar(28.014)};
+    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3
+    return {scalar(1.008),scalar(2.016),scalar(15.999),scalar(31.998),scalar(17.007),scalar(18.015),scalar(33.006),scalar(34.014),scalar(47.997)};
 }
 
-//fix these numbers
 constexpr Species inv_molecular_weights()
 {
-    return {scalar(0.49603174603174605),scalar(0.9920634920634921),scalar(0.03125195324707794),scalar(0.06250390649415588),scalar(0.05879931792791203),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.055509297807382736),scalar(0.025031289111389236),scalar(0.03569643749553795)};
+    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3
+    return {scalar(0.9920634920634921),scalar(0.49603174603174605),scalar(0.06250390649415588),scalar(0.03125195324707794),scalar(0.05879931792791203),scalar(0.055509297807382736),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.02083463549805196)};
 }
 
 // Define the species names as a fixed-size array
 #pragma once
 #include <string>
 
-//fix this order
 static constexpr std::array<const char*, 10> species_names_gen()
 {
     //fix the openfoam order to match the nn order 
-    return {"H2", "H", "O2", "O", "OH", "HO2", "H2O2", "H2O", "AR", "N2"};
+    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3"};
 }
 
 // Return the species name for a given index
