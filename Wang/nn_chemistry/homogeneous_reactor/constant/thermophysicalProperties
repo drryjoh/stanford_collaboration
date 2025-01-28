@@ -26,8 +26,8 @@ thermoType
     specie          specie;
 }
 
-CHEMKINFile     "$FOAM_CASE/chemkin/ffcm2.inp";
-CHEMKINThermoFile "$FOAM_CASE/chemkin/ffcm2_therm.dat";
-CHEMKINTransportFile "$FOAM_CASE/chemkin/ffcm2_transportProperties";
+CHEMKINFile     "$FOAM_CASE/chemkin/ffcm1.inp";
+CHEMKINThermoFile "$FOAM_CASE/chemkin/ffcm1_therm.dat";
+CHEMKINTransportFile "$FOAM_CASE/chemkin/ffcm1_transportProperties";
 
 // ************************************************************************* //
