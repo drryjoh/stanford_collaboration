@@ -87,7 +87,7 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
     return output;
 }
 
-const int n_species = 10;
+const int n_species = 9;
 // Using alias for the array type (for example, an array of double values)
 using Species = std::array<scalar, n_species>;
 
@@ -109,7 +109,7 @@ constexpr Species inv_molecular_weights()
 #pragma once
 #include <string>
 
-static constexpr std::array<const char*, 10> species_names_gen()
+static constexpr std::array<const char*, 9> species_names_gen()
 {
     //fix the openfoam order to match the nn order 
     return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3"};
