@@ -10,3 +10,7 @@ scalar dtChem = min
 basicSpecieMixture& composition = thermo.composition();
 PtrList<volScalarField>& Y = composition.Y();
 volScalarField& p = thermo.p();
+
+NNInterface nnInterface(mesh);
+nnInterface.check_species_list(Y);
+

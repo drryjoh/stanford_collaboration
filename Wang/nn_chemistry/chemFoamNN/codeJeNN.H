@@ -1,5 +1,7 @@
+#pragma once
 #include <array>
 #include <cmath>
+
 using Scalar = scalar; // redefine scalar 
 
 
@@ -83,4 +85,39 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
     }
 
     return output;
+}
+
+const int n_species = 10;
+// Using alias for the array type (for example, an array of double values)
+using Species = std::array<scalar, n_species>;
+
+
+//fix these numbers
+constexpr Species molecular_weights()
+{
+    return {scalar(2.016),scalar(1.008),scalar(31.998),scalar(15.999),scalar(17.007),scalar(33.006),scalar(34.014),scalar(18.015),scalar(39.95),scalar(28.014)};
+}
+
+//fix these numbers
+constexpr Species inv_molecular_weights()
+{
+    return {scalar(0.49603174603174605),scalar(0.9920634920634921),scalar(0.03125195324707794),scalar(0.06250390649415588),scalar(0.05879931792791203),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.055509297807382736),scalar(0.025031289111389236),scalar(0.03569643749553795)};
+}
+
+// Define the species names as a fixed-size array
+#pragma once
+#include <string>
+
+//fix this order
+static constexpr std::array<const char*, 10> species_names_gen()
+{
+    //fix the openfoam order to match the nn order 
+    return {"H2", "H", "O2", "O", "OH", "HO2", "H2O2", "H2O", "AR", "N2"};
+}
+
+// Return the species name for a given index
+static std::string species_name_gen(int index)
+{
+    constexpr auto names = species_names_gen(); // Get the list of species names use auto for now
+    return names[index]; // Return the name of the requested species
 }
