@@ -5,7 +5,7 @@
 #include <chrono> // For timing
 #include "ffcm2_h2.h" // Change file name to desired header file
 
-using Scalar = float;
+
 
 // Function to scale the elements of the input array randomly
 void scale_input(std::array<Scalar, 12>& input) {

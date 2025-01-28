@@ -1,8 +1,8 @@
 #include <array>
 #include <cmath>
+using Scalar = scalar; // redefine scalar 
 
 
-using Scalar = scalar;
 
 template<typename Scalar>
 using activationFunction = void(*)(Scalar*, const Scalar*, size_t, Scalar);
