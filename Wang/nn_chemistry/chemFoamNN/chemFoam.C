@@ -54,15 +54,19 @@ int main(int argc, char *argv[])
     #define CREATE_MESH createSingleCellMesh.H
     #define NO_CONTROL
     #include "postProcess.H"
-
+Info << "1" << endl;
     #include "setRootCaseLists.H"
+Info << "2" << endl;
     #include "createTime.H"
+Info << "3" << endl;
     #include "createSingleCellMesh.H"
+Info << "4" << endl;
     #include "createFields.H"
+Info << "5" << endl;
     #include "createFieldRefs.H"
-    Info << "1" << endl;
+    
     #include "readInitialConditions.H"
-    Info << "2" << endl;
+    
     #include "createControls.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
