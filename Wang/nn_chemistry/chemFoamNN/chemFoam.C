@@ -74,10 +74,10 @@ int main(int argc, char *argv[])
         runTime++;
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        #include "solveChemistry.H"
+        //#include "solveChemistry.H"
         #include "YEqn.H"
-        #include "hEqn.H"
-        #include "pEqn.H"
+        //#include "hEqn.H"
+        //#include "pEqn.H"
 
         #include "output.H"
 
