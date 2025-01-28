@@ -1,0 +1,67 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "chemkin";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+species
+{
+    H
+    {
+        As      145.0;
+        Ts      2.05;
+    }
+    H2
+    {
+        As      38.0;
+        Ts      2.92;
+    }
+    O
+    {
+        As      80.0;
+        Ts      2.75;
+    }
+    O2
+    {
+        As      107.4;
+        Ts      3.458;
+    }
+    OH
+    {
+        As      80.0;
+        Ts      2.75;
+    }
+    H2O
+    {
+        As      572.4;
+        Ts      2.605;
+    }
+    HO2
+    {
+        As      107.4;
+        Ts      3.458;
+    }
+    H2O2
+    {
+        As      107.4;
+        Ts      3.458;
+    }
+    O3
+    {
+        As      180.0;
+        Ts      4.1;
+    }
+}
+
+// ************************************************************************* //
