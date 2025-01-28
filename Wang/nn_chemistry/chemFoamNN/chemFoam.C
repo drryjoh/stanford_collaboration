@@ -64,9 +64,9 @@ Info << "4" << endl;
     #include "createFields.H"
 Info << "5" << endl;
     #include "createFieldRefs.H"
-    
+Info << "6" << endl;
     #include "readInitialConditions.H"
-    
+Info << "7" << endl;
     #include "createControls.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
