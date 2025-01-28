@@ -11,6 +11,7 @@ basicSpecieMixture& composition = thermo.composition();
 PtrList<volScalarField>& Y = composition.Y();
 volScalarField& p = thermo.p();
 
+Info << "a" << endl;
 NNInterface nnInterface(mesh);
+Info << "b" << endl;
 nnInterface.check_species_list(Y);
-
