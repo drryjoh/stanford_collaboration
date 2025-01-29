@@ -9,8 +9,8 @@
 
     forAll(Y, i)
     {
-        post <<", "<<thermo.Y()[i][0];
+        post <<", "<<composition.Y()[i][0];
     }
-    
+
     post << endl;
     
