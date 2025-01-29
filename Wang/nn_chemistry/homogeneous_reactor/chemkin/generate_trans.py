@@ -1,5 +1,5 @@
 # Input chemkin data as a string
-with open("ffcm1_transport.dat", "r") as f:
+with open("ffcm1_Ar_transport.dat", "r") as f:
     chemkin_data = f.read()
 
 # Parse the input data into a list of species with their properties
@@ -49,7 +49,7 @@ transport_properties += """}
 """
 
 # Write the output to a file
-with open("ffcm1_transportProperties", "w") as f:
+with open("ffcm1_Ar_transportProperties", "w") as f:
     f.write(transport_properties)
 
 print("transportProperties file generated successfully!")
