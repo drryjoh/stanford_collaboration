@@ -43,6 +43,7 @@ Description
 #include "thermoTypeFunctions.H"
 //CodeJeNN 
 #include "nn_interface.H"
+#include "IOmanip.H"
 //
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -61,8 +62,7 @@ int main(int argc, char *argv[])
     #include "createFieldRefs.H"
     #include "readInitialConditions.H"
     #include "createControls.H"
-    #pragma once
-    #include <iomanip> // Include for setprecision
+    Info << setprecision(10);
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
         #include "output.H"
 
 
-        Info << std::setprecision(12) << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
+        Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
     }
