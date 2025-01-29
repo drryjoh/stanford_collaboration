@@ -89,7 +89,7 @@ struct NNInterface
     {
         forAll(T, cell_index)
         {
-            std::array<scalar, 12> nn_input = {
+            std::array<scalar, 11> nn_input = {
                 T[cell_index],                      // Temperature (K)
                 p[cell_index] / 101325.0,          // Pressure (atm)
                 Y[0][cell_index], Y[1][cell_index], Y[2][cell_index],
