@@ -17,6 +17,6 @@ nnInterface.check_species_list(Y);
 
 forAll(Y,i)
 {
-    post<<", " << composition.Y()[i].name()
+    post<<", " << composition.Y()[i].name();
 }
 post << endl;

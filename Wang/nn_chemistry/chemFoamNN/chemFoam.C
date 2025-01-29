@@ -63,6 +63,8 @@ int main(int argc, char *argv[])
     #include "createControls.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+    Foam::Info.setf(std::ios::fixed); // Use fixed-point notation
+    Foam::Info.precision(12);         // Set precision globally
 
     Info<< "\nStarting time loop\n" << endl;
     while (runTime.run())
@@ -77,7 +79,7 @@ int main(int argc, char *argv[])
         #pragma once
         #include <iomanip> // Include for setprecision
 
-        Info << std::setprecision(12) << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
+        Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
     }
