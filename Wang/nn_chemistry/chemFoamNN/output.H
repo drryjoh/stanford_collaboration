@@ -1,6 +1,6 @@
     runTime.write();
 
-    Info<< ", T = " << thermo.T()[0]
+    Info<< "  T = " << thermo.T()[0]
         << ", p = " << thermo.p()[0]
         << ", " << Y[0].name() << " = " << Y[0][0]
         << endl;
