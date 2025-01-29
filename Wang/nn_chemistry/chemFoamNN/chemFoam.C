@@ -65,8 +65,6 @@ int main(int argc, char *argv[])
     #include <iomanip> // Include for setprecision
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-    Foam::Info.setf(std::ios::fixed); // Use fixed-point notation
-    Foam::Info.precision(12);         // Set precision globally
 
     Info<< "\nStarting time loop\n" << endl;
     while (runTime.run())
