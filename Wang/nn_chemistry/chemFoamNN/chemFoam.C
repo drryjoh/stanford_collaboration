@@ -74,15 +74,17 @@ int main(int argc, char *argv[])
 
         runTime++;
         Info<< "Time = " << runTime.timeName() << nl << endl;
-        #include "YEqn.H"
         #include "output.H"
+        #include "YEqn.H"
+
 
         Info << setprecision(10);
         Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
     }
-
+    
+    #include "output.H"
     Info << "Number of steps = " << runTime.timeIndex() << endl;
     Info << "End" << nl << endl;
 
