@@ -97,13 +97,13 @@ using Species = std::array<scalar, n_species>;
 
 constexpr Species molecular_weights()
 {
-    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3
+    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3  AR
     return {scalar(1.008),scalar(2.016),scalar(15.999),scalar(31.998),scalar(17.007),scalar(18.015),scalar(33.006),scalar(34.014),scalar(47.997), scalar(40.0)};
 }
 
 constexpr Species inv_molecular_weights()
 {
-    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3
+    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3  AR
     return {scalar(0.9920634920634921),scalar(0.49603174603174605),scalar(0.06250390649415588),scalar(0.03125195324707794),scalar(0.05879931792791203),scalar(0.055509297807382736),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.02083463549805196), scalar(0.025)};
 }
 
