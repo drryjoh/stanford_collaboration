@@ -1,4 +1,4 @@
-    nnInterface.solve(Y, p, T, runTime.deltaT().value());
+    nnInterface.solve(Y, p, T);
     
     scalarList YN(nSpecie, 0.0);
     forAll(Y, i)
