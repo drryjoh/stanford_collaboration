@@ -14,3 +14,9 @@ volScalarField& T = thermo.T();
 
 NNInterface nnInterface(mesh);
 nnInterface.check_species_list(Y);
+
+forAll(Y,i)
+{
+    post<<", " << thermo.Y()[i].name()
+}
+post << endl;

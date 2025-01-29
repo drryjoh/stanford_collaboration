@@ -68,20 +68,16 @@ int main(int argc, char *argv[])
     while (runTime.run())
     {
         #include "readControls.H"
-
-        #include "setDeltaT.H"
+        #include "checkDeltaT.H"
 
         runTime++;
         Info<< "Time = " << runTime.timeName() << nl << endl;
-
-        //#include "solveChemistry.H"
         #include "YEqn.H"
-        //#include "hEqn.H"
-        //#include "pEqn.H"
-
         #include "output.H"
+        #pragma once
+        #include <iomanip> // Include for setprecision
 
-        Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
+        Info << std::setprecision(12) << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
     }

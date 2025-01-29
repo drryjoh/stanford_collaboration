@@ -5,5 +5,12 @@
         << ", " << Y[0].name() << " = " << Y[0][0]
         << endl;
 
-    post<< runTime.value() << token::TAB << thermo.T()[0] << token::TAB
-        << thermo.p()[0] << endl;
+    post<< runTime.value() <<", "<< thermo.T()[0] << ", " << thermo.p()[0];
+
+    forAll(Y, i)
+    {
+        post <<", "<<thermo.Y()[i][0];
+    }
+    
+    post << endl;
+    
