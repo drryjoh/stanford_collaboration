@@ -107,7 +107,7 @@ struct NNInterface
             p[cell_index] = output[1] * 101325.0;
 
             scalar run_sum = scalar(0);
-            scalarList YNN(nSpecie, 0.0);
+            scalarList YNN(n_species, 0.0);
             for (label i = 0; i < n_species; ++i)
             {
                 YNN[i] = Foam::max(output[i + 2], SMALL);
