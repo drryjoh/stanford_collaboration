@@ -31,16 +31,16 @@ auto ffcm1(const std::array<Scalar, 11>& initial_input) {
     // - -
 
     std::array<Scalar, 1024> layer_1_output;
-    forwardPass<Scalar, 1024>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 11, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 1024>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 11, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 10> layer_2_output;
-    forwardPass<Scalar, 10>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 1024, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 10>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 1024, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 1024> layer_3_output;
-    forwardPass<Scalar, 1024>(layer_3_output.data(), layer_2_output.data(), weights_3.data(), biases_3.data(), 10, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 1024>(layer_3_output.data(), layer_2_output.data(), weights_3.data(), biases_3.data(), 10, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 11> layer_4_output;
-    forwardPass<Scalar, 11>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear<Scalar>, 0.0);
+    forwardPass<Scalar, 11>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear_nn<Scalar>, 0.0);
 
     std::array<Scalar, 11> output_norms = {1.528017032e+00, 2.270079899e-03, 2.745073848e-01, 7.042649671e-03, 3.276689203e-01, 1.033023417e-02, 3.891832339e-01, 3.957717628e-01, 3.883670480e-01, 3.106844085e-01, 1.308471474e-01};
 
