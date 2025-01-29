@@ -94,3 +94,11 @@
         << " T   = " << thermo.T()[0] << " [K] " << nl
         << " rho = " << rho[0] << " [kg/m3]" << nl
         << endl;
+
+post<< scalar(0.0) <<", "<< thermo.T()[0] << ", " << thermo.p()[0];
+
+forAll(Y, i)
+{
+    post <<", "<<composition.Y()[i][0];
+}
+post << endl;
