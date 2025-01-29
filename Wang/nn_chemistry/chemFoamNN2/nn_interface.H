@@ -85,11 +85,8 @@ struct NNInterface
     void solve(
         PtrList<volScalarField>& Y,
         volScalarField& p,
-        volScalarField& T,
-        scalar dt) const
+        volScalarField& T) const
     {
-        scalar log10_dt = std::log10(dt);
-
         forAll(T, cell_index)
         {
             std::array<scalar, 12> nn_input = {
@@ -97,8 +94,7 @@ struct NNInterface
                 p[cell_index] / 101325.0,          // Pressure (atm)
                 Y[0][cell_index], Y[1][cell_index], Y[2][cell_index],
                 Y[3][cell_index], Y[4][cell_index], Y[5][cell_index],
-                Y[6][cell_index], Y[7][cell_index], Y[8][cell_index], // Mass fractions
-                log10_dt                           // Log10 timestep
+                Y[6][cell_index], Y[7][cell_index], Y[8][cell_index]
             };
 
             auto output = predict_combustion(nn_input);
@@ -108,7 +104,7 @@ struct NNInterface
 
             scalar run_sum = scalar(0);
             scalarList YNN(n_species, 0.0);
-            for (label i = 0; i < n_species; ++i)
+            for (label i = 0; i < n_species-1; ++i)
             {
                 YNN[i] = Foam::max(output[i + 2], SMALL);
                 run_sum  += YNN[i];

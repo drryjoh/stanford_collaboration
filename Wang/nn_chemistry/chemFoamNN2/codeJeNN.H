@@ -58,17 +58,19 @@ void append_state(std::array<Scalar, 12>& input, std::array<Scalar, 11>& output)
 }
 
 
-std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
-    std::array<Scalar, 12> input_real;
-    for (int i = 0; i < 12; i++) {
-        if (i >= 2 && i < 11) {
+std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 11>& input) {
+    
+    std::array<Scalar, 11> input_real;
+
+    for (int i = 0; i < 11; i++) {
+        if (i >= 2) {
             input_real[i] = (std::pow(input[i], 0.1) - 1) / 0.1; // Boxcox lambda = 0.1
         } else {
             input_real[i] = input[i];
         }
     }
 
-    auto model_output = ffcm2_h2<Scalar>(input_real); // Change input to desired features
+    auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
 
     std::array<Scalar, 11> output_real;
     for (int i = 0; i < 11; i++) {
@@ -77,7 +79,7 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
 
     std::array<Scalar, 11> output;
     for (int i = 0; i < 11; i++) {
-        if (i >= 2 && i < 11) {
+        if (i >= 2) {
             output[i] = std::pow(output_real[i] * 0.1 + 1, 10.0); // Inverse Boxcox transformation
         } else {
             output[i] = output_real[i];
@@ -87,7 +89,7 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 12>& input) {
     return output;
 }
 
-const int n_species = 9;
+const int n_species = 10;
 // Using alias for the array type (for example, an array of double values)
 using Species = std::array<scalar, n_species>;
 
@@ -96,23 +98,23 @@ using Species = std::array<scalar, n_species>;
 constexpr Species molecular_weights()
 {
     //H  H2  O  O2  OH  H2O  HO2  H2O2  O3
-    return {scalar(1.008),scalar(2.016),scalar(15.999),scalar(31.998),scalar(17.007),scalar(18.015),scalar(33.006),scalar(34.014),scalar(47.997)};
+    return {scalar(1.008),scalar(2.016),scalar(15.999),scalar(31.998),scalar(17.007),scalar(18.015),scalar(33.006),scalar(34.014),scalar(47.997), scalar(40.0)};
 }
 
 constexpr Species inv_molecular_weights()
 {
     //H  H2  O  O2  OH  H2O  HO2  H2O2  O3
-    return {scalar(0.9920634920634921),scalar(0.49603174603174605),scalar(0.06250390649415588),scalar(0.03125195324707794),scalar(0.05879931792791203),scalar(0.055509297807382736),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.02083463549805196)};
+    return {scalar(0.9920634920634921),scalar(0.49603174603174605),scalar(0.06250390649415588),scalar(0.03125195324707794),scalar(0.05879931792791203),scalar(0.055509297807382736),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.02083463549805196), scalar(0.025)};
 }
 
 // Define the species names as a fixed-size array
 #pragma once
 #include <string>
 
-static constexpr std::array<const char*, 9> species_names_gen()
+static constexpr std::array<const char*, n_species> species_names_gen()
 {
     //fix the openfoam order to match the nn order 
-    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3"};
+    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3", "AR"};
 }
 
 // Return the species name for a given index
