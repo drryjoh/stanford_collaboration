@@ -61,6 +61,8 @@ int main(int argc, char *argv[])
     #include "createFieldRefs.H"
     #include "readInitialConditions.H"
     #include "createControls.H"
+    #pragma once
+    #include <iomanip> // Include for setprecision
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
     Foam::Info.setf(std::ios::fixed); // Use fixed-point notation
@@ -76,10 +78,9 @@ int main(int argc, char *argv[])
         Info<< "Time = " << runTime.timeName() << nl << endl;
         #include "YEqn.H"
         #include "output.H"
-        #pragma once
-        #include <iomanip> // Include for setprecision
 
-        Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
+
+        Info << std::setprecision(12) << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
     }
