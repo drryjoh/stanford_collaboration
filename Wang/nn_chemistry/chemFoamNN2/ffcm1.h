@@ -1,5 +1,6 @@
 template <typename Scalar = double>
-auto ffcm1(const std::array<Scalar, 11>& initial_input) { 
+auto ffcm1(const std::array<Scalar, 11>& initial_input) -> std::array<Scalar, 11> 
+{ 
 
     std::array<Scalar, 11> input_norms = {5.014102174e+02, 1.698358327e+00, 1.315466189e+00, 3.665619358e-01, 1.809814665e+00, 5.594859912e-01, 1.959001804e+00, 2.346061559e+00, 6.405861576e-01, 5.417785489e-01, 3.635511044e-01};
 
