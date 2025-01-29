@@ -27,4 +27,4 @@ forAll(Y, i)
 {
     post <<", "<<composition.Y()[i][0];
 }
- 
+post << endl;
