@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
         #include "YEqn.H"
         #include "output.H"
 
-
+        Info << setprecision(10);
         Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
