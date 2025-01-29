@@ -82,5 +82,4 @@
     #include "createPhi.H"
 
     OFstream post(args.path()/"chemFoam.out");
-    post<< "# Time" << token::TAB << "Temperature [K]" << token::TAB
-        << "Pressure [Pa]" << endl;
+    post<< "# Time, Temperature [K], Pressure [Pa]";
