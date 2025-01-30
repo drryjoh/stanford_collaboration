@@ -102,17 +102,20 @@ struct NNInterface
             T[cell_index] = output[0];
             p[cell_index] = output[1] * 101325.0;
 
-            scalar run_sum = scalar(0);
+            
             scalarList YNN(n_species, 0.0);
-            //unaffected species
-            YNN[n_speices - 1] = Y[cell_index][n_species - 1]
+            
+            //unaffected species begin the normalization sum
+            YNN[n_species - 1] = Y[n_species - 1][cell_index];
+            scalar run_sum = YNN[n_species - 1];
+            //
 
-            for (label i = 0; i < n_species; ++i)
+            for (label i = 0; i < n_species - 1; ++i)
             {
                 YNN[i] = Foam::max(output[i + 2], SMALL);
                 run_sum  += YNN[i];
             }
-
+            
             for (label i = 0; i < n_species; ++i)
             {
                 Y[i][cell_index] = YNN[i]/run_sum;
