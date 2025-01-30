@@ -109,6 +109,9 @@ struct NNInterface
                 YNN[i] = Foam::max(output[i + 2], SMALL);
                 run_sum  += YNN[i];
             }
+            
+            run_sum += Y[n_species-1][cell_index];
+
             for (label i = 0; i < n_species; ++i)
             {
                 Y[i][cell_index] = YNN[i]/run_sum;
