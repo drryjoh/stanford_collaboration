@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "/.automount/werner/Werner/bgschaid/bgschaid-foamStuff/DepositionTests";
+    case            "neutralTest";
+    instance        "system";
+    local           "";
+
+    class           dictionary;
+    object          setFieldsDict;
+}
+
+defaultFieldValues
+(
+        volScalarFieldValue p 6670
+        volScalarFieldValue T 298
+        volScalarFieldValue H2 0.012772427774961983
+        volScalarFieldValue O2 0.10136213887480991
+        volScalarFieldValue OH 0.0
+        volScalarFieldValue H2O 0.0
+        volScalarFieldValue AR 0.8858654333502279
+);
+
+regions
+(
+    // Setting high pressure where x < 0.005
+    boxToCell
+    {
+        box (0 0 0) (0.015 1 1);
+        fieldValues
+        (
+            volScalarFieldValue p 5.5e5
+            volScalarFieldValue T 3500
+            volScalarFieldValue H2 0.0
+            volScalarFieldValue O2 0.0
+            volScalarFieldValue OH 1e-3
+            volScalarFieldValue H2O 0.1014
+            volScalarFieldValue AR 0.8986868374434103
+        );
+    }
+    boxToCell
+    {
+        box (0.015 0 0) (0.025 1 1);
+        fieldValues
+        (
+            volScalarFieldValue p 6670
+            volScalarFieldValue T 350
+            volScalarFieldValue H2 0.012772427774961983
+            volScalarFieldValue O2 0.10136213887480991
+            volScalarFieldValue OH 1e-3
+            volScalarFieldValue H2O 0.0
+            volScalarFieldValue AR 0.8858654333502279
+        );
+    }
+);
+
