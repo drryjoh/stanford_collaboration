@@ -39,7 +39,7 @@ regions
         fieldValues
         (
             volScalarFieldValue p 5.5e5
-            volScalarFieldValue T 3500
+            volScalarFieldValue T 2000
             volScalarFieldValue H2 0.0
             volScalarFieldValue O2 0.0
             volScalarFieldValue OH 1e-3
