@@ -29,7 +29,7 @@ Under these operating systems:
 import sys
 import os
 
-sys.path.append(os.path.abspath("SDToolbox/Python3"))
+sys.path.append(os.path.abspath("shock_detonation_tool_box/SDToolbox/Python3"))
 from sdtoolbox.postshock import CJspeed, PostShock_fr
 from sdtoolbox.znd import zndsolve
 from sdtoolbox.cv import cvsolve
