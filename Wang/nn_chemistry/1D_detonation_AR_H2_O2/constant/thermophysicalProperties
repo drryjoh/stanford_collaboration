@@ -32,6 +32,6 @@ chemistryReader foamChemistryReader;
 
 foamChemistryFile "$FOAM_CASE/constant/chemFFCM1final";
 
-foamChemistryThermoFile "$FOAM_CASE/constant/thermFFCM1";
+foamChemistryThermoFile "$FOAM_CASE/constant/thermFFCM1_new";
 
 // ************************************************************************* //

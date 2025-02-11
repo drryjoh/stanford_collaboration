@@ -28,13 +28,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime       2.5e-4;	
+endTime       5.0e-4;	
 
 deltaT          1e-8;
 
 writeControl    adjustableRunTime;
 
-writeInterval	1e-5;
+writeInterval	2.5e-6;
 
 purgeWrite      0;
 
@@ -91,8 +91,8 @@ functions
                 type        lineUniform;          // Uniformly spaced points along a line
                 axis        x;                // Sampling along x-axis
                 start       (0.0 0 0);        // Start point
-                end         (0.5 0 0);        // End point
-                nPoints     2000;             // Number of points along the line
+                end         (1.0 0 0);        // End point
+                nPoints     40000;             // Number of points along the line
             }
         );
     }

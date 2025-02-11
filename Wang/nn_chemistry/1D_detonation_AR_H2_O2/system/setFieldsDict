@@ -25,7 +25,6 @@ defaultFieldValues
         volScalarFieldValue T 298
         volScalarFieldValue H2 0.012772427774961983
         volScalarFieldValue O2 0.10136213887480991
-        volScalarFieldValue OH 0.0
         volScalarFieldValue H2O 0.0
         volScalarFieldValue AR 0.8858654333502279
 );
@@ -35,29 +34,14 @@ regions
     // Setting high pressure where x < 0.005
     boxToCell
     {
-        box (0 0 0) (0.015 1 1);
+        box (0 -1 -1) (0.05 1 1);
         fieldValues
         (
             volScalarFieldValue p 5.5e5
-            volScalarFieldValue T 2000
+            volScalarFieldValue T 2500
             volScalarFieldValue H2 0.0
             volScalarFieldValue O2 0.0
-            volScalarFieldValue OH 1e-3
-            volScalarFieldValue H2O 0.1014
-            volScalarFieldValue AR 0.8986868374434103
-        );
-    }
-    boxToCell
-    {
-        box (0.015 0 0) (0.025 1 1);
-        fieldValues
-        (
-            volScalarFieldValue p 6670
-            volScalarFieldValue T 350
-            volScalarFieldValue H2 0.012772427774961983
-            volScalarFieldValue O2 0.10136213887480991
-            volScalarFieldValue OH 1e-3
-            volScalarFieldValue H2O 0.0
+            volScalarFieldValue H2O 0.11413456664977206
             volScalarFieldValue AR 0.8858654333502279
         );
     }
