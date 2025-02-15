@@ -145,7 +145,6 @@ struct NNInterface
     }
 
     
-    template<class ThermoType>
     volScalarField Qdot(
     const psiReactionThermo& thermo,
     const PtrList<volScalarField>& RR) const
