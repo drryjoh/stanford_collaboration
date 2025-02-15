@@ -54,7 +54,7 @@ struct NNInterface
         Species mw = molecular_weights();
         for (label i = 0; i < n_species; ++i)
         {
-            inv_W_mix+= YNN[i]/mw[i];
+            inv_W_mix+= Y[i]/mw[i];
         }
 
         return p/(R * inv_W_Mix * T);
