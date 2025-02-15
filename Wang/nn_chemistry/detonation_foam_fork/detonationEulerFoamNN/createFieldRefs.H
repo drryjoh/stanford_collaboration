@@ -5,4 +5,3 @@ const label inertIndex(composition.species()[inertSpecie]);
 
 NNInterface nnInterface(mesh);
 nnInterface.check_species_list(Y);
-

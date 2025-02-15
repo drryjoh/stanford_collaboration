@@ -135,13 +135,57 @@ struct NNInterface
             Species mw = molecular_weights();
 
             scalar rho1 = rho_scalar(YNN, p_, T_);
-            //Y_i = W_i * C_i / rho
             for (label i = 0; i < n_species; ++i)
             {
                 C1 = YNN[i]/mw[i] * rho1;
-                sourceField[i][cell_index] = (C1[i] - C0[i]) * inv_dt * mw[i];
+                sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
             }     
         }
+
         return sourceField;
+    }
+
+    
+    template<class ThermoType>
+    volScalarField Qdot(
+    (
+    const rhoReactionThermo& thermo,
+    const PtrList<volScalarField>& RR) const
+    {
+
+        tmp<volScalarField> tQdot
+        (
+            new volScalarField
+            (
+                IOobject
+                (
+                    "Qdot",
+                    mesh_.time().timeName(),
+                    mesh_,
+                    IOobject::NO_READ,
+                    IOobject::NO_WRITE,
+                    false
+                ),
+                mesh_,
+                dimensionedScalar("zero", dimEnergy/dimVolume/dimTime, 0)
+            )
+        );
+
+        scalarField& Qdot = tQdot.ref();
+
+        const PtrList<ThermoType>& specieData =
+        dynamic_cast<const reactingMixture<ThermoType>&>(thermo).speciesData();
+    
+
+        forAll(RR, i)
+        {
+            forAll(Qdot, celli)
+            {
+                const scalar hi = specieData[i].Hc();
+                Qdot[celli] -= hi*RR[i][celli];
+            }
+        }
+
+        return tQdot;
     }
 };

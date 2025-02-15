@@ -10,8 +10,11 @@ tmp<fv::convectionScheme<scalar>> mvConvection
 );
 
 {
-    reaction->correct();
-    Qdot = reaction->Qdot();
+    //reaction->correct();
+    //Qdot = reaction->Qdot();
+    auto RR = nnInterface.solve(Y, p, T, runTime.deltaT().value());
+    Qdot  = nnInterface.solve(thermo, RR);
+
     volScalarField Yt(0.0*Y[0]);
 
     forAll(Y, i)
@@ -25,7 +28,7 @@ tmp<fv::convectionScheme<scalar>> mvConvection
                 fvm::ddt(rho, Yi)
               + mvConvection->fvmDiv(rhoPhi, Yi)
              ==
-                reaction->R(Yi)
+                RR[i]
             );
 
             YiEqn.relax();
