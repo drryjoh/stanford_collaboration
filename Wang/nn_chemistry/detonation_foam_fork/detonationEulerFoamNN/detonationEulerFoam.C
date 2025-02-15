@@ -37,6 +37,9 @@ Description
 #include "directionInterpolate.H" 
 #include "fvcSmooth.H"
 #include "fluxScheme.H"
+//CodeJeNN 
+#include "nn_interface.H"
+#include "IOmanip.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[]) {
