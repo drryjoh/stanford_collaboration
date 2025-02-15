@@ -146,9 +146,11 @@ struct NNInterface
 
     
     volScalarField Qdot(
-    const psiReactionThermo& thermo,
-    const PtrList<volScalarField>& RR) const
+        const reactingMixture<psiThermo>& thermo,  // Ensure correct type
+        const PtrList<volScalarField>& RR) const
     {
+        // Access species thermodynamic data
+        const PtrList<typename reactingMixture<psiThermo>::specieThermo>& specieData = thermo.speciesData();
 
         tmp<volScalarField> tQdot
         (
@@ -170,19 +172,17 @@ struct NNInterface
 
         scalarField& Qdot = tQdot.ref();
 
-        const PtrList<psiReactionThermo>& specieData =
-        dynamic_cast<const reactingMixture<psiReactionThermo>&>(thermo).speciesData();
-    
-
         forAll(RR, i)
         {
             forAll(Qdot, celli)
             {
-                const scalar hi = specieData[i].Hc();
-                Qdot[celli] -= hi*RR[i][celli];
+                // Get the chemical enthalpy (Hc) instead of Hs
+                const scalar hi = specieData[i].Hc();  
+                Qdot[celli] -= hi * RR[i][celli];
             }
         }
 
         return tQdot;
     }
+
 };
