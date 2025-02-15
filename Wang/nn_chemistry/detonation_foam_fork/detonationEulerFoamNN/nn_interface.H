@@ -170,7 +170,7 @@ struct NNInterface
 
         scalarField& Qdot = tQdot.ref();
 
-        const PtrList<ThermoType>& specieData =
+        const PtrList<psiReactingMixture>& specieData =
         dynamic_cast<const reactingMixture<ThermoType>&>(thermo).speciesData();
     
 
