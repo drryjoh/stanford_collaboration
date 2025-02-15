@@ -13,7 +13,7 @@ tmp<fv::convectionScheme<scalar>> mvConvection
     //reaction->correct();
     //Qdot = reaction->Qdot();
     auto RR = nnInterface.solve(Y, p, T, runTime.deltaT().value());
-    Qdot  = nnInterface.Qdot(thermo, RR);
+    Qdot  = nnInterface.Qdot<psiReactionThermo>(thermo, RR);
 
     volScalarField Yt(0.0*Y[0]);
 
