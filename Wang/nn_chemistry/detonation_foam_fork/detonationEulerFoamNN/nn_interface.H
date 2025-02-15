@@ -1,6 +1,6 @@
 
 #include "codeJeNN.H"
-
+#include "reactingMixture.H"
 struct NNInterface
 {
     const fvMesh& mesh_; // Reference to the mesh for creating volScalarFields
