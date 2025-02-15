@@ -47,7 +47,7 @@ struct NNInterface
     scalar rho_scalar( 
         scalarList Y, 
         scalar p, 
-        scalar T)
+        scalar T) const
     {
         scalar inv_W_mix  = 0.0;
         scalar R = 8314.46261815324;
@@ -57,7 +57,7 @@ struct NNInterface
             inv_W_mix+= Y[i]/mw[i];
         }
 
-        return p/(R * inv_W_Mix * T);
+        return p/(R * inv_W_mix * T);
     }
 
     PtrList<volScalarField> 
@@ -132,7 +132,6 @@ struct NNInterface
             }
             
             scalar C1;
-            Species mw = molecular_weights();
 
             scalar rho1 = rho_scalar(YNN, p_, T_);
             for (label i = 0; i < n_species; ++i)
