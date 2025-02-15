@@ -62,9 +62,9 @@ struct NNInterface
 
     PtrList<volScalarField> 
     solve(
-        PtrList<volScalarField>& Y,
-        volScalarField& p,
-        volScalarField& T,
+        const PtrList<volScalarField>& Y,
+        const volScalarField& p,
+        const volScalarField& T,
         scalar dt) const
     {
         PtrList<volScalarField> sourceField(Y.size());
