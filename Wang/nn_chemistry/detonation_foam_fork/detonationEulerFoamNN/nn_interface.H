@@ -44,6 +44,27 @@ struct NNInterface
         Info << "Check complete species are consistent" << endl;
     }
 
+    // Check if species names match
+    void useNN(
+    volScalarField& UseNN,
+    const PtrList<volScalarField>& Y,
+    const volScalarField& p,
+    const volScalarField& T)
+    {
+        forAll(T, cell_index)
+        {
+            if(T[cell_index] > 1500.0 && Y[1][cell_index]>1e-4)
+            {
+                useNN[cell_index] = 1.0;
+            }
+            else
+            {
+                useNN[cell_index] = 0.0;
+            }
+        }
+    }
+
+
     scalar rho_scalar( 
         scalarList Y, 
         scalar p, 
@@ -65,6 +86,7 @@ struct NNInterface
         const PtrList<volScalarField>& Y,
         const volScalarField& p,
         const volScalarField& T,
+        const volScalarField& UseNN,
         scalar dt) const
     {
         PtrList<volScalarField> sourceField(Y.size());
@@ -87,58 +109,68 @@ struct NNInterface
         scalar inv_dt =  1.0/dt;
         forAll(T, cell_index)
         {
-            scalarList Y0(n_species, 0.0);
-            scalarList C0(n_species, 0.0);
-            Species mw = molecular_weights();
-
-            for (label i = 0; i < n_species; ++i)
+            if(UseNN[cell_index]>0.01)
             {
-                Y0[i] = Y[i][cell_index];
+                scalarList Y0(n_species, 0.0);
+                scalarList C0(n_species, 0.0);
+                Species mw = molecular_weights();
+
+                for (label i = 0; i < n_species; ++i)
+                {
+                    Y0[i] = Y[i][cell_index];
+                }
+                scalar rho0 = rho_scalar(Y0, p[cell_index], T[cell_index]);
+                //Y_i = W_i * C_i / rho
+                for (label i = 0; i < n_species; ++i)
+                {
+                    C0[i] = Y0[i]/mw[i] * rho0;
+                }            
+
+                std::array<scalar, 11> nn_input = {
+                    T[cell_index],                      // Temperature (K)
+                    p[cell_index] / 101325.0,          // Pressure (atm)
+                    Y[0][cell_index], Y[1][cell_index], Y[2][cell_index],
+                    Y[3][cell_index], Y[4][cell_index], Y[5][cell_index],
+                    Y[6][cell_index], Y[7][cell_index], Y[8][cell_index]
+                };
+
+                auto output = predict_combustion(nn_input);
+
+                scalar T_ = output[0];
+                scalar p_ = output[1] * 101325.0;
+
+                
+                scalarList YNN(n_species, 0.0);
+                
+                //unaffected species begin the normalization sum
+                YNN[n_species - 1] = Y[n_species - 1][cell_index];
+                scalar run_sum = YNN[n_species - 1];
+                for (label i = 0; i < n_species - 1; ++i)
+                {
+                    YNN[i] = Foam::max(output[i + 2], SMALL);
+                    run_sum  += YNN[i];
+                }
+                for (label i = 0; i < n_species; ++i)
+                {
+                    YNN[i] = YNN[i]/run_sum;
+                }
+                
+                scalar C1;
+
+                scalar rho1 = rho_scalar(YNN, p_, T_);
+                for (label i = 0; i < n_species; ++i)
+                {
+                    C1 = YNN[i]/mw[i] * rho1;
+                    sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
+                }    
             }
-            scalar rho0 = rho_scalar(Y0, p[cell_index], T[cell_index]);
-            //Y_i = W_i * C_i / rho
-            for (label i = 0; i < n_species; ++i)
+            else
             {
-                C0[i] = Y0[i]/mw[i] * rho0;
-            }            
-
-            std::array<scalar, 11> nn_input = {
-                T[cell_index],                      // Temperature (K)
-                p[cell_index] / 101325.0,          // Pressure (atm)
-                Y[0][cell_index], Y[1][cell_index], Y[2][cell_index],
-                Y[3][cell_index], Y[4][cell_index], Y[5][cell_index],
-                Y[6][cell_index], Y[7][cell_index], Y[8][cell_index]
-            };
-
-            auto output = predict_combustion(nn_input);
-
-            scalar T_ = output[0];
-            scalar p_ = output[1] * 101325.0;
-
-            
-            scalarList YNN(n_species, 0.0);
-            
-            //unaffected species begin the normalization sum
-            YNN[n_species - 1] = Y[n_species - 1][cell_index];
-            scalar run_sum = YNN[n_species - 1];
-            for (label i = 0; i < n_species - 1; ++i)
-            {
-                YNN[i] = Foam::max(output[i + 2], SMALL);
-                run_sum  += YNN[i];
-            }
-            for (label i = 0; i < n_species; ++i)
-            {
-                YNN[i] = YNN[i]/run_sum;
-            }
-            
-            scalar C1;
-
-            scalar rho1 = rho_scalar(YNN, p_, T_);
-            for (label i = 0; i < n_species; ++i)
-            {
-                C1 = YNN[i]/mw[i] * rho1;
-                sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
-            }     
+                for (label i = 0; i < n_species; ++i)
+                {
+                    sourceField[i][cell_index] = 0.0;
+                }    
+            } 
         }
 
         return sourceField;

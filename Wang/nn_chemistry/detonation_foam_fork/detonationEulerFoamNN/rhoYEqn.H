@@ -10,11 +10,17 @@ tmp<fv::convectionScheme<scalar>> mvConvection
 );
 
 {
+    nnInterface.useNN(UseNN, Y, p, T);
+    auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value());
+    Qdot  = nnInterface.Qdot(thermo, RR);
+    /*
+    forAll(Y, i)
+    {
+        RR_L2 += (RR[i] - reaction.RR[Y[i]])/(reaction.RR[Y[i]]+SMALL)
+    }
+    */
     //reaction->correct();
     //Qdot = reaction->Qdot();
-    auto RR = nnInterface.solve(Y, p, T, runTime.deltaT().value());
-    Qdot  = nnInterface.Qdot(thermo, RR);
-
     volScalarField Yt(0.0*Y[0]);
 
     forAll(Y, i)
