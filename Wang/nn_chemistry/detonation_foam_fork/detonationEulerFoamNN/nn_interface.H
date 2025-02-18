@@ -55,11 +55,11 @@ struct NNInterface
         {
             if(T[cell_index] > 1500.0 && Y[1][cell_index]>1e-4)
             {
-                useNN[cell_index] = 1.0;
+                UseNN[cell_index] = 1.0;
             }
             else
             {
-                useNN[cell_index] = 0.0;
+                UseNN[cell_index] = 0.0;
             }
         }
     }
