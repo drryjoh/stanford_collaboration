@@ -9,6 +9,7 @@ tmp<fv::convectionScheme<scalar>> mvConvection
     )
 );
 
+Info << "delta T = " << runTime.deltaT().value() << endl;
 {
     nnInterface.useNN(UseNN, Y, p, T);
     auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value());
