@@ -43,7 +43,7 @@ P1 = 6670.0;
 T1 = 298
 q = 'H2:2 O2:1 AR:7'
 mech = 'constant/H2_FFCM1_O3_Ar.yaml'
-diff = -0.0 
+diff = 0.0
 gas = ct.Solution(mech)
 gas.TPX = T1, P1, q
 for i, name in enumerate(gas.species_names):
@@ -57,12 +57,12 @@ gas1 = ct.Solution(mech)
 gas1.TPX = T1,P1,q
 
 # Find post shock state for given speed
-gas = PostShock_fr(cj_speed+diff, P1, T1, q, mech)
+cj_speed =  1637.275488
+gas = PostShock_fr(cj_speed, P1, T1, q, mech)
 print(gas.TP)
 print(cj_speed)
 # Solve ZND ODEs, make ZND plots
-
-out = zndsolve(gas,gas1,cj_speed+diff,t_end=1.2e-4,max_step=0.001,relTol=1e-4,advanced_output=True)
+out = zndsolve(gas,gas1,cj_speed,t_end=4.0e-4,max_step=0.001,relTol=1e-4,advanced_output=True)
 gas = PostShock_fr(cj_speed, P1, T1, q, mech)
 for Y, name in zip(out['species'], gas.species_names):
     print(f"{name}: {Y[-1]}")

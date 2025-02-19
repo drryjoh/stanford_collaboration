@@ -30,12 +30,6 @@ for i, time in enumerate(time_dirs):
 
 # Plot temperature vs. x for this time step
         plt.plot(x, T, label=f"Time {time}",color=plt.cm.jet(color_idx[i]))
-        lenT = len(T)
-        for i, Ti in enumerate(T[::-1]):
-            if Ti>350:
-                idxs.append(lenT - i)
-                xs.append(x[lenT - i])
-                break
 # Formatting the plot
         plt.xlabel("x (m)")
         plt.ylabel("Temperature (K)")
@@ -45,10 +39,5 @@ for i, time in enumerate(time_dirs):
 # Show the plot
 np.save("Tdet.npy",T)
 np.save("xdet.npy",x)
-plt.figure()
-xs = np.array(xs)
-times = np.array(times)
-plt.plot(times[1:], np.abs(np.diff(xs)/np.diff(times)), '-k')
-print(np.abs(np.diff(xs)/np.diff(times)))
 plt.show()
 
