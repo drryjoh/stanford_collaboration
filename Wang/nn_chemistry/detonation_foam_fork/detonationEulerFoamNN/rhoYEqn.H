@@ -9,19 +9,21 @@ tmp<fv::convectionScheme<scalar>> mvConvection
     )
 );
 
-Info << "delta T = " << runTime.deltaT().value() << endl;
+Info << "delta_time = " << runTime.deltaT().value() << endl;
 {
-    nnInterface.useNN(UseNN, Y, p, T);
-    auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value());
-    Qdot  = nnInterface.Qdot(thermo, RR);
+    nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
+    auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+    Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
+    
     /*
+    reaction->correct();
+    auto Qdot_chemistry = reaction->Qdot();
     forAll(Y, i)
     {
         RR_L2 += (RR[i] - reaction.RR[Y[i]])/(reaction.RR[Y[i]]+SMALL)
     }
     */
-    //reaction->correct();
-    //Qdot = reaction->Qdot();
+
     volScalarField Yt(0.0*Y[0]);
 
     forAll(Y, i)
