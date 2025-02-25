@@ -19,6 +19,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     reaction->correct();
     auto Qdot_chemistry = reaction->Qdot();
     forAll(Y, i)
+    Hi Josh
     {
         RR_L2 += (RR[i] - reaction.RR[Y[i]])/(reaction.RR[Y[i]]+SMALL)
     }
