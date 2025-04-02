@@ -31,9 +31,31 @@ cd detonationFoam/applications/solvers
 ./Allwmake -j 16
 ```
 
-I tried to incudle `sherlock_modules.sh` but that hasn't been working too well...for some reason.
+I tried including `sherlock_modules.sh`, but that hasn't been working very well.
 
 ** NN Generation/Location
 
+Next,
+```terminal
+cd detonation_foam_fork/detonationEulerFoamNN
+wmake
+```
+This will compile detonationEulerFoamNN
+
+Next to run in serial:
+```terminal
+cd 1D_detonation_AR_H2_O2
+blockMesh
+detonationEulerFoamNN
+```
+To run in parallel:
+```terminal
+cd 1D_detonation_AR_H2_O2
+blockMesh
+mpirun -np ## detonationEulerFoamNN -parallel
+```
+`##` is the number of processors
+
+This should run 500 steps and then crash
 
 
