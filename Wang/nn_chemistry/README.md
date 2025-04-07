@@ -31,9 +31,52 @@ cd detonationFoam/applications/solvers
 ./Allwmake -j 16
 ```
 
-I tried to incudle `sherlock_modules.sh` but that hasn't been working too well...for some reason.
+I tried including `sherlock_modules.sh`, but that hasn't been working very well.
 
 ** NN Generation/Location
 
+Next,
+```terminal
+cd detonation_foam_fork/detonationEulerFoamNN
+wmake
+```
+This will compile detonationEulerFoamNN
 
+Next to run in serial:
+```terminal
+cd 1D_detonation_AR_H2_O2
+blockMesh
+detonationEulerFoamNN
+```
+To run in parallel:
+```terminal
+cd 1D_detonation_AR_H2_O2
+blockMesh
+mpirun -np ## detonationEulerFoamNN -parallel
+```
+`##` is the number of processors
 
+This should run 500 steps and then crash
+
+To create new NNs, we assume that you pulled all submodules, if not got to the root directory `stanford_collaboration` and do `git submodule init` `git submodule update`
+
+CodeJeNN may be out of date so update it to most recent with
+
+```
+cd CodeJeNN
+git checkout main
+git pull
+```
+
+You'll need to create an environment for CodeJeNN as NN dependencies are masssive. We recommend following CodeJeNN's README which details how you can create a CodeJeNN specific environment. After loading the CodeJeNN environment you'll need files that detail the NN like those found in `examples/ffcm1_Ar_dt=1ns_eq_TP_weighted` (I think this is a .dat file and .h5). The files include normalization parameters (.dat) and the NN structure (.h5)
+
+We already have three NNs in `generated_nns` whcih the last one was created by running the following command
+```
+python3 ../CodeJeNN/src/main.py --input="../CodeJeNN/examples/ffcm1_Ar_dt=1ns_eq_TP_weighted" --output="nn_3"
+```
+
+Two files were created. A `test.cpp` file that will run the NN and `name_of_nn.h` file that contains the NN structure (including activation functions, weights, and biases).
+
+** NN into OpenFOAM
+
+In `detonation_foam_fork/detonationEulerFoamNN` there is already an example NN. WE split the `name_of_nn.h` file from CodeJeNN into two pieces. First is the main NN used for inference, called `ffcm1.H` and the activation functions called `codeJeNN.H`. If you have new activations functions, CodeJENN (the code generator, not the .H file in the OpenFOAM folder) should detect and give you the code. You need to add the new activation functions to the openfoam code. I (Ryan) suggest adding `_nn` to the activation function and doing a search and replace. In fact, the activation functions NNs in `nn_1`->`nn_3` have NOT been renamed even though `nn_1` matches the current one in `detonationEulerFoamNN`. Another thing is that the input to the NN could change and depends heavily on the person doing the training. This means you may have to adjust predict combustion to match how the input to the NN looks (take a look a the reference in CodeJeNN.H, it's unique). 
