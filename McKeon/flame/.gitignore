@@ -1,0 +1,4 @@
+data/*.png
+data/*.npy
+!Temperature.png
+!species_H2O2.png
