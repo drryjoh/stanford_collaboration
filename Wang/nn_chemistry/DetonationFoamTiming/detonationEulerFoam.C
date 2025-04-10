@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     Info<< "\nStarting time loop\n" << endl;
     scalar chemistry_time = 0;
     scalar entire_time = 0;
-    clockTime time;
+    clockTime timer;
 
     while (runTime.run())
     {
