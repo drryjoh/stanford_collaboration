@@ -68,10 +68,10 @@ int main(int argc, char *argv[]) {
         #include "rhoEEqn.H"
         scalar time_after = timer.elapsedTime();
         entire_time += time_after - time_before;
-        Info << "Time to solve iterations complete system:          "<< time_after-time_before <<std::endl;
-        Info << "Total time to solve entire system:                 "<< entire_time <<std::endl;
-        Info << "Total time to solve chemistry system:              "<< chemistry_time <<std::endl;
-        Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<std::endl;
+        Info << "Time to solve iterations complete system:          "<< time_after-time_before <<endl;
+        Info << "Total time to solve entire system:                 "<< entire_time <<endl;
+        Info << "Total time to solve chemistry system:              "<< chemistry_time <<endl;
+        Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<endl;
 
         runTime.write();
     }
