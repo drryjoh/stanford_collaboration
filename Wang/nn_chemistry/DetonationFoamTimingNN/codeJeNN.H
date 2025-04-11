@@ -11,68 +11,24 @@ template<typename Scalar>
 using activationFunction = void(*)(Scalar*, const Scalar*, size_t, Scalar);
 
 // - -
-/**
+
 template<typename Scalar>
 void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
     for (size_t i = 0; i < size; ++i) {
         outputs[i] = inputs[i] > 0 ? inputs[i] : 0;
     }
 }
-**/
 
-//AVX 512 Vecotorized relu activation function
-//Issues will occur if system cannot use AVX 512 instructions
-//Ideally an 8x speedup
-template<typename Scalar>
-void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
-    size_t i = 0;
-    __m512d zero = _mm512_setzero_pd();
 
-    for (; i <= size - 8; i += 8) {
-        // Load 8 double values from inputs
-        __m512d data = _mm512_loadu_pd(&inputs[i]);
-        // Perform ReLU operation
-        __m512d result = _mm512_max_pd(data, zero);
-        // Store the result back to outputs
-        _mm512_storeu_pd(&outputs[i], result);
-    }
 
-    // Handle the remaining elements
-    for (; i < size; i++) {
-        outputs[i] = inputs[i] > 0 ? inputs[i] : 0;
-    }
-}
-
-/**
 template<typename Scalar>
 void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
     for (size_t i = 0; i < size; ++i) {
         outputs[i] = inputs[i];
     }
 }
-**/
 
-//AVX 512 Vecotorized linear activation function
-//Issues will occur if system cannot use AVX 512 instructions
-//Ideally an 8x speedup
-template<typename Scalar>
-void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
-    size_t i = 0;
 
-    for (; i <= size - 8; i += 8) {
-        // Load 8 double values from inputs
-        __m512d data = _mm512_loadu_pd(&inputs[i]);
-        // Store the result back to outputs
-        _mm512_storeu_pd(&outputs[i], data);
-    }
-
-    // Handle the remaining elements
-    for (; i < size; i++) {
-        outputs[i] = inputs[i];
-    }
-}
-
-/**
 template<typename Scalar>
 void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
     for (int i = 0; i < output_size; i++) {
@@ -82,75 +38,13 @@ void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, in
         }
     }
 }
-**/
-//Vectorized Code Below
-//If this does not work, it may be because the CPU does not have AVX 512 instructions
-//If this fails, I can change it to AVX 256, or we can look into using the Eigen library, which can adjust based on hardware instruction set
-template<typename Scalar>
-void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
 
-    //Aim is to use AVX 512 to process 8 doubles at once -- hoping for a roughly 8x speed up
-    for (int i = 0; i < output_size; i++) {
-        __m512d sum = _mm512_setzero_pd();
-        int j = 0;
-        for (; j <= input_size - 8; j += 8) {
-            __m512d input_vec = _mm512_loadu_pd(inputs + j);  // Load 8 doubles from inputs
-            __m512d weight_vec = _mm512_loadu_pd(weights + j * output_size + i);  // Load 8 doubles from weights
 
-            __m512d product = _mm512_mul_pd(input_vec, weight_vec);  // Multiply inputs and weights
-            sum = _mm512_add_pd(sum, product);  // Add product to sum
-        }
-
-        // Horizontal sum, this combines the 8 parallel streams
-        __m256d lo256d = _mm512_extractf64x4_pd(sum, 0);
-        __m256d hi256d = _mm512_extractf64x4_pd(sum, 1);
-        __m256d lo128d = _mm256_permute4x64_pd(lo256d, _MM_SHUFFLE(2, 3, 0, 1));
-        __m256d hi128d = _mm256_permute4x64_pd(hi256d, _MM_SHUFFLE(2, 3, 0, 1));
-        lo128d = _mm256_add_pd(_mm256_castpd256_pd128(lo256d), _mm256_extractf128_pd(lo256d, 1));
-        hi128d = _mm256_add_pd(_mm256_castpd256_pd128(hi256d), _mm256_extractf128_pd(hi256d, 1));
-
-        __m128d lo64d = _mm_add_pd(_mm256_castpd256_pd128(lo128d), hi128d);
-        __m128d hi64d = _mm_add_pd(_mm_permute_pd(_mm256_extractf128_pd(lo128d, 1), 0x1), _mm256_castpd256_pd128(hi128d));
-        outputs[i] = _mm_cvtsd_f64(_mm_add_pd(lo64d, hi64d));
-
-        // Process remaining elements if input_size is not a multiple of 8
-        for (; j < input_size; j++) {
-            outputs[i] += inputs[j] * weights[j * output_size + i];
-        }
-    }
-
-}
-/**
 template<typename Scalar>
 void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
     for (int i = 0; i < size; i++) {
         outputs[i] += biases[i];
     }
-}
-**/
-
-//Vectorized Version
-//Does 8 doubles at once usign AVX 512.
-//Again, if AVX 512 is not supported on the CPU this will have to be altered
-template<typename Scalar>
-void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
-        //Aim is to use AVX 512 to process 8 doubles at once -- hoping for a roughly 8x speed up
-        int i = 0;
-
-        for (; i <= size - 8; i += 8) {
-            // Load 8 double values from outputs and biases
-            __m512d out = _mm512_loadu_pd(&outputs[i]);
-            __m512d bias = _mm512_loadu_pd(&biases[i]);
-            // Add and store the results back to outputs
-            out = _mm512_add_pd(out, bias);
-            _mm512_storeu_pd(&outputs[i], out);
-        }
-    
-        // Handle remaining elements if size is not a multiple of 8
-        for (; i < size; i++) {
-            outputs[i] += biases[i];
-        }
-
 }
 
 template<typename Scalar, int output_size>
