@@ -260,60 +260,103 @@ In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_che
 /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternionI.H:526:13: note: because ‘Foam::quaternion’ has user-provided ‘void Foam::quaternion::operator=(const Foam::quaternion&)’
   526 | inline void Foam::quaternion::operator=(const quaternion& q)
       |             ^~~~
-In file included from nn_interface.H:2,
-                 from detonationEulerFoam.C:41:
-codeJeNN.H: In function ‘void dotProduct(Scalar*, const Scalar*, const Scalar*, int, int)’:
-codeJeNN.H:109:54: error: cannot convert ‘__m128d’ to ‘__m256d’
-  109 |         lo128d = _mm256_add_pd(_mm256_castpd256_pd128(lo256d), _mm256_extractf128_pd(lo256d, 1));
-      |                                ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
-      |                                                      |
-      |                                                      __m128d
-In file included from /share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/immintrin.h:51,
-                 from codeJeNN.H:4,
+In file included from codeJeNN.H:58,
                  from nn_interface.H:2,
                  from detonationEulerFoam.C:41:
-/share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/avxintrin.h:141:24: note:   initializing argument 1 of ‘__m256d _mm256_add_pd(__m256d, __m256d)’
-  141 | _mm256_add_pd (__m256d __A, __m256d __B)
-      |                ~~~~~~~~^~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h: At global scope:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:12:6: error: redefinition of ‘template<class Scalar> void relu_nn(Scalar*, const Scalar*, size_t, Scalar)’
+   12 | void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~
 In file included from nn_interface.H:2,
                  from detonationEulerFoam.C:41:
-codeJeNN.H:110:54: error: cannot convert ‘__m128d’ to ‘__m256d’
-  110 |         hi128d = _mm256_add_pd(_mm256_castpd256_pd128(hi256d), _mm256_extractf128_pd(hi256d, 1));
-      |                                ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
-      |                                                      |
-      |                                                      __m128d
-In file included from /share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/immintrin.h:51,
-                 from codeJeNN.H:4,
+codeJeNN.H:16:6: note: ‘template<class Scalar> void relu_nn(Scalar*, const Scalar*, size_t, Scalar)’ previously declared here
+   16 | void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~
+In file included from codeJeNN.H:58,
                  from nn_interface.H:2,
                  from detonationEulerFoam.C:41:
-/share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/avxintrin.h:141:24: note:   initializing argument 1 of ‘__m256d _mm256_add_pd(__m256d, __m256d)’
-  141 | _mm256_add_pd (__m256d __A, __m256d __B)
-      |                ~~~~~~~~^~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:19:6: error: redefinition of ‘template<class Scalar> void linear_nn(Scalar*, const Scalar*, size_t, Scalar)’
+   19 | void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~~~
 In file included from nn_interface.H:2,
                  from detonationEulerFoam.C:41:
-codeJeNN.H:112:68: error: cannot convert ‘__m256d’ to ‘__m128d’
-  112 |         __m128d lo64d = _mm_add_pd(_mm256_castpd256_pd128(lo128d), hi128d);
-      |                                                                    ^~~~~~
-      |                                                                    |
-      |                                                                    __m256d
-In file included from /share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/xmmintrin.h:1316,
-                 from /share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/immintrin.h:29,
-                 from codeJeNN.H:4,
+codeJeNN.H:25:6: note: ‘template<class Scalar> void linear_nn(Scalar*, const Scalar*, size_t, Scalar)’ previously declared here
+   25 | void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~~~
+In file included from codeJeNN.H:58,
                  from nn_interface.H:2,
                  from detonationEulerFoam.C:41:
-/share/software/user/open/gcc/10.1.0/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/emmintrin.h:246:34: note:   initializing argument 2 of ‘__m128d _mm_add_pd(__m128d, __m128d)’
-  246 | _mm_add_pd (__m128d __A, __m128d __B)
-      |                          ~~~~~~~~^~~
-In file included from detonationEulerFoam.C:66:
-rhoYEqn.H: In function ‘int main(int, char**)’:
-rhoYEqn.H:15:40: error: ‘timer’ was not declared in this scope; did you mean ‘times’?
-   15 |     scalar time_before_NN_chemistry =  timer.elapsedTime();
-      |                                        ^~~~~
-      |                                        times
-In file included from detonationEulerFoam.C:66:
-rhoYEqn.H:22:5: error: ‘chemistry_time’ was not declared in this scope
-   22 |     chemistry_time += current_iteration_chemistry_time;
-      |     ^~~~~~~~~~~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:26:6: error: redefinition of ‘template<class Scalar> void dotProduct(Scalar*, const Scalar*, const Scalar*, int, int)’
+   26 | void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
+      |      ^~~~~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:33:6: note: ‘template<class Scalar> void dotProduct(Scalar*, const Scalar*, const Scalar*, int, int)’ previously declared here
+   33 | void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
+      |      ^~~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:36:6: error: redefinition of ‘template<class Scalar> void addBias(Scalar*, const Scalar*, int)’
+   36 | void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
+      |      ^~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:44:6: note: ‘template<class Scalar> void addBias(Scalar*, const Scalar*, int)’ previously declared here
+   44 | void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
+      |      ^~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:43:6: error: redefinition of ‘template<class Scalar, int output_size> void forwardPass(Scalar*, const Scalar*, const Scalar*, const Scalar*, int, void (*)(Scalar*, const Scalar*, size_t, Scalar), Scalar)’
+   43 | void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, const Scalar* biases, int input_size, void (*activation_function)(Scalar*, const Scalar*, size_t, Scalar), Scalar alpha) noexcept {
+      |      ^~~~~~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:51:6: note: ‘template<class Scalar, int output_size> void forwardPass(Scalar*, const Scalar*, const Scalar*, const Scalar*, int, void (*)(Scalar*, const Scalar*, size_t, Scalar), Scalar)’ previously declared here
+   51 | void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, const Scalar* biases, int input_size, void (*activation_function)(Scalar*, const Scalar*, size_t, Scalar), Scalar alpha) noexcept {
+      |      ^~~~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:18: error: unable to find numeric literal operator ‘operator""ns_eq_TP_weighted’
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |                  ^~~~~~~~~~~~~~~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:18: note: use ‘-fext-numeric-literals’ to enable more built-in suffixes
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:37: error: expected primary-expression before ‘const’
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |                                     ^~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:67: error: ‘initial_input’ was not declared in this scope
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |                                                                   ^~~~~~~~~~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:6: warning: variable templates only available with ‘-std=c++14’ or ‘-std=gnu++14’
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |      ^~~~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:104:2: error: expected ‘;’ before ‘void’
+  104 | }
+      |  ^
+      |  ;
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H: In function ‘std::array<double, 11> predict_combustion(const std::array<double, 11>&)’:
+codeJeNN.H:78:25: error: ‘ffcm1’ was not declared in this scope
+   78 |     auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
+      |                         ^~~~~
+codeJeNN.H:78:37: error: expected primary-expression before ‘>’ token
+   78 |     auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
+      |                                     ^
+detonationEulerFoam.C: In function ‘int main(int, char**)’:
+detonationEulerFoam.C:56:5: error: ‘clockTime’ was not declared in this scope; did you mean ‘flockfile’?
+   56 |     clockTime timer;
+      |     ^~~~~~~~~
+      |     flockfile
+detonationEulerFoam.C:67:31: error: ‘timer’ was not declared in this scope; did you mean ‘times’?
+   67 |         scalar time_before =  timer.elapsedTime();
+      |                               ^~~~~
+      |                               times
 In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:35,
                  from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
                  from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
@@ -691,16 +734,4 @@ In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_che
 /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
   265 | inline void Foam::SLListBase::const_iterator::operator=
       |             ^~~~
-In file included from nn_interface.H:2,
-                 from detonationEulerFoam.C:41:
-codeJeNN.H: In function ‘void linear_nn(Scalar*, const Scalar*, size_t, Scalar) [with Scalar = double]’:
-codeJeNN.H:64:17: warning: AVX512F vector return without AVX512F enabled changes the ABI [-Wpsabi]
-   64 |         __m512d data = _mm512_loadu_pd(&inputs[i]);
-      |                 ^~~~
-In file included from nn_interface.H:2,
-                 from detonationEulerFoam.C:41:
-codeJeNN.H: In function ‘void dotProduct(Scalar*, const Scalar*, const Scalar*, int, int) [with Scalar = double]’:
-codeJeNN.H:105:17: warning: AVX vector return without AVX enabled changes the ABI [-Wpsabi]
-  105 |         __m256d lo256d = _mm512_extractf64x4_pd(sum, 0);
-      |                 ^~~~~~
 make: *** [Make/linux64GccDPInt32Opt/detonationEulerFoam.o] Error 1

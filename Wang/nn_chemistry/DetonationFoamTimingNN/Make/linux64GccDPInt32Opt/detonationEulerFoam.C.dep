@@ -8,6 +8,7 @@ $(WM_PROJECT_DIR)/src/TurbulenceModels/compressible/lnInclude/turbulentFluidTher
 directionInterpolate.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvcSmooth.H \
 fluxSchemes/lnInclude/fluxScheme.H \
+$(WM_PROJECT_DIR)/src/OSspecific/POSIX/lnInclude/clockTime.H \
 nn_interface.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOmanip.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/setRootCaseLists.H \
@@ -193,7 +194,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/DLList.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/ITstream.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/wordList.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/dictionaryTemplates.C \
-ffcm1.h \
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h \
 $(WM_PROJECT_DIR)/src/thermophysicalModels/specie/lnInclude/speciesTable.H \
 $(WM_PROJECT_DIR)/src/thermophysicalModels/reactionThermo/lnInclude/chemistryReader.H \
 $(WM_PROJECT_DIR)/src/thermophysicalModels/reactionThermo/lnInclude/multiComponentMixture.H \
@@ -827,6 +828,7 @@ $(WM_PROJECT_DIR)/src/TurbulenceModels/compressible/lnInclude/turbulentFluidTher
 directionInterpolate.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvcSmooth.H :
 fluxSchemes/lnInclude/fluxScheme.H :
+$(WM_PROJECT_DIR)/src/OSspecific/POSIX/lnInclude/clockTime.H :
 nn_interface.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOmanip.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/setRootCaseLists.H :
@@ -1012,7 +1014,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/DLList.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/ITstream.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/wordList.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/dictionaryTemplates.C :
-ffcm1.h :
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h :
 $(WM_PROJECT_DIR)/src/thermophysicalModels/specie/lnInclude/speciesTable.H :
 $(WM_PROJECT_DIR)/src/thermophysicalModels/reactionThermo/lnInclude/chemistryReader.H :
 $(WM_PROJECT_DIR)/src/thermophysicalModels/reactionThermo/lnInclude/multiComponentMixture.H :

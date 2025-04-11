@@ -37,6 +37,8 @@ Description
 #include "directionInterpolate.H" 
 #include "fvcSmooth.H"
 #include "fluxScheme.H"
+#include "clockTime.H"
+
 //CodeJeNN 
 #include "nn_interface.H"
 #include "IOmanip.H"
