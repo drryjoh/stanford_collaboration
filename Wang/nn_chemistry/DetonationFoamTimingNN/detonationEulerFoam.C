@@ -51,6 +51,10 @@ int main(int argc, char *argv[]) {
     #include "createFieldRefs.H"
 
     Info<< "\nStarting time loop\n" << endl;
+    scalar chemistry_time = 0;   //adding timing
+    scalar entire_time = 0;
+    clockTime timer;
+
 
     while (runTime.run())
     {
@@ -60,11 +64,17 @@ int main(int argc, char *argv[]) {
         mesh.update();                                
 
         fluxSchemeFields->update(rho,U,e,p,c,phi,rhoPhi,rhoUPhi,rhoEPhi);
-
+        scalar time_before =  timer.elapsedTime();
         #include "rhoEqn.H"
         #include "rhoUEqn.H"
         #include "rhoYEqn.H"
         #include "rhoEEqn.H"
+        scalar time_after = timer.elapsedTime();
+        entire_time += time_after - time_before;
+        Info << "Time to solve iterations complete system:          "<< time_after-time_before <<endl;
+        Info << "Total time to solve entire system:                 "<< entire_time <<endl;
+        Info << "Total time to solve chemistry system:              "<< chemistry_time <<endl;
+        Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<endl;
 
         runTime.write();
     }

@@ -55,7 +55,7 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
     activation_function(outputs, temp_outputs.data(), output_size, alpha);
 }
 
-#include "ffcm1.h"
+#include "ffcm1_Ar_dt=1ns_eq_TP_weighted.h"
 
 void append_state(std::array<Scalar, 12>& input, std::array<Scalar, 11>& output)
 {
