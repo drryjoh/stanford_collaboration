@@ -1,3 +1,4 @@
 detonationEulerFoam.C
 
 EXE = $(FOAM_USER_APPBIN)/detonationEulerFoamTimingNN3
+test
