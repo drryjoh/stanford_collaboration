@@ -1,0 +1,737 @@
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBase.H:266,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H: In member function ‘Foam::SLListBase::iterator Foam::SLListBase::iterator::operator++(int)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:218:21: warning: implicitly-declared ‘constexpr Foam::SLListBase::iterator::iterator(const Foam::SLListBase::iterator&)’ is deprecated [-Wdeprecated-copy]
+  218 |     iterator tmp = *this;
+      |                     ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:174:13: note: because ‘Foam::SLListBase::iterator’ has user-provided ‘void Foam::SLListBase::iterator::operator=(const Foam::SLListBase::iterator&)’
+  174 | inline void Foam::SLListBase::iterator::operator=(const iterator& iter)
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:220:12: warning: implicitly-declared ‘constexpr Foam::SLListBase::iterator::iterator(const Foam::SLListBase::iterator&)’ is deprecated [-Wdeprecated-copy]
+  220 |     return tmp;
+      |            ^~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:174:13: note: because ‘Foam::SLListBase::iterator’ has user-provided ‘void Foam::SLListBase::iterator::operator=(const Foam::SLListBase::iterator&)’
+  174 | inline void Foam::SLListBase::iterator::operator=(const iterator& iter)
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H: In member function ‘Foam::SLListBase::iterator Foam::SLListBase::begin()’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:233:16: warning: implicitly-declared ‘constexpr Foam::SLListBase::iterator::iterator(const Foam::SLListBase::iterator&)’ is deprecated [-Wdeprecated-copy]
+  233 |         return endIter_;
+      |                ^~~~~~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:174:13: note: because ‘Foam::SLListBase::iterator’ has user-provided ‘void Foam::SLListBase::iterator::operator=(const Foam::SLListBase::iterator&)’
+  174 | inline void Foam::SLListBase::iterator::operator=(const iterator& iter)
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H: In member function ‘Foam::SLListBase::const_iterator Foam::SLListBase::const_iterator::operator++(int)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:318:27: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  318 |     const_iterator tmp = *this;
+      |                           ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:320:12: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  320 |     return tmp;
+      |            ^~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H: In member function ‘Foam::SLListBase::const_iterator Foam::SLListBase::cbegin() const’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:333:16: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  333 |         return endConstIter_;
+      |                ^~~~~~~~~~~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/regIOobject.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/objectRegistry.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Time.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IOobject.H: In member function ‘Foam::autoPtr<Foam::IOobject> Foam::IOobject::clone() const’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IOobject.H:273:56: warning: implicitly-declared ‘Foam::IOobject::IOobject(const Foam::IOobject&)’ is deprecated [-Wdeprecated-copy]
+  273 |             return autoPtr<IOobject>(new IOobject(*this));
+      |                                                        ^
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IOobject.H:492:14: note: because ‘Foam::IOobject’ has user-provided ‘void Foam::IOobject::operator=(const Foam::IOobject&)’
+  492 |         void operator=(const IOobject&);
+      |              ^~~~~~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBase.H:324,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IDLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/entry.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionary.H:53,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/baseIOdictionary.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/unwatchedIOdictionary.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Time.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H: In member function ‘Foam::DLListBase::iterator Foam::DLListBase::iterator::operator++(int)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:246:21: warning: implicitly-declared ‘constexpr Foam::DLListBase::iterator::iterator(const Foam::DLListBase::iterator&)’ is deprecated [-Wdeprecated-copy]
+  246 |     iterator tmp = *this;
+      |                     ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:198:13: note: because ‘Foam::DLListBase::iterator’ has user-provided ‘void Foam::DLListBase::iterator::operator=(const Foam::DLListBase::iterator&)’
+  198 | inline void Foam::DLListBase::iterator::operator=(const iterator& iter)
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:248:12: warning: implicitly-declared ‘constexpr Foam::DLListBase::iterator::iterator(const Foam::DLListBase::iterator&)’ is deprecated [-Wdeprecated-copy]
+  248 |     return tmp;
+      |            ^~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:198:13: note: because ‘Foam::DLListBase::iterator’ has user-provided ‘void Foam::DLListBase::iterator::operator=(const Foam::DLListBase::iterator&)’
+  198 | inline void Foam::DLListBase::iterator::operator=(const iterator& iter)
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H: In member function ‘Foam::DLListBase::iterator Foam::DLListBase::begin()’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:261:16: warning: implicitly-declared ‘constexpr Foam::DLListBase::iterator::iterator(const Foam::DLListBase::iterator&)’ is deprecated [-Wdeprecated-copy]
+  261 |         return endIter_;
+      |                ^~~~~~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:198:13: note: because ‘Foam::DLListBase::iterator’ has user-provided ‘void Foam::DLListBase::iterator::operator=(const Foam::DLListBase::iterator&)’
+  198 | inline void Foam::DLListBase::iterator::operator=(const iterator& iter)
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H: In member function ‘Foam::DLListBase::const_iterator Foam::DLListBase::const_iterator::operator++(int)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:345:27: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_iterator::const_iterator(const Foam::DLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  345 |     const_iterator tmp = *this;
+      |                           ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:292:13: note: because ‘Foam::DLListBase::const_iterator’ has user-provided ‘void Foam::DLListBase::const_iterator::operator=(const Foam::DLListBase::const_iterator&)’
+  292 | inline void Foam::DLListBase::const_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:347:12: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_iterator::const_iterator(const Foam::DLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  347 |     return tmp;
+      |            ^~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:292:13: note: because ‘Foam::DLListBase::const_iterator’ has user-provided ‘void Foam::DLListBase::const_iterator::operator=(const Foam::DLListBase::const_iterator&)’
+  292 | inline void Foam::DLListBase::const_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H: In member function ‘Foam::DLListBase::const_iterator Foam::DLListBase::cbegin() const’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:360:16: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_iterator::const_iterator(const Foam::DLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  360 |         return endConstIter_;
+      |                ^~~~~~~~~~~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:292:13: note: because ‘Foam::DLListBase::const_iterator’ has user-provided ‘void Foam::DLListBase::const_iterator::operator=(const Foam::DLListBase::const_iterator&)’
+  292 | inline void Foam::DLListBase::const_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H: In member function ‘Foam::DLListBase::const_reverse_iterator Foam::DLListBase::const_reverse_iterator::operator++(int)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:452:35: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_reverse_iterator::const_reverse_iterator(const Foam::DLListBase::const_reverse_iterator&)’ is deprecated [-Wdeprecated-copy]
+  452 |     const_reverse_iterator tmp = *this;
+      |                                   ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:399:13: note: because ‘Foam::DLListBase::const_reverse_iterator’ has user-provided ‘void Foam::DLListBase::const_reverse_iterator::operator=(const Foam::DLListBase::const_reverse_iterator&)’
+  399 | inline void Foam::DLListBase::const_reverse_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:454:12: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_reverse_iterator::const_reverse_iterator(const Foam::DLListBase::const_reverse_iterator&)’ is deprecated [-Wdeprecated-copy]
+  454 |     return tmp;
+      |            ^~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:399:13: note: because ‘Foam::DLListBase::const_reverse_iterator’ has user-provided ‘void Foam::DLListBase::const_reverse_iterator::operator=(const Foam::DLListBase::const_reverse_iterator&)’
+  399 | inline void Foam::DLListBase::const_reverse_iterator::operator=
+      |             ^~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H: In member function ‘Foam::DLListBase::const_reverse_iterator Foam::DLListBase::crbegin() const’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:467:16: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_reverse_iterator::const_reverse_iterator(const Foam::DLListBase::const_reverse_iterator&)’ is deprecated [-Wdeprecated-copy]
+  467 |         return endConstRevIter_;
+      |                ^~~~~~~~~~~~~~~~
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:399:13: note: because ‘Foam::DLListBase::const_reverse_iterator’ has user-provided ‘void Foam::DLListBase::const_reverse_iterator::operator=(const Foam::DLListBase::const_reverse_iterator&)’
+  399 | inline void Foam::DLListBase::const_reverse_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernion.H:206,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/transformField.H:40,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/vectorTensorTransform.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/mapDistribute.H:138,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshData.H:627,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:1352,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.H:660,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:27,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:307,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernionI.H: In constructor ‘Foam::septernion::septernion(const vector&, const Foam::quaternion&)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernionI.H:34:9: warning: implicitly-declared ‘constexpr Foam::quaternion::quaternion(const Foam::quaternion&)’ is deprecated [-Wdeprecated-copy]
+   34 |     r_(r)
+      |         ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternion.H:304,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/transformField.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/vectorTensorTransform.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/mapDistribute.H:138,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshData.H:627,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:1352,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.H:660,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:27,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:307,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternionI.H:526:13: note: because ‘Foam::quaternion’ has user-provided ‘void Foam::quaternion::operator=(const Foam::quaternion&)’
+  526 | inline void Foam::quaternion::operator=(const quaternion& q)
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernion.H:206,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/transformField.H:40,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/vectorTensorTransform.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/mapDistribute.H:138,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshData.H:627,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:1352,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.H:660,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:27,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:307,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernionI.H: In constructor ‘Foam::septernion::septernion(const vector&)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernionI.H:40:21: warning: implicitly-declared ‘constexpr Foam::quaternion::quaternion(const Foam::quaternion&)’ is deprecated [-Wdeprecated-copy]
+   40 |     r_(quaternion::I)
+      |                     ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternion.H:304,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/transformField.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/vectorTensorTransform.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/mapDistribute.H:138,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshData.H:627,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:1352,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.H:660,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:27,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:307,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternionI.H:526:13: note: because ‘Foam::quaternion’ has user-provided ‘void Foam::quaternion::operator=(const Foam::quaternion&)’
+  526 | inline void Foam::quaternion::operator=(const quaternion& q)
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernion.H:206,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/transformField.H:40,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/vectorTensorTransform.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/mapDistribute.H:138,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshData.H:627,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:1352,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.H:660,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:27,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:307,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernionI.H: In constructor ‘Foam::septernion::septernion(const Foam::quaternion&)’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/septernionI.H:46:9: warning: implicitly-declared ‘constexpr Foam::quaternion::quaternion(const Foam::quaternion&)’ is deprecated [-Wdeprecated-copy]
+   46 |     r_(r)
+      |         ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternion.H:304,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/transformField.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/vectorTensorTransform.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/mapDistribute.H:138,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshDataTemplates.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/globalMeshData.H:627,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:1352,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.H:660,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricScalarField.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricFields.H:34,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/volFields.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.C:27,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolationScheme.H:307,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/surfaceInterpolate.H:41,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/quaternionI.H:526:13: note: because ‘Foam::quaternion’ has user-provided ‘void Foam::quaternion::operator=(const Foam::quaternion&)’
+  526 | inline void Foam::quaternion::operator=(const quaternion& q)
+      |             ^~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h: At global scope:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:12:6: error: redefinition of ‘template<class Scalar> void relu_nn(Scalar*, const Scalar*, size_t, Scalar)’
+   12 | void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:16:6: note: ‘template<class Scalar> void relu_nn(Scalar*, const Scalar*, size_t, Scalar)’ previously declared here
+   16 | void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:19:6: error: redefinition of ‘template<class Scalar> void linear_nn(Scalar*, const Scalar*, size_t, Scalar)’
+   19 | void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:25:6: note: ‘template<class Scalar> void linear_nn(Scalar*, const Scalar*, size_t, Scalar)’ previously declared here
+   25 | void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
+      |      ^~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:26:6: error: redefinition of ‘template<class Scalar> void dotProduct(Scalar*, const Scalar*, const Scalar*, int, int)’
+   26 | void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
+      |      ^~~~~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:33:6: note: ‘template<class Scalar> void dotProduct(Scalar*, const Scalar*, const Scalar*, int, int)’ previously declared here
+   33 | void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
+      |      ^~~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:36:6: error: redefinition of ‘template<class Scalar> void addBias(Scalar*, const Scalar*, int)’
+   36 | void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
+      |      ^~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:44:6: note: ‘template<class Scalar> void addBias(Scalar*, const Scalar*, int)’ previously declared here
+   44 | void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
+      |      ^~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:43:6: error: redefinition of ‘template<class Scalar, int output_size> void forwardPass(Scalar*, const Scalar*, const Scalar*, const Scalar*, int, void (*)(Scalar*, const Scalar*, size_t, Scalar), Scalar)’
+   43 | void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, const Scalar* biases, int input_size, void (*activation_function)(Scalar*, const Scalar*, size_t, Scalar), Scalar alpha) noexcept {
+      |      ^~~~~~~~~~~
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H:51:6: note: ‘template<class Scalar, int output_size> void forwardPass(Scalar*, const Scalar*, const Scalar*, const Scalar*, int, void (*)(Scalar*, const Scalar*, size_t, Scalar), Scalar)’ previously declared here
+   51 | void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, const Scalar* biases, int input_size, void (*activation_function)(Scalar*, const Scalar*, size_t, Scalar), Scalar alpha) noexcept {
+      |      ^~~~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:18: error: unable to find numeric literal operator ‘operator""ns_eq_TP_weighted’
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |                  ^~~~~~~~~~~~~~~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:18: note: use ‘-fext-numeric-literals’ to enable more built-in suffixes
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:37: error: expected primary-expression before ‘const’
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |                                     ^~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:67: error: ‘initial_input’ was not declared in this scope
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |                                                                   ^~~~~~~~~~~~~
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:53:6: warning: variable templates only available with ‘-std=c++14’ or ‘-std=gnu++14’
+   53 | auto ffcm1_Ar_dt=1ns_eq_TP_weighted(const std::array<Scalar, 11>& initial_input) {
+      |      ^~~~~~~~~~~
+In file included from codeJeNN.H:58,
+                 from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+../generated_nns/nn_3/ffcm1_Ar_dt=1ns_eq_TP_weighted.h:104:2: error: expected ‘;’ before ‘void’
+  104 | }
+      |  ^
+      |  ;
+In file included from nn_interface.H:2,
+                 from detonationEulerFoam.C:41:
+codeJeNN.H: In function ‘std::array<double, 11> predict_combustion(const std::array<double, 11>&)’:
+codeJeNN.H:78:25: error: ‘ffcm1’ was not declared in this scope
+   78 |     auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
+      |                         ^~~~~
+codeJeNN.H:78:37: error: expected primary-expression before ‘>’ token
+   78 |     auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
+      |                                     ^
+detonationEulerFoam.C: In function ‘int main(int, char**)’:
+detonationEulerFoam.C:56:5: error: ‘clockTime’ was not declared in this scope; did you mean ‘flockfile’?
+   56 |     clockTime timer;
+      |     ^~~~~~~~~
+      |     flockfile
+detonationEulerFoam.C:67:31: error: ‘timer’ was not declared in this scope; did you mean ‘times’?
+   67 |         scalar time_before =  timer.elapsedTime();
+      |                               ^~~~~
+      |                               times
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H: In instantiation of ‘Foam::LList<LListBase, T>::const_iterator::const_iterator(Foam::LList<LListBase, T>::LListBase_const_iterator) [with LListBase = Foam::SLListBase; T = int; Foam::LList<LListBase, T>::LListBase_const_iterator = Foam::SLListBase::const_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:346:37:   required from ‘Foam::LList<LListBase, T>::const_iterator Foam::LList<LListBase, T>::begin() const [with LListBase = Foam::SLListBase; T = int]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:424:64:   required from ‘void Foam::List<T>::operator=(Foam::SLList<T>&) [with T = int; Foam::SLList<T> = Foam::LList<Foam::SLListBase, int>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ListIO.C:144:11:   required from ‘Foam::Istream& Foam::operator>>(Foam::Istream&, Foam::List<T>&) [with T = int]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/faceI.H:162:40:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:302:50: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  302 |                 LListBase_const_iterator(baseIter)
+      |                                                  ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBase.H:266,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/solverPerformance.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/data.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMesh.H:57,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SolverPerformance.H: In instantiation of ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solveSegregated(const Foam::dictionary&) [with Type = Foam::Vector<double>]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:82:16:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve(const Foam::dictionary&) [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:317:5:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve() [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrix.C:1371:50:   required from ‘Foam::SolverPerformance<Type> Foam::solve(const Foam::tmp<Foam::fvMatrix<Type> >&) [with Type = Foam::Vector<double>]’
+rhoUEqn.H:1:41:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SolverPerformance.H:79:7: warning: implicitly-declared ‘Foam::FixedList<bool, 1>& Foam::FixedList<bool, 1>::operator=(const Foam::FixedList<bool, 1>&)’ is deprecated [-Wdeprecated-copy]
+   79 | class SolverPerformance
+      |       ^~~~~~~~~~~~~~~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/FixedList.H:381,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/FixedListI.H:108:8: note: because ‘Foam::FixedList<bool, 1>’ has user-provided ‘Foam::FixedList<T, Size>::FixedList(const Foam::FixedList<T, Size>&) [with T = bool; unsigned int Size = 1]’
+  108 | inline Foam::FixedList<T, Size>::FixedList(const FixedList<T, Size>& lst)
+      |        ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrix.C:2395,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrix.H:1061,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/ddtScheme.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/ddtScheme.H:357,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvcDdt.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvcDdt.H:250,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvc.H:44,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:8,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:188:20: note: synthesized method ‘Foam::SolverPerformance<double>& Foam::SolverPerformance<double>::operator=(Foam::SolverPerformance<double>&&)’ first required here
+  188 |         solverPerf = lduMatrix::solver::New
+      |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+  189 |         (
+      |         ~           
+  190 |             psi.name() + pTraits<Type>::componentNames[cmpt],
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  191 |             *this,
+      |             ~~~~~~  
+  192 |             bouCoeffsCmpt,
+      |             ~~~~~~~~~~~~~~
+  193 |             intCoeffsCmpt,
+      |             ~~~~~~~~~~~~~~
+  194 |             interfaces,
+      |             ~~~~~~~~~~~
+  195 |             solverControls
+      |             ~~~~~~~~~~~~~~
+  196 |         )->solve(psiCmpt, sourceCmpt, cmpt);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/solverPerformance.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/data.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMesh.H:57,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SolverPerformance.H: In instantiation of ‘void Foam::List<T>::setSize(Foam::label, const T&) [with T = Foam::SolverPerformance<double>; Foam::label = int]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dataTemplates.C:60:18:   required from ‘void Foam::data::setSolverPerformance(const Foam::word&, const Foam::SolverPerformance<Type>&) const [with Type = double]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:272:36:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solveCoupled(const Foam::dictionary&) [with Type = double]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:86:16:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve(const Foam::dictionary&) [with Type = double]’
+rhoYEqn.H:55:42:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SolverPerformance.H:79:7: warning: implicitly-declared ‘Foam::FixedList<bool, 1>& Foam::FixedList<bool, 1>::operator=(const Foam::FixedList<bool, 1>&)’ is deprecated [-Wdeprecated-copy]
+   79 | class SolverPerformance
+      |       ^~~~~~~~~~~~~~~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/FixedList.H:381,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/FixedListI.H:108:8: note: because ‘Foam::FixedList<bool, 1>’ has user-provided ‘Foam::FixedList<T, Size>::FixedList(const Foam::FixedList<T, Size>&) [with T = bool; unsigned int Size = 1]’
+  108 | inline Foam::FixedList<T, Size>::FixedList(const FixedList<T, Size>& lst)
+      |        ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:336:27: note: synthesized method ‘Foam::SolverPerformance<double>& Foam::SolverPerformance<double>::operator=(const Foam::SolverPerformance<double>&)’ first required here
+  336 |         while (i--) *--vv = a;
+      |                     ~~~~~~^~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ILList.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IDLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/entry.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionary.H:53,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/baseIOdictionary.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/unwatchedIOdictionary.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Time.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UILList.H: In instantiation of ‘Foam::UILList<LListBase, T>::const_iterator::const_iterator(Foam::UILList<LListBase, T>::LListBase_const_iterator) [with LListBase = Foam::DLListBase; T = Foam::entry; Foam::UILList<LListBase, T>::LListBase_const_iterator = Foam::DLListBase::const_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UILList.H:281:37:   required from ‘Foam::UILList<LListBase, T>::const_iterator Foam::UILList<LListBase, T>::begin() const [with LListBase = Foam::DLListBase; T = Foam::entry]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:54:5:   required from ‘void Foam::GeometricField<Type, PatchField, GeoMesh>::Boundary::readField(const Foam::DimensionedField<TypeR, GeoMesh>&, const Foam::dictionary&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:56:29:   required from ‘void Foam::GeometricField<Type, PatchField, GeoMesh>::readFields(const Foam::dictionary&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:92:15:   required from ‘void Foam::GeometricField<Type, PatchField, GeoMesh>::readFields() [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:355:15:   required from ‘Foam::GeometricField<Type, PatchField, GeoMesh>::GeometricField(const Foam::IOobject&, const Mesh&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh; Foam::GeometricField<Type, PatchField, GeoMesh>::Mesh = Foam::fvMesh]’
+createFields.H:43:1:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UILList.H:238:50: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_iterator::const_iterator(const Foam::DLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  238 |                 LListBase_const_iterator(baseIter)
+      |                                                  ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBase.H:324,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IDLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/entry.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionary.H:53,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/baseIOdictionary.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/unwatchedIOdictionary.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Time.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:292:13: note: because ‘Foam::DLListBase::const_iterator’ has user-provided ‘void Foam::DLListBase::const_iterator::operator=(const Foam::DLListBase::const_iterator&)’
+  292 | inline void Foam::DLListBase::const_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ILList.H:39,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IDLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/entry.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionary.H:53,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/baseIOdictionary.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/unwatchedIOdictionary.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Time.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UILList.H: In instantiation of ‘Foam::UILList<LListBase, T>::const_reverse_iterator::const_reverse_iterator(typename LListBase::const_reverse_iterator) [with LListBase = Foam::DLListBase; T = Foam::entry; typename LListBase::const_reverse_iterator = Foam::DLListBase::const_reverse_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UILList.H:345:38:   required from ‘Foam::UILList<LListBase, T>::const_reverse_iterator Foam::UILList<LListBase, T>::rbegin() const [with LListBase = Foam::DLListBase; T = Foam::entry]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricBoundaryField.C:92:70:   required from ‘void Foam::GeometricField<Type, PatchField, GeoMesh>::Boundary::readField(const Foam::DimensionedField<TypeR, GeoMesh>&, const Foam::dictionary&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:56:29:   required from ‘void Foam::GeometricField<Type, PatchField, GeoMesh>::readFields(const Foam::dictionary&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:92:15:   required from ‘void Foam::GeometricField<Type, PatchField, GeoMesh>::readFields() [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:355:15:   required from ‘Foam::GeometricField<Type, PatchField, GeoMesh>::GeometricField(const Foam::IOobject&, const Mesh&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh; Foam::GeometricField<Type, PatchField, GeoMesh>::Mesh = Foam::fvMesh]’
+createFields.H:43:1:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UILList.H:306:59: warning: implicitly-declared ‘constexpr Foam::DLListBase::const_reverse_iterator::const_reverse_iterator(const Foam::DLListBase::const_reverse_iterator&)’ is deprecated [-Wdeprecated-copy]
+  306 |                 LListBase::const_reverse_iterator(baseIter)
+      |                                                           ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBase.H:324,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/IDLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/entry.H:45,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionary.H:53,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/baseIOdictionary.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/unwatchedIOdictionary.H:37,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Time.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:6,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DLListBaseI.H:399:13: note: because ‘Foam::DLListBase::const_reverse_iterator’ has user-provided ‘void Foam::DLListBase::const_reverse_iterator::operator=(const Foam::DLListBase::const_reverse_iterator&)’
+  399 | inline void Foam::DLListBase::const_reverse_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/solverPerformance.H:38,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/data.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMesh.H:57,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:7,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SolverPerformance.H: In instantiation of ‘void Foam::List<T>::setSize(Foam::label, const T&) [with T = Foam::SolverPerformance<Foam::Vector<double> >; Foam::label = int]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dataTemplates.C:60:18:   required from ‘void Foam::data::setSolverPerformance(const Foam::word&, const Foam::SolverPerformance<Type>&) const [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:212:36:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solveSegregated(const Foam::dictionary&) [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:82:16:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve(const Foam::dictionary&) [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:317:5:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve() [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrix.C:1371:50:   required from ‘Foam::SolverPerformance<Type> Foam::solve(const Foam::tmp<Foam::fvMatrix<Type> >&) [with Type = Foam::Vector<double>]’
+rhoUEqn.H:1:41:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SolverPerformance.H:79:7: warning: implicitly-declared ‘Foam::FixedList<bool, 3>& Foam::FixedList<bool, 3>::operator=(const Foam::FixedList<bool, 3>&)’ is deprecated [-Wdeprecated-copy]
+   79 | class SolverPerformance
+      |       ^~~~~~~~~~~~~~~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/FixedList.H:381,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:28,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/FixedListI.H:108:8: note: because ‘Foam::FixedList<bool, 3>’ has user-provided ‘Foam::FixedList<T, Size>::FixedList(const Foam::FixedList<T, Size>&) [with T = bool; unsigned int Size = 3]’
+  108 | inline Foam::FixedList<T, Size>::FixedList(const FixedList<T, Size>& lst)
+      |        ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:336:27: note: synthesized method ‘Foam::SolverPerformance<Foam::Vector<double> >& Foam::SolverPerformance<Foam::Vector<double> >::operator=(const Foam::SolverPerformance<Foam::Vector<double> >&)’ first required here
+  336 |         while (i--) *--vv = a;
+      |                     ~~~~~~^~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H: In instantiation of ‘Foam::LList<LListBase, T>::const_iterator::const_iterator(Foam::LList<LListBase, T>::LListBase_const_iterator) [with LListBase = Foam::SLListBase; T = Foam::SolverPerformance<double>; Foam::LList<LListBase, T>::LListBase_const_iterator = Foam::SLListBase::const_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:346:37:   required from ‘Foam::LList<LListBase, T>::const_iterator Foam::LList<LListBase, T>::begin() const [with LListBase = Foam::SLListBase; T = Foam::SolverPerformance<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:424:64:   required from ‘void Foam::List<T>::operator=(Foam::SLList<T>&) [with T = Foam::SolverPerformance<double>; Foam::SLList<T> = Foam::LList<Foam::SLListBase, Foam::SolverPerformance<double> >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ListIO.C:144:11:   required from ‘Foam::Istream& Foam::operator>>(Foam::Istream&, Foam::List<T>&) [with T = Foam::SolverPerformance<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionaryTemplates.C:129:28:   required from ‘bool Foam::dictionary::readIfPresent(const Foam::word&, T&, bool, bool) const [with T = Foam::List<Foam::SolverPerformance<double> >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dataTemplates.C:56:27:   required from ‘void Foam::data::setSolverPerformance(const Foam::word&, const Foam::SolverPerformance<Type>&) const [with Type = double]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:272:36:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solveCoupled(const Foam::dictionary&) [with Type = double]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:86:16:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve(const Foam::dictionary&) [with Type = double]’
+rhoYEqn.H:55:42:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:302:50: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  302 |                 LListBase_const_iterator(baseIter)
+      |                                                  ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBase.H:266,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H: In instantiation of ‘Foam::LList<LListBase, T>::const_iterator::const_iterator(Foam::LList<LListBase, T>::LListBase_const_iterator) [with LListBase = Foam::SLListBase; T = double; Foam::LList<LListBase, T>::LListBase_const_iterator = Foam::SLListBase::const_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:346:37:   required from ‘Foam::LList<LListBase, T>::const_iterator Foam::LList<LListBase, T>::begin() const [with LListBase = Foam::SLListBase; T = double]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:424:64:   required from ‘void Foam::List<T>::operator=(Foam::SLList<T>&) [with T = double; Foam::SLList<T> = Foam::LList<Foam::SLListBase, double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ListIO.C:144:11:   required from ‘Foam::Istream& Foam::operator>>(Foam::Istream&, Foam::List<T>&) [with T = double]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Field.C:296:20:   required from ‘Foam::Field<Type>::Field(const Foam::word&, const Foam::dictionary&, Foam::label) [with Type = double; Foam::label = int]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DimensionedFieldIO.C:41:17:   required from ‘void Foam::DimensionedField<Type, GeoMesh>::readField(const Foam::dictionary&, const Foam::word&) [with Type = double; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DimensionedFieldIO.C:59:9:   required from ‘void Foam::DimensionedField<Type, GeoMesh>::readIfPresent(const Foam::word&) [with Type = double; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DimensionedField.C:112:9:   required from ‘Foam::DimensionedField<Type, GeoMesh>::DimensionedField(const Foam::IOobject&, const Mesh&, const Foam::dimensioned<Type>&, bool) [with Type = double; GeoMesh = Foam::volMesh; Foam::DimensionedField<Type, GeoMesh>::Mesh = Foam::fvMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:252:58:   required from ‘Foam::GeometricField<Type, PatchField, GeoMesh>::GeometricField(const Foam::IOobject&, const Mesh&, const Foam::dimensioned<Type>&, const Foam::word&) [with Type = double; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh; Foam::GeometricField<Type, PatchField, GeoMesh>::Mesh = Foam::fvMesh]’
+nn_interface.H:106:78:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:302:50: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  302 |                 LListBase_const_iterator(baseIter)
+      |                                                  ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBase.H:266,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H: In instantiation of ‘Foam::LList<LListBase, T>::const_iterator::const_iterator(Foam::LList<LListBase, T>::LListBase_const_iterator) [with LListBase = Foam::SLListBase; T = Foam::Vector<double>; Foam::LList<LListBase, T>::LListBase_const_iterator = Foam::SLListBase::const_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:346:37:   required from ‘Foam::LList<LListBase, T>::const_iterator Foam::LList<LListBase, T>::begin() const [with LListBase = Foam::SLListBase; T = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:424:64:   required from ‘void Foam::List<T>::operator=(Foam::SLList<T>&) [with T = Foam::Vector<double>; Foam::SLList<T> = Foam::LList<Foam::SLListBase, Foam::Vector<double> >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ListIO.C:144:11:   required from ‘Foam::Istream& Foam::operator>>(Foam::Istream&, Foam::List<T>&) [with T = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Field.C:296:20:   required from ‘Foam::Field<Type>::Field(const Foam::word&, const Foam::dictionary&, Foam::label) [with Type = Foam::Vector<double>; Foam::label = int]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DimensionedFieldIO.C:41:17:   required from ‘void Foam::DimensionedField<Type, GeoMesh>::readField(const Foam::dictionary&, const Foam::word&) [with Type = Foam::Vector<double>; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DimensionedFieldIO.C:59:9:   required from ‘void Foam::DimensionedField<Type, GeoMesh>::readIfPresent(const Foam::word&) [with Type = Foam::Vector<double>; GeoMesh = Foam::volMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/DimensionedField.C:91:9:   required from ‘Foam::DimensionedField<Type, GeoMesh>::DimensionedField(const Foam::IOobject&, const Mesh&, const Foam::dimensionSet&, bool) [with Type = Foam::Vector<double>; GeoMesh = Foam::volMesh; Foam::DimensionedField<Type, GeoMesh>::Mesh = Foam::fvMesh]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/GeometricField.C:353:35:   required from ‘Foam::GeometricField<Type, PatchField, GeoMesh>::GeometricField(const Foam::IOobject&, const Mesh&) [with Type = Foam::Vector<double>; PatchField = Foam::fvPatchField; GeoMesh = Foam::volMesh; Foam::GeometricField<Type, PatchField, GeoMesh>::Mesh = Foam::fvMesh]’
+createFields.H:43:1:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:302:50: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  302 |                 LListBase_const_iterator(baseIter)
+      |                                                  ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBase.H:266,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H: In instantiation of ‘Foam::LList<LListBase, T>::const_iterator::const_iterator(Foam::LList<LListBase, T>::LListBase_const_iterator) [with LListBase = Foam::SLListBase; T = Foam::SolverPerformance<Foam::Vector<double> >; Foam::LList<LListBase, T>::LListBase_const_iterator = Foam::SLListBase::const_iterator]’:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:346:37:   required from ‘Foam::LList<LListBase, T>::const_iterator Foam::LList<LListBase, T>::begin() const [with LListBase = Foam::SLListBase; T = Foam::SolverPerformance<Foam::Vector<double> >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.C:424:64:   required from ‘void Foam::List<T>::operator=(Foam::SLList<T>&) [with T = Foam::SolverPerformance<Foam::Vector<double> >; Foam::SLList<T> = Foam::LList<Foam::SLListBase, Foam::SolverPerformance<Foam::Vector<double> > >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/ListIO.C:144:11:   required from ‘Foam::Istream& Foam::operator>>(Foam::Istream&, Foam::List<T>&) [with T = Foam::SolverPerformance<Foam::Vector<double> >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dictionaryTemplates.C:129:28:   required from ‘bool Foam::dictionary::readIfPresent(const Foam::word&, T&, bool, bool) const [with T = Foam::List<Foam::SolverPerformance<Foam::Vector<double> > >]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/dataTemplates.C:56:27:   required from ‘void Foam::data::setSolverPerformance(const Foam::word&, const Foam::SolverPerformance<Type>&) const [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:212:36:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solveSegregated(const Foam::dictionary&) [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:82:16:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve(const Foam::dictionary&) [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrixSolve.C:317:5:   required from ‘Foam::SolverPerformance<Type> Foam::fvMatrix<Type>::solve() [with Type = Foam::Vector<double>]’
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvMatrix.C:1371:50:   required from ‘Foam::SolverPerformance<Type> Foam::solve(const Foam::tmp<Foam::fvMatrix<Type> >&) [with Type = Foam::Vector<double>]’
+rhoUEqn.H:1:41:   required from here
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/LList.H:302:50: warning: implicitly-declared ‘constexpr Foam::SLListBase::const_iterator::const_iterator(const Foam::SLListBase::const_iterator&)’ is deprecated [-Wdeprecated-copy]
+  302 |                 LListBase_const_iterator(baseIter)
+      |                                                  ^
+In file included from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBase.H:266,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLList.H:36,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UListIO.C:29,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.C:233,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UList.H:484,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/List.H:43,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from detonationEulerFoam.C:32:
+/scratch/users/jelipman/stanford_collaboration/Wang/nn_chemistry/OpenFOAM-6/src/OpenFOAM/lnInclude/SLListBaseI.H:265:13: note: because ‘Foam::SLListBase::const_iterator’ has user-provided ‘void Foam::SLListBase::const_iterator::operator=(const Foam::SLListBase::const_iterator&)’
+  265 | inline void Foam::SLListBase::const_iterator::operator=
+      |             ^~~~
+make: *** [Make/linux64GccDPInt32Opt/detonationEulerFoam.o] Error 1
