@@ -75,7 +75,7 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 11>& input) {
         }
     }
 
-    auto model_output = ffcm1_Ar_dt=1ns_eq_TP_weighted<Scalar>(input_real); // Change input to desired features
+    auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
 
     std::array<Scalar, 11> output_real;
     for (int i = 0; i < 11; i++) {
