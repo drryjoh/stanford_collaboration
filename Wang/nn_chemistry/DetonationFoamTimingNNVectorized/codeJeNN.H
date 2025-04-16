@@ -1,7 +1,7 @@
 #pragma once
 #include <array>
 #include <cmath>
-#include <immintrin.h>
+#include <Eigen/Dense>
 
 using Scalar = scalar; // redefine scalar 
 
@@ -11,68 +11,40 @@ template<typename Scalar>
 using activationFunction = void(*)(Scalar*, const Scalar*, size_t, Scalar);
 
 // - -
-/**
+
+/*
 template<typename Scalar>
 void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
     for (size_t i = 0; i < size; ++i) {
         outputs[i] = inputs[i] > 0 ? inputs[i] : 0;
     }
 }
-**/
-
-//AVX 512 Vecotorized relu activation function
-//Issues will occur if system cannot use AVX 512 instructions
-//Ideally an 8x speedup
+*/
 template<typename Scalar>
 void relu_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
-    size_t i = 0;
-    __m512d zero = _mm512_setzero_pd();
-
-    for (; i <= size - 8; i += 8) {
-        // Load 8 double values from inputs
-        __m512d data = _mm512_loadu_pd(&inputs[i]);
-        // Perform ReLU operation
-        __m512d result = _mm512_max_pd(data, zero);
-        // Store the result back to outputs
-        _mm512_storeu_pd(&outputs[i], result);
-    }
-
-    // Handle the remaining elements
-    for (; i < size; i++) {
-        outputs[i] = inputs[i] > 0 ? inputs[i] : 0;
-    }
+    using namespace Eigen;
+    Map<Matrix<Scalar, size, 1>> output_vector(outputs);
+    Map<const Matrix<Scalar, size, 1>> input_vector(inputs);
+    output_vector = input_vector.cwiseMax(Scalar(0));
 }
 
-/**
+/*
 template<typename Scalar>
 void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
     for (size_t i = 0; i < size; ++i) {
         outputs[i] = inputs[i];
     }
 }
-**/
-
-//AVX 512 Vecotorized linear activation function
-//Issues will occur if system cannot use AVX 512 instructions
-//Ideally an 8x speedup
+*/
 template<typename Scalar>
 void linear_nn(Scalar* outputs, const Scalar* inputs, size_t size, Scalar alpha = 0.0) noexcept {
-    size_t i = 0;
-
-    for (; i <= size - 8; i += 8) {
-        // Load 8 double values from inputs
-        __m512d data = _mm512_loadu_pd(&inputs[i]);
-        // Store the result back to outputs
-        _mm512_storeu_pd(&outputs[i], data);
-    }
-
-    // Handle the remaining elements
-    for (; i < size; i++) {
-        outputs[i] = inputs[i];
-    }
+    using namespace Eigen;
+    Map<Matrix<Scalar, size, 1>> output_vector(outputs);
+    Map<const Matrix<Scalar, size, 1>> input_vector(inputs);
+    output_vector = input_vector;
 }
 
-/**
+/** 
 template<typename Scalar>
 void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
     for (int i = 0; i < output_size; i++) {
@@ -82,7 +54,19 @@ void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, in
         }
     }
 }
-**/
+*/
+template<typename Scalar>
+void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, int input_size, int output_size) noexcept {
+    using namespace Eigen;
+    Map<const Matrix<Scalar, InputSize, 1>> input_vector(inputs);
+    Map<const Matrix<Scalar, InputSize, OutputSize>> weight_matrix(weights);
+    Map<Matrix<Scalar, OutputSize, 1>> output_vector(outputs);
+
+    output_vector.noalias() = weight_matrix.transpose() * input_vector;
+}
+
+
+/** 
 //Vectorized Code Below
 //If this does not work, it may be because the CPU does not have AVX 512 instructions
 //If this fails, I can change it to AVX 256, or we can look into using the Eigen library, which can adjust based on hardware instruction set
@@ -120,15 +104,24 @@ void dotProduct(Scalar* outputs, const Scalar* inputs, const Scalar* weights, in
     }
 
 }
-/**
+    **/
+
+template<typename Scalar>
+void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
+    using namespace Eigen;
+    Map<Matrix<Scalar, Size, 1>> output_vector(outputs);
+    Map<const Matrix<Scalar, Size, 1>> bias_vector(biases);
+    output_vector.noalias() += bias_vec;
+}
+   /* 
 template<typename Scalar>
 void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
     for (int i = 0; i < size; i++) {
         outputs[i] += biases[i];
     }
 }
-**/
-
+    */
+/** 
 //Vectorized Version
 //Does 8 doubles at once usign AVX 512.
 //Again, if AVX 512 is not supported on the CPU this will have to be altered
@@ -152,7 +145,7 @@ void addBias(Scalar* outputs, const Scalar* biases, int size) noexcept {
         }
 
 }
-
+**/
 template<typename Scalar, int output_size>
 void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, const Scalar* biases, int input_size, void (*activation_function)(Scalar*, const Scalar*, size_t, Scalar), Scalar alpha) noexcept {
     std::array<Scalar, output_size> temp_outputs;
