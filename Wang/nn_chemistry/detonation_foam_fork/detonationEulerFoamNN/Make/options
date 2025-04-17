@@ -13,7 +13,7 @@ EXE_INC = \
     -I$(LIB_SRC)/dynamicMesh/lnInclude \
     -I$(LIB_SRC)/dynamicFvMesh/lnInclude \
     -I$(LIB_SRC)/meshTools/lnIncludei \
-    -I$(WM_THIRD_PARTY_DIR)/eigen
+
 
 EXE_LIBS = \
     -lfiniteVolume \
