@@ -1,7 +1,8 @@
+#include <sstream>
 struct DataPoint 
 {
-    double temperature;
-    double pressure;
+    float temperature;
+    float pressure;
     Species massfractions;
 };
 
@@ -32,7 +33,7 @@ std::vector<DataPoint> readDataFromFile(const std::string& filename)
         dp.pressure = std::stod(value);
         
         // Read species concentrations into a fixed-size array
-        for (size_t i = 0; i < n_species; ++i) 
+        for (size_t i = 0; i < 10; i++) //Read in 10 species
         {
             if (!std::getline(ss, value, ',')) 
             {
