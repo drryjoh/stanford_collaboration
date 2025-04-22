@@ -1,0 +1,90 @@
+H
+{
+    geometry              atom;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              0.000;
+}
+
+H2
+{
+    geometry              linear;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              280.000;
+}
+
+O
+{
+    geometry              atom;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              0.000;
+}
+
+O2
+{
+    geometry              linear;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              3.800;
+}
+
+OH
+{
+    geometry              linear;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              0.000;
+}
+
+H2O
+{
+    geometry              nonlinear;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              4.000;
+}
+
+HO2
+{
+    geometry              nonlinear;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              1.000;
+}
+
+H2O2
+{
+    geometry              nonlinear;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              3.800;
+}
+
+AR
+{
+    geometry              atom;
+    LennardJonesWellDepth 0.000;
+    LennardJonesDiameter  0.000;
+    dipoleMoment          0.000;
+    polarizability        0.000;
+    rotRelax              0.000;
+}
+
