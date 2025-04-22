@@ -1,1 +1,4 @@
 .vscode
+Wang/nn_chemistry/state_by_state/nn_3/data/consolidated.csv
+Wang/nn_chemistry/state_by_state/nn_3/data/consolidated_dt.csv
+Wang/nn_chemistry/state_by_state/nn_3/data/consolidated_dt.npy
