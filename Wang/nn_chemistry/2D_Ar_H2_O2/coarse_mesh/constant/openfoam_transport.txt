@@ -1,8 +1,8 @@
 H
 {
     geometry              atom;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 145.0;
+    LennardJonesDiameter  2.050;
     dipoleMoment          0.000;
     polarizability        0.000;
     rotRelax              0.000;
@@ -11,18 +11,18 @@ H
 H2
 {
     geometry              linear;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 38.000;
+    LennardJonesDiameter  2.920;
     dipoleMoment          0.000;
-    polarizability        0.000;
+    polarizability        0.790;
     rotRelax              280.000;
 }
 
 O
 {
     geometry              atom;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 80.000;
+    LennardJonesDiameter  2.750;
     dipoleMoment          0.000;
     polarizability        0.000;
     rotRelax              0.000;
@@ -31,18 +31,18 @@ O
 O2
 {
     geometry              linear;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 107.400;
+    LennardJonesDiameter  3.458;
     dipoleMoment          0.000;
-    polarizability        0.000;
+    polarizability        1.600;
     rotRelax              3.800;
 }
 
 OH
 {
     geometry              linear;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 80.000;
+    LennardJonesDiameter  2.750;
     dipoleMoment          0.000;
     polarizability        0.000;
     rotRelax              0.000;
@@ -51,9 +51,9 @@ OH
 H2O
 {
     geometry              nonlinear;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
-    dipoleMoment          0.000;
+    LennardJonesWellDepth 572.400;
+    LennardJonesDiameter  2.605;
+    dipoleMoment          1.844;
     polarizability        0.000;
     rotRelax              4.000;
 }
@@ -61,8 +61,8 @@ H2O
 HO2
 {
     geometry              nonlinear;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 107.400;
+    LennardJonesDiameter  3.458;
     dipoleMoment          0.000;
     polarizability        0.000;
     rotRelax              1.000;
@@ -71,8 +71,8 @@ HO2
 H2O2
 {
     geometry              nonlinear;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 107.400;
+    LennardJonesDiameter  3.458;
     dipoleMoment          0.000;
     polarizability        0.000;
     rotRelax              3.800;
@@ -81,8 +81,8 @@ H2O2
 AR
 {
     geometry              atom;
-    LennardJonesWellDepth 0.000;
-    LennardJonesDiameter  0.000;
+    LennardJonesWellDepth 136.500;
+    LennardJonesDiameter  3.330;
     dipoleMoment          0.000;
     polarizability        0.000;
     rotRelax              0.000;
