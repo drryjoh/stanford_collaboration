@@ -30,8 +30,8 @@ inertSpecie AR;
 
 chemistryReader foamChemistryReader;
 
-foamChemistryFile "$FOAM_CASE/constant/chemFFCM1final";
+foamChemistryFile "$FOAM_CASE/constant/chemFFCM2";
 
-foamChemistryThermoFile "$FOAM_CASE/constant/thermFFCM1_new";
+foamChemistryThermoFile "$FOAM_CASE/constant/thermFFCM2";
 
 // ************************************************************************* //

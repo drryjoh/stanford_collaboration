@@ -1,0 +1,390 @@
+species
+10
+(
+H
+H2
+O
+O2
+OH
+H2O
+HO2
+H2O2
+O3
+AR
+)
+;
+
+reactions
+{
+    ffcm2-reaction-0
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H + O2 = O + OH";
+        A               1.0399e+14;
+        beta            0.0;
+        Ta              7704.3;
+    }
+
+    ffcm2-reaction-1
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2 + O = H + OH";
+        A               3.649e+12;
+        beta            0.0;
+        Ta              4000.6;
+    }
+
+    ffcm2-reaction-2
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2 + O = H + OH";
+        A               7.6025e+14;
+        beta            0.0;
+        Ta              9651.8;
+    }
+
+    ffcm2-reaction-3
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2 + OH = H + H2O";
+        A               2.1578e+08;
+        beta            1.51;
+        Ta              1729.6;
+    }
+
+    ffcm2-reaction-4
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "2 OH = H2O + O";
+        A               33500;
+        beta            2.42;
+        Ta              -970.21;
+    }
+
+    ffcm2-reaction-5
+    {
+        type            reversiblethirdBodyArrheniusReaction;
+        reaction        "H2 + M = 2 H + M";
+        A               3.8767e+19;
+        beta            -1.4;
+        Ta              52531;
+coeffs          
+10
+(
+(H 1.0)
+(H2 2.5)
+(O 1.0)
+(O2 1.0)
+(OH 1.0)
+(H2O 12.0)
+(HO2 1.0)
+(H2O2 1.0)
+(O3 1.0)
+(AR 0.0)
+)
+;
+    }
+
+    ffcm2-reaction-6
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2 + AR = 2 H + AR";
+        A               5.84e+18;
+        beta            -1.1;
+        Ta              52531;
+    }
+
+    ffcm2-reaction-7
+    {
+        type            reversiblethirdBodyArrheniusReaction;
+        reaction        "2 O + M = O2 + M";
+        A               6.16e+15;
+        beta            -0.5;
+        Ta              0;
+coeffs          
+10
+(
+(H 1.0)
+(H2 2.5)
+(O 1.0)
+(O2 1.0)
+(OH 1.0)
+(H2O 12.0)
+(HO2 1.0)
+(H2O2 1.0)
+(O3 1.0)
+(AR 0.0)
+)
+;
+    }
+
+    ffcm2-reaction-8
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "2 O + AR = O2 + AR";
+        A               1.89e+13;
+        beta            0.0;
+        Ta              -899.76;
+    }
+
+    ffcm2-reaction-9
+    {
+        type            reversiblethirdBodyArrheniusReaction;
+        reaction        "H + O + M = OH + M";
+        A               4.7124e+18;
+        beta            -1.0;
+        Ta              0;
+coeffs          
+10
+(
+(H 1.0)
+(H2 2.5)
+(O 1.0)
+(O2 1.0)
+(OH 1.0)
+(H2O 12.0)
+(HO2 1.0)
+(H2O2 1.0)
+(O3 1.0)
+(AR 0.75)
+)
+;
+    }
+
+    ffcm2-reaction-10
+    {
+        type            reversiblethirdBodyArrheniusReaction;
+        reaction        "H2O + M = H + OH + M";
+        A               5.903e+27;
+        beta            -3.32;
+        Ta              60789;
+coeffs          
+10
+(
+(H 1.0)
+(H2 3.0)
+(O 1.0)
+(O2 1.5)
+(OH 1.0)
+(H2O 0.0)
+(HO2 1.0)
+(H2O2 1.0)
+(O3 1.0)
+(AR 1.0)
+)
+;
+    }
+
+    ffcm2-reaction-11
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2O + H2O = H + OH + H2O";
+        A               1.01e+26;
+        beta            -2.44;
+        Ta              60487;
+    }
+
+    ffcm2-reaction-12
+    {
+        type            reversibleArrheniusTroeFallOffReaction;
+        reaction        "H + O2 (+ M) = HO2 (+ M)";
+        k0
+        {
+            A               7.2417e+20;
+            beta            -1.72;
+            Ta              264.19;
+        }
+        kInf
+        {
+            A               5.2863e+12;
+            beta            0.44;
+            Ta              0;
+        }
+        F
+        {
+            alpha           0.5;
+            Tsss            30.0;
+            Ts              90000.0;
+            Tss             90000.0;
+        }
+        thirdBodyEfficiencies
+        {
+coeffs          
+10
+(
+(H 1.0)
+(H2 2.0)
+(O 1.0)
+(O2 0.78)
+(OH 1.0)
+(H2O 13.76974842661546)
+(HO2 1.0)
+(H2O2 1.0)
+(O3 1.0)
+(AR 0.6867116639685282)
+)
+;
+        }
+    }
+
+    ffcm2-reaction-13
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H + HO2 = H2 + O2";
+        A               3.2729e+06;
+        beta            2.09;
+        Ta              -732.18;
+    }
+
+    ffcm2-reaction-14
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H + HO2 = 2 OH";
+        A               6.36e+13;
+        beta            0.0;
+        Ta              150.97;
+    }
+
+    ffcm2-reaction-15
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H + HO2 = H2O + O";
+        A               1.6131e+12;
+        beta            0.0;
+        Ta              0;
+    }
+
+    ffcm2-reaction-16
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "HO2 + O = O2 + OH";
+        A               1.7208e+13;
+        beta            0.0;
+        Ta              -223.93;
+    }
+
+    ffcm2-reaction-17
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "HO2 + OH = H2O + O2";
+        A               7.6368e+12;
+        beta            0.0;
+        Ta              -550.02;
+    }
+
+    ffcm2-reaction-18
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "HO2 + OH = H2O + O2";
+        A               4.5e+14;
+        beta            0.0;
+        Ta              5500.2;
+    }
+
+    ffcm2-reaction-19
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "2 HO2 = H2O2 + O2";
+        A               1.94e+11;
+        beta            0.0;
+        Ta              -709.04;
+    }
+
+    ffcm2-reaction-20
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "2 HO2 = H2O2 + O2";
+        A               1.03e+14;
+        beta            0.0;
+        Ta              5555.5;
+    }
+
+    ffcm2-reaction-21
+    {
+        type            reversibleArrheniusTroeFallOffReaction;
+        reaction        "H2O2 (+ M) = 2 OH (+ M)";
+        k0
+        {
+            A               2.3968e+24;
+            beta            -2.3;
+            Ta              24532;
+        }
+        kInf
+        {
+            A               1.9252e+12;
+            beta            0.9;
+            Ta              24532;
+        }
+        F
+        {
+            alpha           0.58;
+            Tsss            30.0;
+            Ts              90000.0;
+            Tss             90000.0;
+        }
+        thirdBodyEfficiencies
+        {
+coeffs          
+10
+(
+(H 1.0)
+(H2 3.7)
+(O 1.0)
+(O2 1.2)
+(OH 1.0)
+(H2O 7.5)
+(HO2 1.0)
+(H2O2 7.7)
+(O3 1.0)
+(AR 0.9859595379900199)
+)
+;
+        }
+    }
+
+    ffcm2-reaction-22
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H + H2O2 = H2O + OH";
+        A               2.41e+13;
+        beta            0.0;
+        Ta              1997.8;
+    }
+
+    ffcm2-reaction-23
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H + H2O2 = H2 + HO2";
+        A               4.82e+13;
+        beta            0.0;
+        Ta              4000.6;
+    }
+
+    ffcm2-reaction-24
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2O2 + O = HO2 + OH";
+        A               9.63e+06;
+        beta            2.0;
+        Ta              1997.8;
+    }
+
+    ffcm2-reaction-25
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2O2 + OH = H2O + HO2";
+        A               1.7611e+12;
+        beta            0.0;
+        Ta              160.02;
+    }
+
+    ffcm2-reaction-26
+    {
+        type            reversibleArrheniusReaction;
+        reaction        "H2O2 + OH = H2O + HO2";
+        A               7.631e+13;
+        beta            0.0;
+        Ta              3658.4;
+    }
+}
+
