@@ -84,29 +84,34 @@ def free_parameter_solve(gas, initial_conditions, free_species = ["OH", "H2O", "
     temperature = []
     for t in time:
         #get conserverd variables
+        #these are globally conserved so can be removed from the for loop if desired
         density = reactor.thermo.density
         internal_energy_volume_specific = density * reactor.thermo.int_energy_mass  # [J/m³]
-        print(internal_energy_volume_specific)
-
-
-        network.advance(t)
+        
+        network.advance(t) #replace with call to NN given YTP_n -> YTP_n+1
         T = reactor.T
         temperature.append(T)
-            # Access the current state
-        T = reactor.T
+
+        #these would be the new predictions
+        T = reactor.T 
         P = reactor.thermo.P
         Y = reactor.thermo.Y
 
+
+        #build RHS of linear system
         B1 = 1 - sum_target(Y, indexes)
         B2 = P/ct.gas_constant/T/density - sum_target(Y/MW, indexes)
         u_i  = reactor.thermo.standard_int_energies_RT * ct.gas_constant * reactor.T/MW
         B3 = (internal_energy_volume_specific - density * sum_target(Y * u_i, indexes))/density
 
+        #build A of system
         A = np.array([[1,1,1],[1/MW[idx_a], 1/MW[idx_b], 1/MW[idx_c]],[u_i[idx_a], u_i[idx_b], u_i[idx_c]]])
         B = np.array([B1, B2, B3])
+
+        #apply inverse
         Y_new = inverse_3x3(A) @ B 
 
-        # Slightly modify species (e.g., reduce H2 a bit)
+        # Modify species bac
         Y_mod = Y.copy()
         Y_mod[idx_a] = Y_new[0]
         Y_mod[idx_b] = Y_new[1]
@@ -116,7 +121,7 @@ def free_parameter_solve(gas, initial_conditions, free_species = ["OH", "H2O", "
 
     # Apply the new state
         reactor.thermo.TPY = T, reactor.thermo.P, Y_mod
-        reactor.syncState()
+        reactor.syncState() #make sure you do this even if using the NN so you can get current 
     temperature = np.array(temperature)
     return time, temperature
 
