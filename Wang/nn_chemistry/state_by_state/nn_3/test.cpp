@@ -6,7 +6,7 @@ int main() {
      //Here is the species list in order for reference (exclude AR from input list -- it does not go into NN):
      //"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3", NOT "AR"
     //Has to be H2/O2/Ar = 2:1:7
-    const int time_steps = 7000;
+    const int time_steps = 5000;
 
     std::array<Scalar, 11> input = {2500, 2, 0, 0.0127722113, 0, 0.1013689888, 0, 0, 0, 0, 0}; //Does not pass in Ar concetraion. Last on is O3
     
@@ -35,6 +35,7 @@ int main() {
         for(int j = 2; j <= 10; j++) {
             next_state[j] = next_state[j] / run_sum; //rescale output so that sum always = 1
         }
+        std::cout << "Next state: " <<  next_state[0] << " " << next_state[1] << " " << next_state[2] << std::endl;
         
         temps[i] = next_state[0];
         pressure[i] = next_state[1];
@@ -60,6 +61,6 @@ int main() {
 }
 
 /*
-clang++ -std=c++2b -Wall -O3 -march=native -o test test.cpp
+clang++ -std=c++2b -Wall -O3 -march=native -o test test.cpp helper_functions.cpp
 ./test
 */

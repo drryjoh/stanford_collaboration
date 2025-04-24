@@ -58,6 +58,7 @@ auto nn3(const std::array<Scalar, 11>& initial_input) {
 
     std::array<Scalar, 11> model_input;
     for (int i = 0; i < 11; i++) { model_input[i] = (initial_input[i] - input_mins[i]) / (input_norms[i]); }
+    std::cout << "AFTER NORM: " <<  model_input[0] << " " << model_input[1] << " " << model_input[2] << std::endl;
 
     if (model_input.size() != 11) { throw std::invalid_argument("Invalid input size. Expected size: 11"); } 
 
@@ -97,8 +98,12 @@ auto nn3(const std::array<Scalar, 11>& initial_input) {
 
     std::array<Scalar, 11> output_mins = {-2.169401708e-02, -1.994379155e-05, 3.947308101e-02, -2.863771926e-04, 3.869518908e-02, -4.329108629e-04, 4.503887036e-02, 3.699392414e-02, 5.473394304e-02, 3.719998315e-02, 1.751387164e-02};
 
+    std::cout << "AFTER NN: " <<  layer_4_output.data()[0] << " " << layer_4_output.data()[1] << " " << layer_4_output.data()[2] << std::endl;
+
     std::array<Scalar, 11> model_output;
     for (int i = 0; i < 11; i++) { model_output[i] = (layer_4_output.data()[i] * output_norms[i]) + output_mins[i]; } 
+
+    std::cout << "AFTER undo norm: " <<  model_output[0] << " " << model_output[1] << " " << model_output[2] << std::endl;
 
     return model_output;
 }

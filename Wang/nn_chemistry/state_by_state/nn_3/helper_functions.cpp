@@ -102,16 +102,21 @@ std::array<Scalar, 11> read_normalization_txt_to_array(std::string filename) {
 std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 11>& input) {
     
     std::array<Scalar, 11> input_real;
-
+    std::cout << "BOXCOX:  " << std::endl;
     for (int i = 0; i < 11; i++) {
         if (i >= 2) {
             input_real[i] = (std::pow(input[i], 0.1) - 1) / 0.1; // Boxcox lambda = 0.1
+            std::cout << input_real[i] << "  ";
+
         } else {
             input_real[i] = input[i];
+            std::cout << input_real[i] << "  ";
         }
     }
+    std::cout << std::endl;
 
     auto model_output = nn3<Scalar>(input_real); // Change input to desired features
+    std::cout << model_output[0] << " " << model_output[1] << " " << model_output[2] << std::endl;
 
     std::array<Scalar, 11> output_real;
     for (int i = 0; i < 11; i++) {

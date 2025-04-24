@@ -11,12 +11,11 @@ reactor = ct.IdealGasReactor(gas)
 network = ct.ReactorNet([reactor])
 
 # Make sure the timesteps here matches the time steps you simulated the NN for
-n_steps = 7000 # Number of time steps
+n_steps = 5000 # Number of time steps
 time_end = n_steps * 1e-9  # Convert ns to seconds
 
 time = np.linspace(0, time_end, n_steps)
 
-data = []
 x = np.zeros((n_steps, 13))
 #Order: "H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3", NOT "AR"
 i = 0
