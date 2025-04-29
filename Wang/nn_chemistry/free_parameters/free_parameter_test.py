@@ -129,6 +129,9 @@ initial_conditions = 1950, 180000, "AR:7, H2:2, O2:1"
 time, temperature = reference_solution(gas, initial_conditions)
 time_fp, temperature_fp = free_parameter_solve(gas, initial_conditions)
 
-plt.plot(time, temperature, '-k')
-plt.plot(time_fp, temperature_fp, '-r')
+plt.plot(time, temperature, '-k', label = 'ODE')
+plt.plot(time_fp, temperature_fp, '--r', label = '3x3 solve, free species: OH, H2O, O')
+plt.legend()
+plt.xlabel("time")
+plt.ylabel("temperature")
 plt.show()
