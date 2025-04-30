@@ -57,52 +57,43 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
 
 #include "NN13.h"
 
-void append_state(std::array<Scalar, 12>& input, std::array<Scalar, 11>& output)
-{
-    for (int i = 0; i < 11; i++) { input[i] = output[i];}
-}
-
-
-std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 11>& input) {
+std::array<Scalar, 10> predict_combustion(const std::array<Scalar, 10>& input) {
     
-    std::array<Scalar, 11> input_real;
+    std::array<Scalar, 10> input_real;
 
     auto model_output = NN13<Scalar>(input_real); // Change input to desired features
 
-    std::array<Scalar, 11> output_real;
-    for (int i = 0; i < 11; i++) {
+    std::array<Scalar, 10> output_real;
+    for (int i = 0; i < 10; i++) {
         output_real[i] = model_output[i] + input_real[i]; // NN outputs change of state properties, transferred to real values
     }
 
     return output_real;
 }
 
-const int n_species = 10;
+const int n_species = 9;
 // Using alias for the array type (for example, an array of double values)
 using Species = std::array<scalar, n_species>;
 
 
-
-constexpr Species molecular_weights()
+constexpr Species molecular_weights() 
 {
-    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3  AR
-    return {scalar(1.008),scalar(2.016),scalar(15.999),scalar(31.998),scalar(17.007),scalar(18.015),scalar(33.006),scalar(34.014),scalar(47.997), scalar(40.0)};
+    //H  H2  O  O2  OH  H2O  HO2  H2O2 AR
+    return {scalar(1.008),scalar(2.016),scalar(15.999),scalar(31.998),scalar(17.007),scalar(18.015),scalar(33.006),scalar(34.014),scalar(39.95)};
 }
 
 constexpr Species inv_molecular_weights()
 {
-    //H  H2  O  O2  OH  H2O  HO2  H2O2  O3  AR
-    return {scalar(0.9920634920634921),scalar(0.49603174603174605),scalar(0.06250390649415588),scalar(0.03125195324707794),scalar(0.05879931792791203),scalar(0.055509297807382736),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.02083463549805196), scalar(0.025)};
+    return {scalar(0.9920634920634921),scalar(0.49603174603174605),scalar(0.06250390649415588),scalar(0.03125195324707794),scalar(0.05879931792791203),scalar(0.055509297807382736),scalar(0.030297521662727988),scalar(0.029399658963956014),scalar(0.025031289111389236)};
 }
 
 // Define the species names as a fixed-size array
 #pragma once
 #include <string>
 
-static constexpr std::array<const char*, n_species> species_names_gen()
+static constexpr std::array<const char*, 9> species_names_gen()
 {
-    //fix the openfoam order to match the nn order 
-    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "O3", "AR"};
+    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "AR"};
 }
 
 // Return the species name for a given index

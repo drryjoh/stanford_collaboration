@@ -53,7 +53,7 @@ struct NNInterface
     {
         forAll(T, cell_index)
         {
-            if(T[cell_index] > 1500.0 && Y[5][cell_index]<0.090)
+            if(T[cell_index] > 1500.0)
             {
                 UseNN[cell_index] = 1.0;
             }
@@ -126,7 +126,7 @@ struct NNInterface
                     C0[i] = Y0[i]/mw[i] * rho0;
                 }            
 
-                std::array<scalar, 11> nn_input = {
+                std::array<Scalar, 10> nn_input = {
                     T[cell_index],                      // Temperature (K)
                     p[cell_index] / 101325.0,          // Pressure (atm)
                     Y[0][cell_index], Y[1][cell_index], Y[2][cell_index],
