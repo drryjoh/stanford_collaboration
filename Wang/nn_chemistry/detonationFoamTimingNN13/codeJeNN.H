@@ -55,7 +55,7 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
     activation_function(outputs, temp_outputs.data(), output_size, alpha);
 }
 
-#include "ffcm1.h"
+#include "NN13.h"
 
 void append_state(std::array<Scalar, 12>& input, std::array<Scalar, 11>& output)
 {
@@ -67,31 +67,14 @@ std::array<Scalar, 11> predict_combustion(const std::array<Scalar, 11>& input) {
     
     std::array<Scalar, 11> input_real;
 
-    for (int i = 0; i < 11; i++) {
-        if (i >= 2) {
-            input_real[i] = (std::pow(input[i], 0.1) - 1) / 0.1; // Boxcox lambda = 0.1
-        } else {
-            input_real[i] = input[i];
-        }
-    }
-
-    auto model_output = ffcm1<Scalar>(input_real); // Change input to desired features
+    auto model_output = NN13<Scalar>(input_real); // Change input to desired features
 
     std::array<Scalar, 11> output_real;
     for (int i = 0; i < 11; i++) {
         output_real[i] = model_output[i] + input_real[i]; // NN outputs change of state properties, transferred to real values
     }
 
-    std::array<Scalar, 11> output;
-    for (int i = 0; i < 11; i++) {
-        if (i >= 2) {
-            output[i] = std::pow(output_real[i] * 0.1 + 1, 10.0); // Inverse Boxcox transformation
-        } else {
-            output[i] = output_real[i];
-        }
-    }
-
-    return output;
+    return output_real;
 }
 
 const int n_species = 10;
