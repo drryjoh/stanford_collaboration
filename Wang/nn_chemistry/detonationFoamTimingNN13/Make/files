@@ -1,3 +1,3 @@
 detonationEulerFoam.C
 
-EXE = $(FOAM_USER_APPBIN)/detonationEulerFoamTimingNN3
+EXE = $(FOAM_USER_APPBIN)/detonationEulerFoamTimingNN13
