@@ -131,7 +131,7 @@ struct NNInterface
                     p[cell_index] / 101325.0,          // Pressure (atm)
                     Y[0][cell_index], Y[1][cell_index], Y[2][cell_index],
                     Y[3][cell_index], Y[4][cell_index], Y[5][cell_index],
-                    Y[6][cell_index], Y[7][cell_index], Y[8][cell_index]
+                    Y[6][cell_index], Y[7][cell_index]
                 };
 
                 auto output = predict_combustion(nn_input);

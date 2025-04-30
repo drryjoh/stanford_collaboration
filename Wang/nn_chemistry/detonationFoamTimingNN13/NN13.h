@@ -1,5 +1,6 @@
 template <typename Scalar = float>
-auto NN13(const std::array<Scalar, 10>& initial_input) { 
+auto NN13(const std::array<Scalar, 10>& initial_input) -> std::array<Scalar, 10> 
+{ 
 
     std::array<Scalar, 10> input_norms = {5.129366446e+02, 1.912905333e+00, 8.420389462e-04, 3.982081654e-03, 5.665410555e-03, 3.484736536e-02, 9.294150715e-03, 2.529681116e-02, 2.889430853e-04, 2.230881861e-06};
 
