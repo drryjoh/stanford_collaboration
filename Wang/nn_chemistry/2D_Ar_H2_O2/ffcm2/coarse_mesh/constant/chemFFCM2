@@ -170,7 +170,7 @@ reactions
     ffcm2-12
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        "H + O2 (+M) = HO2 (+M)";
+            reaction        "H + O2  = HO2 ";
             k0
         {
             A               7.242e+14;
@@ -275,7 +275,7 @@ reactions
     ffcm2-21
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        "H2O2 (+M) = 2 OH (+M)";
+            reaction        "H2O2  = 2 OH ";
             k0
         {
             A               2.397e+21;
