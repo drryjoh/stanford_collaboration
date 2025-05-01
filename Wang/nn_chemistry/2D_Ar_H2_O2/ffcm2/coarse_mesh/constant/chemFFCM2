@@ -58,7 +58,7 @@ reactions
     ffcm2-5
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        "H2 + M = 2 H + M";
+            reaction        "H2  = 2 H ";
             A               3.877e+16;
             beta            -1.4;
             Ta              52531.1;
@@ -88,7 +88,7 @@ reactions
     ffcm2-7
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        "2 O + M = O2 + M";
+            reaction        "2 O  = O2 ";
             A               6.16e+09;
             beta            -0.5;
             Ta              0;
@@ -118,7 +118,7 @@ reactions
     ffcm2-9
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        "H + O + M = OH + M";
+            reaction        "H + O  = OH ";
             A               4.712e+12;
             beta            -1;
             Ta              0;
@@ -140,7 +140,7 @@ reactions
     ffcm2-10
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        "H2O + M = H + OH + M";
+            reaction        "H2O  = H + OH ";
             A               5.903e+24;
             beta            -3.32;
             Ta              60788.9;
