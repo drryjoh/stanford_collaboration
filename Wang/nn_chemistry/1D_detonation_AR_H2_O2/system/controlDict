@@ -30,7 +30,7 @@ stopAt          endTime;
 
 endTime       5.0e-4;	
 
-deltaT          1e-8;
+deltaT          1e-9;
 
 writeControl    adjustableRunTime;
 
@@ -50,7 +50,7 @@ timePrecision   12;
 
 runTimeModifiable true;
 
-adjustTimeStep  yes;
+adjustTimeStep  no;
 
 useAcousticCourant yes;
 
