@@ -55,8 +55,11 @@ int main() {
      double(7)};
      molefractions_ = scale_gen(double(0.1), molefractions_);
 
-    double temperature_ =  2500.0;
-    double pressure_ = 101325.0 * 2.0;
+    double temperature_initial =  2600.0;
+    double pressure_initial = 101325.0 * 4.0;
+
+    double temperature_ =  temperature_initial;
+    double pressure_ = pressure_initial;
 
     Species concentrations = concentrations_from_molefractions_pressure_temperature(molefractions_, pressure_, temperature_);
     
@@ -97,6 +100,33 @@ int main() {
         {
             input[2 + i] = concentrations[i];
         }
+        time+=dt;
+        std::cout<< time<<", "<<temperature_ << ", " << pressure_ << ", "<<concentrations <<std::endl;
+
+    }
+
+    std::cout << "check dt*S" << std::endl;
+    temperature_ =  temperature_initial;
+    pressure_ = pressure_initial;
+
+    concentrations = concentrations_from_molefractions_pressure_temperature(molefractions_, pressure_, temperature_);
+    double rhou  = internal_energy_volume_specific(concentrations, temperature_);
+
+    time  = 0;
+    dt = 10e-9;
+    std::cout<< 0.0<<", "<<temperature_ << ", " << pressure_/101325.0 << ", "<<concentrations <<std::endl;
+    for (int  i  = 0; i< 10000; i++)
+    {
+        
+        Species source_ = source(concentrations, temperature_);
+        for (int i = 0; i < n_species; i++) 
+        {
+            concentrations[i] = concentrations[i] + source_[i] * dt; // NN outputs change of state properties, transferred to real values
+        }
+
+        temperature_ = temperature(rhou, concentrations);
+        pressure_  = pressure(concentrations, temperature_);
+
         time+=dt;
         std::cout<< time<<", "<<temperature_ << ", " << pressure_ << ", "<<concentrations <<std::endl;
 
