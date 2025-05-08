@@ -15,50 +15,50 @@ AR
 
 reactions
 {
-    un-named-reaction-0
+    ffcm2-0
     {
             type            reversibleArrheniusReaction;
-            reaction        H + O2 = O + OH;
+            reaction       "H + O2 = O + OH";
             A               1.04e+11;
             beta            0;
             Ta              7704.29;
     }
-    un-named-reaction-1
+    ffcm2-1
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + O = H + OH;
+            reaction        "H2 + O = H + OH";
             A               3.649e+09;
             beta            0;
             Ta              4000.6;
     }
-    un-named-reaction-2
+    ffcm2-2
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + O = H + OH;
+            reaction        "H2 + O = H + OH";
             A               7.602e+11;
             beta            0;
             Ta              9651.75;
     }
-    un-named-reaction-3
+    ffcm2-3
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + OH = H + H2O;
+            reaction        "H2 + OH = H + H2O";
             A               2.158e+05;
             beta            1.51;
             Ta              1729.57;
     }
-    un-named-reaction-4
+    ffcm2-4
     {
             type            reversibleArrheniusReaction;
-            reaction        2 OH = H2O + O;
+            reaction        "2 OH = H2O + O";
             A               33.5;
             beta            2.42;
             Ta              -970.207;
     }
-    un-named-reaction-5
+    ffcm2-5
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        H2 + M = 2 H + M;
+            reaction        "H2  = 2 H ";
             A               3.877e+16;
             beta            -1.4;
             Ta              52531.1;
@@ -77,18 +77,18 @@ reactions
 )
 ;
     }
-    un-named-reaction-6
+    ffcm2-6
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + AR = 2 H + AR;
+            reaction        "H2 + AR = 2 H + AR";
             A               5.84e+15;
             beta            -1.1;
             Ta              52531.1;
     }
-    un-named-reaction-7
+    ffcm2-7
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        2 O + M = O2 + M;
+            reaction        "2 O  = O2 ";
             A               6.16e+09;
             beta            -0.5;
             Ta              0;
@@ -107,18 +107,18 @@ reactions
 )
 ;
     }
-    un-named-reaction-8
+    ffcm2-8
     {
             type            reversibleArrheniusReaction;
-            reaction        2 O + AR = O2 + AR;
+            reaction        "2 O + AR = O2 + AR";
             A               1.89e+07;
             beta            0;
             Ta              -899.757;
     }
-    un-named-reaction-9
+    ffcm2-9
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        H + O + M = OH + M;
+            reaction        "H + O  = OH ";
             A               4.712e+12;
             beta            -1;
             Ta              0;
@@ -137,10 +137,10 @@ reactions
 )
 ;
     }
-    un-named-reaction-10
+    ffcm2-10
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        H2O + M = H + OH + M;
+            reaction        "H2O  = H + OH ";
             A               5.903e+24;
             beta            -3.32;
             Ta              60788.9;
@@ -159,18 +159,18 @@ reactions
 )
 ;
     }
-    un-named-reaction-11
+    ffcm2-11
     {
             type            reversibleArrheniusReaction;
-            reaction        H2O + H2O = H + OH + H2O;
+            reaction        "H2O + H2O = H + OH + H2O";
             A               1.01e+23;
             beta            -2.44;
             Ta              60487;
     }
-    un-named-reaction-12
+    ffcm2-12
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        H + O2 (+M) = HO2 (+M);
+            reaction        "H + O2  = HO2 ";
             k0
         {
             A               7.242e+14;
@@ -208,74 +208,74 @@ reactions
 ;
         }
     }
-    un-named-reaction-13
+    ffcm2-13
     {
             type            reversibleArrheniusReaction;
-            reaction        H + HO2 = H2 + O2;
+            reaction        "H + HO2 = H2 + O2";
             A               3273;
             beta            2.09;
             Ta              -732.184;
     }
-    un-named-reaction-14
+    ffcm2-14
     {
             type            reversibleArrheniusReaction;
-            reaction        H + HO2 = 2 OH;
+            reaction        "H + HO2 = 2 OH";
             A               6.36e+10;
             beta            0;
             Ta              150.966;
     }
-    un-named-reaction-15
+    ffcm2-15
     {
             type            reversibleArrheniusReaction;
-            reaction        H + HO2 = H2O + O;
+            reaction        "H + HO2 = H2O + O";
             A               1.613e+09;
             beta            0;
             Ta              0;
     }
-    un-named-reaction-16
+    ffcm2-16
     {
             type            reversibleArrheniusReaction;
-            reaction        HO2 + O = O2 + OH;
+            reaction        "HO2 + O = O2 + OH";
             A               1.721e+10;
             beta            0;
             Ta              -223.933;
     }
-    un-named-reaction-17
+    ffcm2-17
     {
             type            reversibleArrheniusReaction;
-            reaction        HO2 + OH = H2O + O2;
+            reaction        "HO2 + OH = H2O + O2";
             A               7.637e+09;
             beta            0;
             Ta              -550.019;
     }
-    un-named-reaction-18
+    ffcm2-18
     {
             type            reversibleArrheniusReaction;
-            reaction        HO2 + OH = H2O + O2;
+            reaction        "HO2 + OH = H2O + O2";
             A               4.5e+11;
             beta            0;
             Ta              5500.19;
     }
-    un-named-reaction-19
+    ffcm2-19
     {
             type            reversibleArrheniusReaction;
-            reaction        2 HO2 = H2O2 + O2;
+            reaction        "2 HO2 = H2O2 + O2";
             A               1.94e+08;
             beta            0;
             Ta              -709.036;
     }
-    un-named-reaction-20
+    ffcm2-20
     {
             type            reversibleArrheniusReaction;
-            reaction        2 HO2 = H2O2 + O2;
+            reaction        "2 HO2 = H2O2 + O2";
             A               1.03e+11;
             beta            0;
             Ta              5555.54;
     }
-    un-named-reaction-21
+    ffcm2-21
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        H2O2 (+M) = 2 OH (+M);
+            reaction        "H2O2  = 2 OH ";
             k0
         {
             A               2.397e+21;
@@ -313,42 +313,42 @@ reactions
 ;
         }
     }
-    un-named-reaction-22
+    ffcm2-22
     {
             type            reversibleArrheniusReaction;
-            reaction        H + H2O2 = H2O + OH;
+            reaction        "H + H2O2 = H2O + OH";
             A               2.41e+10;
             beta            0;
             Ta              1997.78;
     }
-    un-named-reaction-23
+    ffcm2-23
     {
             type            reversibleArrheniusReaction;
-            reaction        H + H2O2 = H2 + HO2;
+            reaction        "H + H2O2 = H2 + HO2";
             A               4.82e+10;
             beta            0;
             Ta              4000.6;
     }
-    un-named-reaction-24
+    ffcm2-24
     {
             type            reversibleArrheniusReaction;
-            reaction        H2O2 + O = HO2 + OH;
+            reaction        "H2O2 + O = HO2 + OH";
             A               9630;
             beta            2;
             Ta              1997.78;
     }
-    un-named-reaction-25
+    ffcm2-25
     {
             type            reversibleArrheniusReaction;
-            reaction        H2O2 + OH = H2O + HO2;
+            reaction        "H2O2 + OH = H2O + HO2";
             A               1.761e+09;
             beta            0;
             Ta              160.024;
     }
-    un-named-reaction-26
+    ffcm2-26
     {
             type            reversibleArrheniusReaction;
-            reaction        H2O2 + OH = H2O + HO2;
+            reaction        "H2O2 + OH = H2O + HO2";
             A               7.631e+10;
             beta            0;
             Ta              3658.41;
