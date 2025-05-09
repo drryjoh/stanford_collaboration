@@ -53,7 +53,7 @@ struct NNInterface
     {
         forAll(T, cell_index)
         {
-            if(T[cell_index] > 1500.0 && Y[5][cell_index]<0.090)
+            if(T[cell_index] > 1500.0)
             {
                 UseNN[cell_index] = 1.0;
             }
@@ -162,7 +162,9 @@ struct NNInterface
                 {
                     C1 = YNN[i]/mw[i] * rho1;
                     sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
-                }    
+                    Info <<   sourceField[i][cell_index] << endl;
+                } 
+   
             }
             else
             {
