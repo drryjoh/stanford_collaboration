@@ -23,8 +23,7 @@ boundaryField
 {
     top
     {
-        type            cyclicAMI;
-        value 0;
+        type            zeroGradient;
     }
 
     inlet
@@ -39,8 +38,7 @@ boundaryField
 
     bottom
     {
-        type            cyclicAMI;
-        value 0;
+        type            zeroGradient;
     }
     frontAndBack
     {

@@ -1,6 +1,6 @@
 #!python3
 import numpy as np
-def write_openfoam_scalar_file(data, dimensions, name, location):
+def write_openfoam_scalar_file(data, dimensions, name, location, boundary = "default"):
     n_points = len(data)
     header = """
     FoamFile
@@ -14,7 +14,8 @@ def write_openfoam_scalar_file(data, dimensions, name, location):
 """ + f"\ndimensions      {dimensions};\n"+ """
     internalField   nonuniform List<scalar>
     """+f"{n_points}\n(\n".format(n_points)
-    bottom = """
+    if boundary == "default"
+        bottom = """
     );
     boundaryField
     {
@@ -28,21 +29,45 @@ def write_openfoam_scalar_file(data, dimensions, name, location):
         }
         bottom
         {
-            type            cyclicAMI;
-            value           uniform 1.0;
+            type            zeroGradient;
         }
         top
         {
-            type            cyclicAMI;
-            value           uniform 1.0;
+            type            zeroGradient;
         }
  
-        }  
         frontAndBack
         {
             type            empty;
         }
     }
+    """
+    else:
+        bottom = f"""
+    );
+    boundaryField
+    {{
+        inlet
+        {{
+            type            zeroGradient;
+        }}
+        outlet
+        {{
+            type            zeroGradient;
+        }}
+        bottom
+        {{
+            type            {boundary};
+        }}
+        top
+        {{
+            type            {boundary};
+        }}
+        frontAndBack
+        {{
+            type            empty;
+        }}
+    }}
     """
     f = open(f"{location}/{name}","w")
     f.write(header)
@@ -51,7 +76,7 @@ def write_openfoam_scalar_file(data, dimensions, name, location):
     f.write(bottom)
     f.close()
  
-def write_openfoam_vector_file(vectors, dimensions, name, location):
+def write_openfoam_vector_file(vectors, dimensions, name, location, boundary="default"):
     n_points = len(vectors[:,0])
     header = """
     /*--------------------------------*- C++ -*----------------------------------*\
@@ -75,7 +100,8 @@ def write_openfoam_vector_file(vectors, dimensions, name, location):
  
     internalField   nonuniform List<vector>
     """+f"{n_points}\n(\n".format(n_points)
-    bottom = """
+    if boundary == "default"
+        bottom = """
     );
     boundaryField
     {
@@ -89,21 +115,45 @@ def write_openfoam_vector_file(vectors, dimensions, name, location):
         }
         bottom
         {
-            type            cyclicAMI;
-            value           uniform (0.0 0.0 0.0);
+            type            zeroGradient;
         }
         top
         {
-            type            cyclicAMI;
-            value           uniform (0.0 0.0 0.0);
+            type            zeroGradient;
         }
  
-        }  
         frontAndBack
         {
             type            empty;
         }
     }
+    """
+    else:
+        bottom = f"""
+    );
+    boundaryField
+    {{
+        inlet
+        {{
+            type            zeroGradient;
+        }}
+        outlet
+        {{
+            type            zeroGradient;
+        }}
+        bottom
+        {{
+            type            {boundary};
+        }}
+        top
+        {{
+            type            {boundary};
+        }}
+        frontAndBack
+        {{
+            type            empty;
+        }}
+    }}
     """
     f = open(f"{location}/{name}","w")
     f.write(header)
@@ -128,4 +178,4 @@ for i, d in enumerate(data[:-1]):
 
 U = np.zeros([len(dat[:,-1]), 3])
 U[:,0] = dat[:,-1]
-write_openfoam_vector_file(U, dimensions[-1], data[-1], "0")
+write_openfoam_vector_file(U, dimensions[-1], data[-1], "0", boundary="slip")

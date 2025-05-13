@@ -31,13 +31,11 @@ boundaryField
     }
     bottom
     {
-        type            cyclicAMI;
-        value           uniform 101325.0; 
+        type            zeroGradient;
     }
     top
     {
-        type            cyclicAMI;
-        value           uniform 101325.0; 
+        type            zeroGradient;
     }
     frontAndBack
     {
