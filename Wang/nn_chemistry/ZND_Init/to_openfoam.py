@@ -166,7 +166,7 @@ def write_openfoam_vector_file(vectors, dimensions, name, location, boundary="de
 dat = np.loadtxt("initialization_for_openfoam.csv", delimiter = ",", skiprows=1)
 
 n_species = 9
-data = ["T", "P", "H","H2","O","O2","OH","H2O","HO2","H2O2","AR","U"]
+data = ["T", "p", "H","H2","O","O2","OH","H2O","HO2","H2O2","AR","U"]
 species_dimensions = ["[0 0 0 0 0 0 0 ]"] * n_species
 
 dimensions  = ["[0 0 0 1 0 0 0]","[1 -1 -2 0 0 0 0]" ]
