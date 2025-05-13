@@ -257,6 +257,12 @@ concentrations_from_massfractions_pressure_temperature(const Species& massfracti
               (massfractions * inv_molecular_weights()));
 }
 
+Species 
+massfractions_from_mole_fractions(const Species& molefractions)  
+{
+    return scale_gen(1 / sum_gen(molefractions * molecular_weights()), molefractions * molecular_weights());
+}
+
 
 double 
 dpressure_dtemperature(const Species& species, 
