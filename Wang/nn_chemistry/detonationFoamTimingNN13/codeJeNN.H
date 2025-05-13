@@ -57,18 +57,18 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
 
 #include "NN13.h"
 
-std::array<Scalar, 10> predict_combustion(const std::array<Scalar, 10>& input) {
-    
-    std::array<Scalar, 10> input_real;
+std::array<Scalar, 10> predict_combustion(const std::array<Scalar, 10>& input)
+{
 
-    auto model_output = NN13<Scalar>(input_real); // Change input to desired features
+    auto model_output = NN13<Scalar>(input); // Change input to desired features
 
-    std::array<Scalar, 10> output_real;
+    std::array<Scalar, 10> output;
+
     for (int i = 0; i < 10; i++) {
-        output_real[i] = model_output[i] + input_real[i]; // NN outputs change of state properties, transferred to real values
+        output[i] = model_output[i] + input[i]; // NN outputs change of state properties, transferred to real values
     }
 
-    return output_real;
+    return output;
 }
 
 const int n_species = 9;
