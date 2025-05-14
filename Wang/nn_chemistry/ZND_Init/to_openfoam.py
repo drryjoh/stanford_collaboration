@@ -14,7 +14,7 @@ def write_openfoam_scalar_file(data, dimensions, name, location, boundary = "def
 """ + f"\ndimensions      {dimensions};\n"+ """
     internalField   nonuniform List<scalar>
     """+f"{n_points}\n(\n".format(n_points)
-    if boundary == "default"
+    if boundary == "default":
         bottom = """
     );
     boundaryField
@@ -100,7 +100,7 @@ def write_openfoam_vector_file(vectors, dimensions, name, location, boundary="de
  
     internalField   nonuniform List<vector>
     """+f"{n_points}\n(\n".format(n_points)
-    if boundary == "default"
+    if boundary == "default":
         bottom = """
     );
     boundaryField
