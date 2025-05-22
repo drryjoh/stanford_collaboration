@@ -33,17 +33,5 @@ for line in data:
    str_line = [str(d) for d in line]
    f.write("{0}\n".format(", ".join(str_line)))
 
-   #Below is to add concetration data of each species, use for getting states for NN when concetrations are required instead of mass fraction.
-   # Turn off when pulling a mesh ZND initialization generation
-# f = open("consolidated_with_xy_znd.csv","w")
-# for line in data:
-#     T = line[2]
-#     p = line[3]
-#     Y = line[range(4, data.shape[1])]
-#     gas.TPY = T, p, Y
-#     conc = gas.concentrations  # kmol/m^3
-#     str_line = [str(d) for d in line[:4]] + [str(c) for c in conc]
-#     f.write("{0}\n".format(", ".join(str_line)))
-
 
 
