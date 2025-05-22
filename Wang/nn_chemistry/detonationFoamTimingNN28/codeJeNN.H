@@ -60,7 +60,7 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
 std::array<Scalar, 10> predict_combustion(const std::array<Scalar, 10>& input)
 {
 
-    auto model_output = NN13<Scalar>(input); // Change input to desired features
+    auto model_output = NN28<Scalar>(input); // Change input to desired features
 
     std::array<Scalar, 10> output;
 
