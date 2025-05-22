@@ -28,11 +28,11 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     
     reaction->correct();
     auto Qdot_chemistry = reaction->Qdot();
-    forAll(Y, i)
+    forAll(Y, i)    
     {
         scalar small_of  = SMALL;
         volScalarField& Yi = Y[i];
-        RR_L2 += (RR[i] - reaction->R(Yi))/(reaction->R(Yi)+small_of) * UseNN;
+        RR_L2 += (RR[i] - reaction->R(Yi)) * UseNN;
     }
     
     Qdot_compare = (Qdot - Qdot_chemistry) * UseNN;
