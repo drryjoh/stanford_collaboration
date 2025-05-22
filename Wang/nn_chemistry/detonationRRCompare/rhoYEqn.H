@@ -32,7 +32,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     {
         scalar small_of  = SMALL;
         volScalarField& Yi = Y[i];
-        volScalarField& Ri = reaction->R(Yi);
+        const volScalarField& Rref = reaction->R(Yi);
         RR_L2 += (RR[i] - Ri) * UseNN;
     }
     
