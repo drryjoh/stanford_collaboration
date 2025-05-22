@@ -140,8 +140,13 @@ struct NNInterface
                 {
                     CNN[i] = Foam::max(output[i + 2], SMALL);  // molar concentration input
                 }
+
+                scalar C1;
+
                 for (label i = 0; i < n_species; ++i)
                 {
+
+                    C1 = CNN[i]
                     sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
                 }    
             }
