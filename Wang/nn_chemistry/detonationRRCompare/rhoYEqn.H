@@ -28,14 +28,33 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     
     reaction->correct();
     auto Qdot_chemistry = reaction->Qdot();
+    
     forAll(Y, i)    
     {
-        scalar small_of  = SMALL;
+        scalar small_of = SMALL;
         volScalarField& Yi = Y[i];
-        const volScalarField& Rref = reaction->R(Yi);
-        RR_L2 += (RR[i] - Ri) * UseNN;
+
+        // Get the internal field from reaction->R(Yi)
+        const volScalarField::Internal Rinternal = reaction->R(Yi);
+
+        // Wrap it in a temporary volScalarField
+        volScalarField Rref
+        (
+            IOobject
+            (
+                "Rref_" + name(i),             // Unique field name
+                mesh.time().timeName(),       
+                mesh,
+                IOobject::NO_READ,
+                IOobject::NO_WRITE
+            ),
+            Rinternal,
+            mesh
+        );
+
+        RR_L2 += (RR[i] - Rref) * UseNN;
     }
-    
+
     Qdot_compare = (Qdot - Qdot_chemistry) * UseNN;
 
     volScalarField Yt(0.0*Y[0]);
