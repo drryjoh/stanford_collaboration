@@ -188,20 +188,6 @@ volScalarField UseNN
     dimensionedScalar("UseNN", dimless, 0.0)
 );
 
-volScalarField RR_L2
-(
-    IOobject
-    (
-        "RR_L2",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::AUTO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("RR_compare", dimMass/dimVolume/dimTime, 0.0)
-);
-
 PtrList<volScalarField> RR_L2(Y.size());
 
 forAll(Y, i)
