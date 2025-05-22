@@ -202,6 +202,23 @@ volScalarField RR_L2
     dimensionedScalar("RR_compare", dimMass/dimVolume/dimTime, 0.0)
 );
 
+PtrList<volScalarField> RR_L2(Y.size());
+
+forAll(Y, i)
+{
+    RR_L2.set(
+        i,
+        new volScalarField(
+            IOobject(
+                "RR_compare" +Y[i].name(),
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject::NO_READ,
+                IOobject::AUTO_WRITE),
+            mesh_,
+            dimensionedScalar("RR_compare", dimMass/dimVolume/dimTime, 0.0)));
+}
+
 volScalarField Qdot_compare
 (
     IOobject
