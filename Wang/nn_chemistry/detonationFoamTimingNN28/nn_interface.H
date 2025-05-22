@@ -128,16 +128,12 @@ struct NNInterface
                 std::array<Scalar, 10> nn_input = {
                     T[cell_index],                      // Temperature (K)
                     p[cell_index] / 101325.0,          // Pressure (atm)
-                    C0[0], C0[1] C0[2],
+                    C0[0], C0[1], C0[2],
                     C0[3], C0[4], C0[5],
                     C0[6], C0[7]
                 };
 
                 auto output = predict_combustion(nn_input);
-
-                scalar T_ = output[0];
-                scalar p_ = output[1] * 101325.0;
-
                 
                 scalarList CNN(n_species, 0.0);
                 for (label i = 0; i < n_species - 1; ++i)
