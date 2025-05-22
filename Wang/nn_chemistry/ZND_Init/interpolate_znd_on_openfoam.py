@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 openfoam_data = pd.read_csv('consolidated_with_xy_znd.csv', skiprows=0)
 znd_data = pd.read_csv('ffcm2hydrogen_ZND_solution.csv', delim_whitespace=True)
 znd_data = znd_data.sort_values(by=znd_data.columns[0])
+n_periods = 4
 
 #First add two columns to openfoam data to house V and density
 openfoam_data['T'] = 0.0
