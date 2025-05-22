@@ -128,9 +128,9 @@ struct NNInterface
                 std::array<Scalar, 10> nn_input = {
                     T[cell_index],                      // Temperature (K)
                     p[cell_index] / 101325.0,          // Pressure (atm)
-                    C0[0][cell_index], C0[1][cell_index], C0[2][cell_index],
-                    C0[3][cell_index], C0[4][cell_index], C0[5][cell_index],
-                    C0[6][cell_index], C0[7][cell_index]
+                    C0[0], C0[1] C0[2],
+                    C0[3], C0[4], C0[5],
+                    C0[6], C0[7]
                 };
 
                 auto output = predict_combustion(nn_input);
