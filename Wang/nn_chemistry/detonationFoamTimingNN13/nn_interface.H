@@ -1,4 +1,3 @@
-
 #include "codeJeNN.H"
 #include "reactingMixture.H"
 struct NNInterface
