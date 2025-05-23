@@ -28,6 +28,8 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     
     reaction->correct();
     auto Qdot_chemistry = reaction->Qdot();
+    tmp<fvMatrix<scalar>> tR = reaction->R(Yi);
+    Info << "Dimensions of source: " << tR().source().dimensions() << endl;
 
     forAll(Y, i)    
     {
