@@ -36,7 +36,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         volScalarField& RRNN = RR[i];
         tmp<fvMatrix<scalar>> tRmat = reaction->R(Yi);
         const scalarField& Rref = tRmat().source()/mesh.V();
-        Info << "Dimensions of source: " << tRmat().dimensions() << endl;
+        //Info << "Dimensions of source: " << tRmat().dimensions() << endl;
 
         for (label cellI=0; cellI<mesh.C().size(); cellI++)
         {
