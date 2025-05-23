@@ -56,9 +56,10 @@ int main(int argc, char *argv[]) {
     scalar chemistry_time = 0;   //adding timing
     scalar entire_time = 0;
     clockTime timer;
+    int stepCount = 0;
+    const int maxSteps = 1;
 
-
-    while (runTime.run())
+    while (runTime.run() && stepCount < maxSteps )
     {
         #include "calculateDt.H"
         #include "detoCellular.H"
@@ -78,7 +79,9 @@ int main(int argc, char *argv[]) {
         Info << "Total time to solve chemistry system:              "<< chemistry_time <<endl;
         Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<endl;
 
-        runTime.write();
+        runTime.writeNow();
+        ++stepCount;
+        break;
     }
 
     Info<< "End" << endl;
