@@ -222,7 +222,7 @@ struct NNInterface
                 Species source_return = source(concentrations, T[cell_index]);
                 for (label i = 0; i < n_species; ++i)
                 {
-                    sourceField[i][cell_index] = source_return[i];
+                    sourceField[i][cell_index] = source_return[i] * mw[i];
                 }    
             }
             else
