@@ -46,7 +46,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     Qdot_compare = (Qdot - Qdot_chemistry) * UseNN;
 
     volScalarField Yt(0.0*Y[0]);
-
+/*
     forAll(Y, i)
     {
         if (i != inertIndex && composition.active(i))
@@ -73,4 +73,5 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     Y[inertIndex] = scalar(1) - Yt;
     Y[inertIndex].max(0.0);
+*/
 }
