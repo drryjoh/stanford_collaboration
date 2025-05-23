@@ -203,7 +203,7 @@ forAll(Y, i)
                 IOobject::NO_READ,
                 IOobject::AUTO_WRITE),
             mesh,
-            dimensionedScalar("RR_compare", dimMass/dimVolume/dimTime, 0.0)));
+            dimensionedScalar("RRNN", dimMass/dimVolume/dimTime, 0.0)));
 }
 
 forAll(Y, i)
@@ -218,7 +218,7 @@ forAll(Y, i)
                 IOobject::NO_READ,
                 IOobject::AUTO_WRITE),
             mesh,
-            dimensionedScalar("RR_compare", dimMass/dimVolume/dimTime, 0.0)));
+            dimensionedScalar("RROF", dimMass/dimVolume/dimTime, 0.0)));
 }
 
 
