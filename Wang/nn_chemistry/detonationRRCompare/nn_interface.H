@@ -220,11 +220,12 @@ struct NNInterface
                 scalar internal_energy = internal_energy_volume_specific(concentrations, T[cell_index]);
                 chemical_state[0] = internal_energy;
 
-                //auto species_out = yass();
-                Species source_return = source(concentrations, T[cell_index]);
+                auto species_out = yass(chemical_state, dt);
+
+                //Species source_return = source(concentrations, T[cell_index]);
                 for (label i = 0; i < n_species; ++i)
                 {
-                    sourceField[i][cell_index] = source_return[i] * mw[i];
+                    sourceField[i][cell_index] = (species_out[i] - C0[i]) * inv_dt * mw[i];
                 }    
             }
             else

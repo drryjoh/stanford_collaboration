@@ -16,13 +16,16 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
     auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-    auto RR_chemgen = nnInterface.solve_chemgen(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-    
     scalar time_after_NN_chemistry =  timer.elapsedTime();
     scalar current_iteration_chemistry_time = time_after_NN_chemistry - time_before_NN_chemistry;
     chemistry_time += current_iteration_chemistry_time;
     Info << "Current iterations Neural Network chemistry time:                 " << current_iteration_chemistry_time <<endl;
-
+    
+    scalar time_before_chemgen_chemistry =  timer.elapsedTime();
+    auto RR_chemgen = nnInterface.solve_chemgen(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+    scalar time_after_chemgen_chemistry =  timer.elapsedTime();
+    scalar chemgen_time = time_after_chemgen_chemistry - time_before_chemgen_chemistry;
+    Info << "YASS Time:                 " << chemgen_time <<endl;
 
     Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
     
