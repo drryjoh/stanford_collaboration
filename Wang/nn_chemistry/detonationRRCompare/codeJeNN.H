@@ -91,14 +91,6 @@ constexpr Species inv_molecular_weights()
 #pragma once
 #include <string>
 
-static constexpr std::array<const char*, 9> species_names_gen()
-{
-    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "AR"};
-}
+//CHEMGEN
+#include "chemgen/chemgen.h"
 
-// Return the species name for a given index
-static std::string species_name_gen(int index)
-{
-    constexpr auto names = species_names_gen(); // Get the list of species names use auto for now
-    return names[index]; // Return the name of the requested species
-}
