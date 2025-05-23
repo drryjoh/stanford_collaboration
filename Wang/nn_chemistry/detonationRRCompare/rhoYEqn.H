@@ -35,12 +35,13 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         volScalarField& Yi = Y[i];
         volScalarField& RRNN = RR[i];
         tmp<fvMatrix<scalar>> tRmat = reaction->R(Yi);
-        const scalarField& Rref = tRmat().source()/mesh.V();
+        const scalarField& Rref = tRmat().ref();
         //Info << "Dimensions of source: " << tRmat().dimensions() << endl;
 
         for (label cellI=0; cellI<mesh.C().size(); cellI++)
         {
-            RR_L2[i][cellI] = (RRNN[cellI] - Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
+            RR_L2[i][cellI] = RRNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
+            RROF_L2[i][cellI] = Rref[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
         }
     }
 
