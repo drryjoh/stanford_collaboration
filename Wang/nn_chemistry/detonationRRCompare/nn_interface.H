@@ -162,74 +162,80 @@ struct NNInterface
         return sourceField;
     }
 
-    //PtrList<volScalarField> 
-    //chemgen_solve(
-    //    const PtrList<volScalarField>& Y,
-    //    const volScalarField& p,
-    //    const volScalarField& T,
-    //    const volScalarField& UseNN,
-    //    scalar dt) const
-    //{
-    //    PtrList<volScalarField> sourceField(Y.size());
+    PtrList<volScalarField> 
+    solve_chemgen(
+        const PtrList<volScalarField>& Y,
+        const volScalarField& p,
+        const volScalarField& T,
+        const volScalarField& UseNN,
+        scalar dt) const
+    {
+        PtrList<volScalarField> sourceField(Y.size());
 
-    //    forAll(Y, i)
-    //    {
-    //        sourceField.set(
-    //            i,
-    //            new volScalarField(
-    //                IOobject(
-    //                    "source_NN_" +Y[i].name(),
-    //                    mesh_.time().timeName(),
-    //                    mesh_,
-    //                    IOobject::NO_READ,
-    //                    IOobject::NO_WRITE),
-    //                mesh_,
-    //                dimensionedScalar("zero", dimMass/dimVolume/dimTime, 0.0)));
-    //    }
+        forAll(Y, i)
+        {
+            sourceField.set(
+                i,
+                new volScalarField(
+                    IOobject(
+                        "source_NN_" +Y[i].name(),
+                        mesh_.time().timeName(),
+                        mesh_,
+                        IOobject::NO_READ,
+                        IOobject::NO_WRITE),
+                    mesh_,
+                    dimensionedScalar("zero", dimMass/dimVolume/dimTime, 0.0)));
+        }
 
-    //    scalar inv_dt =  1.0/dt;
-    //    forAll(T, cell_index)
-    //    {
-    //        if(UseNN[cell_index]>0.01)
-    //        {
-    //            scalarList Y0(n_species, 0.0);
-    //            scalarList C0(n_species, 0.0);
-    //            Species mw = molecular_weights();
+        scalar inv_dt =  1.0/dt;
+        forAll(T, cell_index)
+        {
+            if(UseNN[cell_index]>0.01)
+            {
+                scalarList Y0(n_species, 0.0);
+                scalarList C0(n_species, 0.0);
+                Species mw = molecular_weights();
 
-    //            for (label i = 0; i < n_species; ++i)
-    //            {
-    //                Y0[i] = Y[i][cell_index];
-    //            }
-    //            scalar rho0 = rho_scalar(Y0, p[cell_index], T[cell_index]);
+                for (label i = 0; i < n_species; ++i)
+                {
+                    Y0[i] = Y[i][cell_index];
+                }
+                scalar rho0 = rho_scalar(Y0, p[cell_index], T[cell_index]);
                 
-    //            //Y_i = W_i * C_i / rho 
-    //            for (label i = 0; i < n_species; ++i)
-    //            {
-    //                C0[i] = Y0[i]/mw[i] * rho0;
-    //            }            
+                //Y_i = W_i * C_i / rho 
+                for (label i = 0; i < n_species; ++i)
+                {
+                    C0[i] = Y0[i]/mw[i] * rho0;
+                }            
                 
 
+                ChemicalState chemical_state;
+                Species concentrations;
+                for (label i = 0; i < n_species; ++i)
+                {
+                    chemical_state[i+1] = C0[i];
+                    concentrations[i] = C0[i];
+                }
 
-    //            scalar C1;
+                scalar internal_energy = internal_energy_volume_specific(concentrations, T[cell_index]);
+                chemical_state[0] = internal_energy;
+                Species source_return = source(concentrations, T[cell_index]);
+                for (label i = 0; i < n_species; ++i)
+                {
+                    sourceField[i][cell_index] = source_return[i];
+                }    
+            }
+            else
+            {
+                for (label i = 0; i < n_species; ++i)
+                {
+                    sourceField[i][cell_index] = 0.0;
+                }    
+            }
+        }
 
-    //            for (label i = 0; i < n_species; ++i)
-    //            {
-
-    //                C1 = CNN[i];
-    //                sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
-    //            }    
-    //        }
-    //        else
-    //        {
-    //            for (label i = 0; i < n_species; ++i)
-    //            {
-    //                sourceField[i][cell_index] = 0.0;
-    //            }    
-    //        }
-    //    }
-
-    //    return sourceField;
-    //}
+        return sourceField;
+    }
 
     
     volScalarField Qdot(

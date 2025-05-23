@@ -16,6 +16,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
     auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+    auto RR_chemgen = nnInterface.solve_chemgen(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
     
     scalar time_after_NN_chemistry =  timer.elapsedTime();
     scalar current_iteration_chemistry_time = time_after_NN_chemistry - time_before_NN_chemistry;
@@ -34,6 +35,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         scalar small_of = SMALL;
         volScalarField& Yi = Y[i];
         volScalarField& RRNN = RR[i];
+        volScalarField& RRCG = RR_chemgen[i];
         tmp<fvMatrix<scalar>> tRmat = reaction->R(Yi);
         const scalarField& Rref = tRmat().source()/mesh.V();
         //Info << "Dimensions of source: " << tRmat().dimensions() << endl;
@@ -41,6 +43,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         for (label cellI=0; cellI<mesh.C().size(); cellI++)
         {
             RR_L2[i][cellI] = RRNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
+            RRCG_L2[i][cellI] = RRCG[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
             RROF_L2[i][cellI] = -Rref[cellI] * UseNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
         }
     }
