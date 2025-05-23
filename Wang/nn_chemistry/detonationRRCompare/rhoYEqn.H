@@ -34,7 +34,8 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         scalar small_of = SMALL;
         volScalarField& Yi = Y[i];
         volScalarField& RRNN = RR[i];
-        auto Rref = reaction->R(Yi);
+        tmp<fvMatrix<scalar>> tRmat = reaction->R(Yi);
+        const scalarField& Rref = tRmat().source();
 
         for (label cellI=0; cellI<mesh.C().size(); cellI++)
         {
