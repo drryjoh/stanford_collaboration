@@ -197,11 +197,11 @@ forAll(Y, i)
         new volScalarField(
             IOobject(
                 "RR_compare" +Y[i].name(),
-                mesh_.time().timeName(),
+                mesh.time().timeName(),
                 mesh_,
                 IOobject::NO_READ,
                 IOobject::AUTO_WRITE),
-            mesh_,
+            mesh,
             dimensionedScalar("RR_compare", dimMass/dimVolume/dimTime, 0.0)));
 }
 
