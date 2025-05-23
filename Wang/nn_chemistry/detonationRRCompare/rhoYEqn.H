@@ -28,8 +28,6 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     
     reaction->correct();
     auto Qdot_chemistry = reaction->Qdot();
-    tmp<fvMatrix<scalar>> tR = reaction->R(Yi);
-    Info << "Dimensions of source: " << tR().source().dimensions() << endl;
 
     forAll(Y, i)    
     {
@@ -37,7 +35,8 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         volScalarField& Yi = Y[i];
         volScalarField& RRNN = RR[i];
         tmp<fvMatrix<scalar>> tRmat = reaction->R(Yi);
-        const scalarField& Rref = tRmat().source();
+        const scalarField& Rref = tRmat().source()/mesh.V();
+        Info << "Dimensions of source: " << tRmat().source().dimensions() << endl;
 
         for (label cellI=0; cellI<mesh.C().size(); cellI++)
         {
