@@ -40,7 +40,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
         for (label cellI=0; cellI<mesh.C().size(); cellI++)
         {
-            RR_L2[i][cellI] = RRNN[cellI] * UseNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
+            RR_L2[i][cellI] = RRNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
             RROF_L2[i][cellI] = -Rref[cellI] * UseNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
         }
     }
