@@ -197,7 +197,7 @@ forAll(Y, i)
         i,
         new volScalarField(
             IOobject(
-                "RR_compare" +Y[i].name(),
+                "RRNN" +Y[i].name(),
                 mesh.time().timeName(),
                 mesh,
                 IOobject::NO_READ,
@@ -212,7 +212,7 @@ forAll(Y, i)
         i,
         new volScalarField(
             IOobject(
-                "RR_compare" +Y[i].name(),
+                "RROF" +Y[i].name(),
                 mesh.time().timeName(),
                 mesh,
                 IOobject::NO_READ,
