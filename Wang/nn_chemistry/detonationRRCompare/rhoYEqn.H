@@ -27,11 +27,15 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     scalar chemgen_time = time_after_chemgen_chemistry - time_before_chemgen_chemistry;
     Info << "YASS Time:                 " << chemgen_time <<endl;
 
-    Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
+
     
     
     reaction->correct();
-    auto Qdot_chemistry = reaction->Qdot();
+    
+    Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
+    Qdot_of = reaction->Qdot();
+    Qdot_nn  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
+    Qdot_chemgen  = nnInterface.Qdot(thermo, RR_chemgen); // sum(RR_i, Hc_i)
 
     forAll(Y, i)    
     {
@@ -50,8 +54,6 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
             RROF_L2[i][cellI] = -Rref[cellI] * UseNN[cellI]; //- Rref[cellI])/(Rref[cellI] + small_of) * UseNN[cellI];            
         }
     }
-
-    Qdot_compare = (Qdot - Qdot_chemistry) * UseNN;
 
     volScalarField Yt(0.0*Y[0]);
 /*

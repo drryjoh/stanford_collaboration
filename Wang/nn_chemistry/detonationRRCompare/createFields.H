@@ -174,6 +174,48 @@ volScalarField Qdot
     dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
 );
 
+volScalarField Qdot_of
+(
+    IOobject
+    (
+        "Qdot_of",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
+);
+
+volScalarField Qdot_chemgen
+(
+    IOobject
+    (
+        "Qdot_chemgen",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
+);
+
+volScalarField Qdot_nn
+(
+    IOobject
+    (
+        "Qdot_nn",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
+);
+
 volScalarField UseNN
 (
     IOobject
@@ -236,20 +278,6 @@ forAll(Y, i)
             mesh,
             dimensionedScalar("RRCG", dimMass/dimVolume/dimTime, 0.0)));
 }
-
-volScalarField Qdot_compare
-(
-    IOobject
-    (
-        "Qdot_compare",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::AUTO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("Qdo_compare", dimEnergy/dimVolume/dimTime, 0.0)
-);
 
 Info<< "Creating turbulence model\n" << endl;
 autoPtr<compressible::turbulenceModel> turbulence
