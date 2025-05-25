@@ -190,7 +190,7 @@ struct NNInterface
         scalar inv_dt =  1.0/dt;
         forAll(T, cell_index)
         {
-            if(UseNN[cell_index]>0.01)
+            //if(UseNN[cell_index]>0.01)
             {
                 scalarList Y0(n_species, 0.0);
                 scalarList C0(n_species, 0.0);
@@ -220,7 +220,7 @@ struct NNInterface
                 scalar internal_energy = internal_energy_volume_specific(concentrations, T[cell_index]);
                 chemical_state[0] = internal_energy;
 
-                auto species_out = get_species(sdirk4(chemical_state, dt));
+                auto species_out = get_species(yass(chemical_state, dt));
 
                 //Species source_return = source(concentrations, T[cell_index]);
                 for (label i = 0; i < n_species; ++i)
@@ -228,13 +228,13 @@ struct NNInterface
                     sourceField[i][cell_index] = (species_out[i] - C0[i]) * inv_dt * mw[i];
                 }    
             }
-            else
-            {
-                for (label i = 0; i < n_species; ++i)
-                {
-                    sourceField[i][cell_index] = 0.0;
-                }    
-            }
+            //else
+            //{
+            //    for (label i = 0; i < n_species; ++i)
+            //    {
+            //        sourceField[i][cell_index] = 0.0;
+            //    }    
+            //}
         }
 
         return sourceField;
