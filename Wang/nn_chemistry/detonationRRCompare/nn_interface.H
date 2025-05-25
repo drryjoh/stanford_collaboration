@@ -220,7 +220,7 @@ struct NNInterface
                 scalar internal_energy = internal_energy_volume_specific(concentrations, T[cell_index]);
                 chemical_state[0] = internal_energy;
 
-                auto species_out = get_species(yass(chemical_state, dt));
+                auto species_out = get_species(sdirk4(chemical_state, dt));
 
                 //Species source_return = source(concentrations, T[cell_index]);
                 for (label i = 0; i < n_species; ++i)
