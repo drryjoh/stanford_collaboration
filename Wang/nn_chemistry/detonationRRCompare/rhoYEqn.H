@@ -46,6 +46,10 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         << "rank " << Pstream::myProcNo()
         << " OpenFOAM ODE time:    " << openfoam_time     << endl;
 
+    scalar totalNN     = Pstream::sum(nn_chemistry_time);
+    scalar totalChemgen= Pstream::sum(chemgen_time);
+    scalar totalOF     = Pstream::sum(openfoam_time);
+
     Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
     Qdot_of = reaction->Qdot();
     Qdot_nn  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
@@ -70,7 +74,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     }
 
     volScalarField Yt(0.0*Y[0]);
-/*
+
     forAll(Y, i)
     {
         if (i != inertIndex && composition.active(i))
@@ -82,7 +86,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
                 fvm::ddt(rho, Yi)
               + mvConvection->fvmDiv(rhoPhi, Yi)
              ==
-                RR[i]
+                reaction->R(Yi)
             );
 
             YiEqn.relax();
@@ -97,5 +101,4 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     Y[inertIndex] = scalar(1) - Yt;
     Y[inertIndex].max(0.0);
-*/
 }

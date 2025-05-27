@@ -71,13 +71,25 @@ int main(int argc, char *argv[]) {
         #include "rhoEqn.H"
         #include "rhoUEqn.H"
         #include "rhoYEqn.H"
-        //#include "rhoEEqn.H"
+        #include "rhoEEqn.H"
         scalar time_after = timer.elapsedTime();
         entire_time += time_after - time_before;
-        Info << "Time to solve iterations complete system:          "<< time_after-time_before <<endl;
-        Info << "Total time to solve entire system:                 "<< entire_time <<endl;
-        Info << "Total time to solve chemistry system:              "<< chemistry_time <<endl;
-        Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<endl;
+        scalar iteration_time  = time_after - time_before;
+        //Info << "Time to solve iterations complete system:          "<< time_after-time_before <<endl;
+        //Info << "Total time to solve entire system:                 "<< entire_time <<endl;
+        //Info << "Total time to solve chemistry system:              "<< chemistry_time <<endl;
+        //Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<endl;
+        scalar total_iteration     = Pstream::sum(iteration_time);
+/*
+    scalar totalNN     = Pstream::sum(nn_chemistry_time);
+    scalar totalChemgen= Pstream::sum(chemgen_time);
+    scalar totalOF     = Pstream::sum(openfoam_time);
+*/
+        Pout<< "rank " << Pstream::myProcNo()
+        << " total time:    " << iteration_time << endl;
+        Info << "All pct totalNN/total_iteration: " << totalNN/(iteration_time - totalChemgen - totalOF);
+        Info << "All pct totalChemgen/total_iteration: " << totalChemgen/(iteration_time - totalNN - totalOF);
+        Info << "All pct totalOF/total_iteration: " << totalOF/(iteration_time - totalNN - totalChemgen);
 
         runTime.writeNow();
         ++stepCount;
