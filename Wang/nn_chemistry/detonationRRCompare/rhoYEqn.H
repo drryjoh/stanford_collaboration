@@ -52,6 +52,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
     Qdot_of = reaction->Qdot();
+    Qdot  =  Qdot_of;
     Qdot_nn  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
     Qdot_chemgen  = nnInterface.Qdot(thermo, RR_chemgen); // sum(RR_i, Hc_i)
 
