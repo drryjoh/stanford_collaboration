@@ -13,7 +13,6 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 {
 
     scalar time_before_NN_chemistry =  timer.elapsedTime();
-
     nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
     auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
     scalar time_after_NN_chemistry =  timer.elapsedTime();
@@ -34,6 +33,18 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     scalar time_after_openfoam_chemistry =  timer.elapsedTime();
     scalar openfoam_time = time_after_openfoam_chemistry - time_before_openfoam_chemistry;
     Info << "OpenFOAM ODE Time:                 " << openfoam_time <<endl;
+
+    #include "Pstream.H"
+
+    // … inside your loop, after you’ve accumulated chemistry_time on each rank …
+
+    // 1) Print the *local* timing on each rank:
+    Info<< "rank " << Pstream::myProcNo()
+        << " NN-chemistry time:    " << nn_chemistry_time << endl
+        << "rank " << Pstream::myProcNo()
+        << " chemgen time:         " << chemgen_time       << endl
+        << "rank " << Pstream::myProcNo()
+        << " OpenFOAM ODE time:    " << openfoam_time     << endl;
 
     Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
     Qdot_of = reaction->Qdot();
