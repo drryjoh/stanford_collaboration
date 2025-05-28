@@ -65,6 +65,9 @@ int main(int argc, char *argv[]) {
         #include "detoCellular.H"
 
         mesh.update();                                
+        scalar totalNN = 0;
+        scalar totalChemgen= 0;
+        scalar totalOF     = 0;
 
         fluxSchemeFields->update(rho,U,e,p,c,phi,rhoPhi,rhoUPhi,rhoEPhi);
         scalar time_before =  timer.elapsedTime();

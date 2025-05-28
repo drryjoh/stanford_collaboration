@@ -47,13 +47,13 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     #include "PstreamReduceOps.H"
 
-    scalar totalNN = nn_chemistry_time;
+    totalNN = nn_chemistry_time;
     reduce(totalNN, sumOp<scalar>());
 
-    scalar totalChemgen= chemgen_time;
+    totalChemgen= chemgen_time;
     reduce(totalChemgen, sumOp<scalar>());
 
-    scalar totalOF     = openfoam_time;
+    totalOF     = openfoam_time;
     reduce(totalOF, sumOp<scalar>());
 
     Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
