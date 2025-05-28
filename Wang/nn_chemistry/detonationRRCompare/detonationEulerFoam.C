@@ -87,9 +87,9 @@ int main(int argc, char *argv[]) {
 
         Pout<< "rank " << Pstream::myProcNo()
         << " total time:    " << iteration_time << endl;
-        Info << "All pct totalNN/total_iteration: " << totalNN/(iteration_time - totalChemgen - totalOF);
-        Info << "All pct totalChemgen/total_iteration: " << totalChemgen/(iteration_time - totalNN - totalOF);
-        Info << "All pct totalOF/total_iteration: " << totalOF/(iteration_time - totalNN - totalChemgen);
+        Info << "All pct totalNN/total_iteration: " << totalNN/(total_iteration - totalChemgen - totalOF) << endl;
+        Info << "All pct totalChemgen/total_iteration: " << totalChemgen/(total_iteration - totalNN - totalOF) << endl;
+        Info << "All pct totalOF/total_iteration: " << totalOF/(total_iteration - totalNN - totalChemgen) << endl;
 
         runTime.writeNow();
         ++stepCount;
