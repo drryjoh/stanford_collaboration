@@ -82,11 +82,18 @@ int main(int argc, char *argv[]) {
         //Info << "Total time to solve entire system:                 "<< entire_time <<endl;
         //Info << "Total time to solve chemistry system:              "<< chemistry_time <<endl;
         //Info << "Running percentage of chemistry/total_simulation:  "<< chemistry_time/entire_time <<endl;
-        scalar total_iteration     = iteration_time;
+        scalar total_iteration  = iteration_time;
         reduce(total_iteration, sumOp<scalar>());
 
         Pout<< "rank " << Pstream::myProcNo()
         << " total time:    " << iteration_time << endl;
+
+        Info << "totalNN: " << totalNN << endl;
+        Info << "totalChemgen: " << totalChemgen << endl;
+        Info << "totalOF: " << totalOF << endl;
+        Info << "total_iteration: " << total_iteration << endl;
+
+
         Info << "All pct totalNN/total_iteration: " << totalNN/(total_iteration - totalChemgen - totalOF) << endl;
         Info << "All pct totalChemgen/total_iteration: " << totalChemgen/(total_iteration - totalNN - totalOF) << endl;
         Info << "All pct totalOF/total_iteration: " << totalOF/(total_iteration - totalNN - totalChemgen) << endl;
