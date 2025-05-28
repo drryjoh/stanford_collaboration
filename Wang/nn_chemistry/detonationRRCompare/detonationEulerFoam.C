@@ -91,6 +91,9 @@ int main(int argc, char *argv[]) {
         Info << "totalOF: " << totalOF << endl;
         Info << "total_iteration: " << total_iteration << endl;
 
+        Info << "Total Time With NN: " << total_iteration + totalNN << endl;
+        Info << "Total Time With ChemGen: " << total_iteration + totalChemgen << endl;
+        Info << "Total Time With OpenFOAM chemistry: " << total_iteration + totalOF << endl;
 
         Info << "All pct totalNN/total_iteration: " << totalNN/(total_iteration + totalNN) << endl;
         Info << "All pct totalChemgen/total_iteration: " << totalChemgen/(total_iteration + totalChemgen) << endl;
