@@ -54,18 +54,22 @@ int main() {
     }
     for (int  i  = 0; i< 100; i++)
     {
+
+        auto start = std::chrono::high_resolution_clock::now();
+
         auto model_output = NN13<Scalar>(input); // Change input to desired features
+
+        auto end = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
+        std::cout << "NN13 runtime: " << duration << " microseconds\n";    
+
 
         std::array<Scalar, n_species - 1> output_species;
         for (int i = 0; i < n_species - 1; i++) {
-            auto start = std::chrono::high_resolution_clock::now();
+            output_species[i] = model_output[i + 2] + input[i + 2]; //+ source_[i] * dt; // NN outputs change of state properties, transferred to real values
+        }
 
-            auto model_output = NN13<Scalar>(input); // Change input to desired features
-            
-            auto end = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-            
-            std::cout << "NN13 runtime: " << duration << " microseconds\n";        }
 
         for(int i = 0; i<n_species - 1; i++)
         {
