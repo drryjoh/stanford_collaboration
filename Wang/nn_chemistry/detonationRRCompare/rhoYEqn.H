@@ -46,9 +46,16 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
         << "rank " << Pstream::myProcNo()
         << " OpenFOAM ODE time:    " << openfoam_time     << endl;
 
-    scalar totalNN     = Pstream::sum(nn_chemistry_time);
-    scalar totalChemgen= Pstream::sum(chemgen_time);
-    scalar totalOF     = Pstream::sum(openfoam_time);
+    #include "PstreamReduceOps.H"
+
+    scalar totalNN = nn_chemistry_time;
+    reduce(totalNN, sumOp<scalar>());
+
+    scalar totalChemgen= chemgen_time;
+    reduce(totalChemgen, sumOp<scalar>());
+
+    scalar totalOF     = openfoam_time;
+    reduce(totalOF, sumOp<scalar>());
 
     Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
     Qdot_of = reaction->Qdot();
