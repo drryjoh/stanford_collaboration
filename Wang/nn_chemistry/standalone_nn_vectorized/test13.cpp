@@ -4,7 +4,7 @@
 #include <iostream>  // For printing the result to the console
 
 //#include "NN16.h"
-#include "NN13.h"
+#include "NN13_not_vectorized.h"
 #include <chrono>
 #include <fstream> //for saving data and plotting in python
 
@@ -35,7 +35,7 @@ int main() {
 
     double temperature_ =  temperature_initial;
     double pressure_ = pressure_initial;
-    int n_species = 9;
+    const int n_species = 9;
     //"H","H2","O","O2","OH","H2O","HO2","H2O2","AR"
     std::array<double, 10> input  = {};
     input[0] = temperature_;
@@ -52,7 +52,7 @@ int main() {
         std::cerr << "Error: could not open output file.\n";
         return 1;
     }
-    for (int  i  = 0; i< 10000; i++)
+    for (int  i  = 0; i< 100; i++)
     {
         auto model_output = NN13<Scalar>(input); // Change input to desired features
 
@@ -84,7 +84,7 @@ int main() {
         }
         time+=dt;
         file << time << ", " << temperature_ << ", " << pressure_ << ", " << massfractions << std::endl;
-        std::cout<< time<<", "<<temperature_ << ", " << pressure_ << ", "<< massfractions <<std::endl;
+     //   std::cout<< time<<", "<<temperature_ << ", " << pressure_ << ", "<< massfractions <<std::endl;
 
     }
     file.close();
