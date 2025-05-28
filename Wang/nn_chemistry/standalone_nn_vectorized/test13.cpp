@@ -4,7 +4,7 @@
 #include <iostream>  // For printing the result to the console
 
 //#include "NN16.h"
-#include "NN13_not_vectorized.h"
+#include "NN13_vectorized.h"
 #include <chrono>
 #include <fstream> //for saving data and plotting in python
 
@@ -52,7 +52,7 @@ int main() {
         std::cerr << "Error: could not open output file.\n";
         return 1;
     }
-    for (int  i  = 0; i< 100; i++)
+    for (int  i  = 0; i< 10; i++)
     {
 
         auto start = std::chrono::high_resolution_clock::now();
