@@ -66,7 +66,7 @@ std::array<Scalar, 10> input_norms =
 9.563922517809938953e-05,
 4.216077916737350894e-04,
 5.339551713995062038e-08,
-9.874895883954346162e-09}
+9.874895883954346162e-09};
 
 std::array<Scalar, 10> input_mins = 
 {2.256979697962376576e+03,
@@ -118,7 +118,10 @@ std::array<Scalar, 10> input_mins =
     forwardPass<Scalar, 10>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear_nn<Scalar>, 0.0);
 
     std::array<Scalar, 10> output_norms = 
-    {3.369401680207616268e-02, 3.100321105838015176e-05, 1.829187151826668606e-07, 3.436954471065158639e-07, 
+    {3.369401680207616268e-02, 
+    3.100321105838015176e-05,
+     1.829187151826668606e-07, 
+     3.436954471065158639e-07, 
 5.064507273859827518e-08,
 1.635208197324899565e-07,
 6.157626973747748550e-08,
@@ -138,7 +141,7 @@ std::array<Scalar, 10> input_mins =
 7.893808214385582224e-08,
 7.206312879283144706e-12,
 -2.866351154016893317e-12
-}
+};
 
     std::array<Scalar, 10> model_output;
     for (int i = 0; i < 10; i++) { model_output[i] = (layer_4_output.data()[i] * output_norms[i]) + output_mins[i]; } 
