@@ -66,6 +66,6 @@ for row in openfoam_states:
     RR = ((output_real[2:] - input_real[2:]) / 1e-9) * gas.molecular_weights[:-1]
     RRs.append(RR)
 combined = np.hstack((openfoam_states, RRs))
-header = 'X,Y,T,P,YH,YH2,YO,YO2,YOH,YH2O,YHO2,YH2O2,YAR,RRH,RRH2,RRO,RRO2,RROH,RRH2O,RRHO2,RRH2O2'
+header = 'X,Y,T,P,YH,YH2,YO,YO2,YOH,YH2O,YHO2,YH2O2,YAR,RRPYH,RRPYH2,RRPYO,RRPYO2,RRPYOH,RRPYH2O,RRPYHO2,RRPYH2O2'
 
 np.savetxt('consolidated_with_RRs.csv', combined, delimiter=',', fmt='%.6f',header=header,comments='')
