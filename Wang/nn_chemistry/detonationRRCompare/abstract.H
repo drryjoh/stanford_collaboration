@@ -29,7 +29,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     // 1) Print the *local* timing on each rank:
     Pout<< "rank " << Pstream::myProcNo()
-        << " NN-chemistry time:    " << chemistry_time << endl
+        << " NN-chemistry time:    " << nn_chemistry_time << endl
         << "rank " << Pstream::myProcNo()
         << " chemgen time:         " << chemgen_time       << endl
         << "rank " << Pstream::myProcNo()
