@@ -53,7 +53,6 @@ int main(int argc, char *argv[]) {
     #include "createFieldRefs.H"
 
     Info<< "\nStarting time loop\n" << endl;
-    scalar chemistry_time = 0;   //adding timing
     scalar entire_time = 0;
     clockTime timer;
     int stepCount = 0;
