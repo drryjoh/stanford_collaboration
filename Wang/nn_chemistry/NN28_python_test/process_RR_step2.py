@@ -20,7 +20,7 @@ nn_input_dict = {
 }
 
 model = nn_models.DNN(**nn_input_dict)
-model.load_state_dict(torch.load("./Case28/NN1_lr6/state_dict.pth"))
+model.load_state_dict(torch.load("./Case28/NN1_lr4/state_dict.pth"))
 
 state_dict = model.state_dict()
 W0 = state_dict["linear_layers.0.weight"].numpy()
