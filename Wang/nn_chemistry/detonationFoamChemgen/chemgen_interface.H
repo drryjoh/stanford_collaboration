@@ -81,7 +81,7 @@ struct ChemgenInterface
 
 
     PtrList<volScalarField> 
-    solve_chemgen(
+    solve(
         const PtrList<volScalarField>& Y,
         const volScalarField& p,
         const volScalarField& T,
