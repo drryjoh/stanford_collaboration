@@ -14,7 +14,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
 
     auto RR = chemgen.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-    Qdot  = nnInterface.Qdot(thermo, RR); 
+    Qdot  = chemgen.Qdot(thermo, RR); 
     volScalarField Yt(0.0*Y[0]);
 
     forAll(Y, i)
