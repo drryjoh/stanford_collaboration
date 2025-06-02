@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 openfoam_data = pd.read_csv('consolidated_with_xy_znd.csv', skiprows=0)
 znd_data = pd.read_csv('ffcm2hydrogen_ZND_solution.csv', delim_whitespace=True)
 znd_data = znd_data.sort_values(by=znd_data.columns[0])
-n_periods = 4
 
 #First add two columns to openfoam data to house V and density
 openfoam_data['T'] = 0.0
@@ -35,7 +34,7 @@ plt.plot(openfoam_data.iloc[:, 0], openfoam_data.iloc[:, 1])
 for index, row in openfoam_data.iterrows():
     x_cell = row.iloc[0]
     y_cell = row.iloc[1]
-    x_front = 0.005*np.sin(n_periods * np.pi * y_cell/0.06) + 0.05   #CHANGE VALUES HERE TO CHANGE SINUSIODAL WAVE 
+    x_front = 0.005*np.sin(4*np.pi*y_cell/0.06) + 0.05   #CHANGE VALUES HERE TO CHANGE SINUSIODAL WAVE 
 
     interpolated_row = np.array([])
     if  x_cell < x_front:
