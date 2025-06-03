@@ -34,8 +34,8 @@ plt.plot(openfoam_data.iloc[:, 0], openfoam_data.iloc[:, 1])
 for index, row in openfoam_data.iterrows():
     x_cell = row.iloc[0]
     y_cell = row.iloc[1]
-    x_front = 0.005*np.sin(4*np.pi*y_cell/0.06) + 0.05   #CHANGE VALUES HERE TO CHANGE SINUSIODAL WAVE 
-
+    rng = np.random.default_rng(seed=42)
+    x_front = sum(0.001 * rng.uniform(0.5, 1.5) * np.sin(2 * np.pi * rng.uniform(1, 20) * y_cell / 0.06 + rng.uniform(0, 2*np.pi)) for _ in range(20)) + 0.05
     interpolated_row = np.array([])
     if  x_cell < x_front:
         distance_behind = x_front - x_cell
