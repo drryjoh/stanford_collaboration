@@ -146,7 +146,7 @@ struct NNInterface
 
                 for (label i = 0; i < n_species; ++i)
                 {
-                    sourceField[i][cell_index] = RR[i] + CNN[i] * inv_dt * mw[i];
+                    sourceField[i][cell_index] = C0[i] + RR[i] + CNN[i] * inv_dt * mw[i];
                 }    
             }
             else
