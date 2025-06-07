@@ -42,7 +42,6 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
             Yt += Yi;
         }
     }
-
     Y[inertIndex] = scalar(1) - Yt;
     Y[inertIndex].max(0.0);
 }
