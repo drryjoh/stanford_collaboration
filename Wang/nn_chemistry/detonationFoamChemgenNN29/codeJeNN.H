@@ -88,13 +88,13 @@ constexpr Species inv_molecular_weights()
 }
 
 // Define the species names as a fixed-size array
-#pragma once
-#include <string>
+// #pragma once
+// #include <string>
 
-static constexpr std::array<const char*, 9> species_names_gen()
-{
-    return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "AR"};
-}
+// static constexpr std::array<const char*, 9> species_names_gen()
+// {
+//     return {"H", "H2", "O", "O2", "OH", "H2O", "HO2", "H2O2", "AR"};
+// }
 
 // Return the species name for a given index
 // static std::string species_name_gen(int index)
