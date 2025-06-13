@@ -5,3 +5,5 @@ const label inertIndex(composition.species()[inertSpecie]);
 
 ChemgenInterface chemgen(mesh);
 chemgen.check_species_list(Y);
+NNInterface nnInterface(mesh);
+//nnInterface.check_species_list(Y);
