@@ -41,6 +41,7 @@ Description
 
 //CodeJeNN 
 #include "chemgen_interface.H"
+#include "nn_interface.H"
 #include "IOmanip.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
