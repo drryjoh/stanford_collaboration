@@ -142,11 +142,12 @@ struct NNInterface
                 }
 
                 scalar C1;
-                auto RR = chemgen.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
 
                 for (label i = 0; i < n_species; ++i)
                 {
-                    sourceField[i][cell_index] = C0[i] + RR[i] + CNN[i] * inv_dt * mw[i];
+
+                    C1 = CNN[i];
+                    sourceField[i][cell_index] = (C1 - C0[i]) * inv_dt * mw[i];
                 }    
             }
             else
