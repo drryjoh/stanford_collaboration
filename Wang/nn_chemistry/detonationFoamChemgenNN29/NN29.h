@@ -1,5 +1,5 @@
 template <typename Scalar = double>
-auto NN29(const std::array<Scalar, 10>& initial_input) { 
+auto NN29(const std::array<Scalar, 10>& initial_input) -> std::array<Scalar, 10> { 
 
     std::array<Scalar, 10> input_norms = {3.729482747e+02, 2.848690895e-01, 2.804564275e-04, 7.477426683e-04, 8.714156903e-05, 3.855816281e-04, 9.563922518e-05, 4.216077917e-04, 5.339551714e-08, 9.874895884e-09};
 
