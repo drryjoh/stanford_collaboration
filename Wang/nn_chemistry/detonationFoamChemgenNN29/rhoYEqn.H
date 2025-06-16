@@ -14,11 +14,11 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
 
      auto RR_chemgen = chemgen.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-     Qdot  = chemgen.Qdot(thermo, RR_chemgen); 
+     
      volScalarField Yt(0.0*Y[0]);
     nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
     auto RR_NN = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-    
+    Qdot  = chemgen.Qdot(thermo, RR_chemgen) + nnInterface.Qdot(thermo, RR_NN);  //chemgen.Qdot(thermo, RR_chemgen + RR_NN) 
 
     forAll(Y, i)
     {
