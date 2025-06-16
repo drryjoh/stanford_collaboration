@@ -1,0 +1,83 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          speciesLambda;
+}
+
+// Scheme: transport fitting
+// Fitted by Josh Lipman for FFCM2 Hydrogen Submechansim. 6/16/2025
+//See polynomialfits.ipynb in stanford_collaboration
+//Temperature range is 300 to 3000
+
+H
+{
+Lambda1	-8.442E-05	;
+Lambda2	3.284E+00	;
+Lambda3	-3.453E-01	;
+Lambda4	1.507E-02	;
+}
+H2
+{
+Lambda1	9.498E+00	;
+Lambda2	-5.912E+00	;
+Lambda3	1.352E-01	;
+Lambda4	-3.626E-03	;
+}
+O
+{
+Lambda1	1.268E+00	;
+Lambda2	2.231E+00	;
+Lambda3	-2.322E-01	;
+Lambda4	1.124E-02	;
+}
+OH
+{
+Lambda1	1.245E+01	;
+Lambda2	-2.497E+00	;
+Lambda3	4.258E-01	;
+Lambda4	-1.815E-02	;
+}
+H2O
+{
+Lambda1	2.190E+01	;
+Lambda2	-8.337E+00	;
+Lambda3	1.440E+00	;
+Lambda4	-7.173E-02	;
+}
+O2
+{
+Lambda1	-1.153E+00	;
+Lambda2	2.561E+00	;
+Lambda3	-2.252E-01	;
+Lambda4	9.436E-03	;
+}
+HO2
+{
+Lambda1	6.078E+00	;
+Lambda2	-8.111E-01	;
+Lambda3	-2.932E-01	;
+Lambda4	1.611E-02	;
+}
+H2O2
+{
+Lambda1	2.090E-01	;
+Lambda2	1.611E+00	;
+Lambda3	-2.369E-02	;
+Lambda4	-2.358E-03	;
+}
+AR
+{
+Lambda1	-2.377E+00	;
+Lambda2	3.128E+00	;
+Lambda3	-3.263E-01	;
+Lambda4	1.4300E-02	;
+}
