@@ -140,23 +140,26 @@ forAll(Y, i)
         volScalarField& Xz = X[z];
         volScalarField& Muz = Mu[z];
 
-        scalar denom = Foam::sqrt(1.0 + composition.W(i) / composition.W(z));
-        scalar numerator = 1.0 + Foam::sqrt(Mui / Muz) * pow025(composition.W(z) / composition.W(i));
-        yhi += Xz * 0.353553 * pow(numerator, 2) / denom;
+        volScalarField numerator = 1.0 + Foam::sqrt(Mui / Muz) * pow025(composition.W(z) / composition.W(i));
+        volScalarField denominator = Foam::sqrt(1.0 + composition.W(i) / composition.W(z));
+        
+        // yhi is a volScalarField, do field-wise addition
+        yhi += Xz * 0.353553 * (numerator * numerator) / denominator;
     }
 
-    scalar yhiMag = mag(yhi);
-    if (yhiMag < SMALL)
+    // Extract a scalar from the field to check if yhi is near zero anywhere
+    scalar yhiMinMag = gMin(mag(yhi).internalField());
+    if (yhiMinMag < SMALL)
     {
         Info << "Warning: yhi near zero for i = " << i << endl;
-        // To avoid division by zero, skip or assign safe fallback
+        // Possibly continue or handle accordingly
         continue;
     }
 
-    mixMu += Xi * Mui / yhi;
+    mixMu += (Xi / yhi) * Mui;  // element-wise division and multiplication
     mixLambdaA += Xi * Lambda[i];
 
-    if (mag(Lambda[i]) < SMALL)
+    if (mag(Lambda[i].internalField()).min() < SMALL)
     {
         Info << "Warning: Lambda[" << i << "] near zero!" << endl;
         mixLambdaB += 0; // avoid division by zero
