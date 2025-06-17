@@ -1,32 +1,28 @@
-Info << "Start updateTransProperties" << endl;
+Info << "Starting updateTransProperties..." << endl;
 
 mixMu *= 0;
-mixLambdaA *= 0; // reset the number to zero;
-mixLambdaB *= 0;
+mixLambdaA *= 0 ; // reset the number to zero;
+mixLambdaB *= 0 ;
 
 MW *= 0;
-Info << "Before MW loop" << endl;
 forAll(Y,i)
 {
     MW += Y[i]/composition.Wi(i);
 }
-Info << "After MW loop, MW = " << MW << endl;
-
 MW = 1/MW;
-Info << "After inverting MW, MW = " << MW << endl;
+Info << "Calculated MW = " << MW << endl;
 
 forAll(Y,i)
 {
     X[i] = Y[i]*MW/composition.Wi(i);
 }
-Info << "After computing X" << endl;
+Info << "Calculated mole fractions X" << endl;
 
 volScalarField tmpT = log(T/TUnit);
-Info << "After computing tmpT" << endl;
 
 if(differentialDiffusion)
 {
-    Info << "Inside differentialDiffusion block" << endl;
+    Info << "Calculating differential diffusion coefficients..." << endl;
 	forAll(groupSpecies,i)
 	{
 		if(groupSpecies[i][0] != -1)
@@ -38,24 +34,23 @@ if(differentialDiffusion)
 					label m = max(groupSpecies[i][0],groupSpecies[j][0]);
 					label n = min(groupSpecies[i][0],groupSpecies[j][0]);	
 					label k = Y.size()*n+m-0.5*n*(n+1);
-                    Info << "Computing tmpd at indices " << i << ", " << j << ", k=" << k << endl;
 					volScalarField tmpd = 1e-4 * exp(Diff1[k]+tmpT*(Diff2[k]+tmpT*(Diff3[k]+tmpT*Diff4[k]))) / (p / 101325 /pUnit);
 					forAll(groupSpecies[i],h)
 					{
 						forAll(groupSpecies[j],z)
 						{
-							label m = max(groupSpecies[i][h],groupSpecies[j][z]);
-							label n = min(groupSpecies[i][h],groupSpecies[j][z]);	
-							label k = Y.size()*n+m-0.5*n*(n+1);
-							d[k] = tmpd;
+								label m = max(groupSpecies[i][h],groupSpecies[j][z]);
+								label n = min(groupSpecies[i][h],groupSpecies[j][z]);	
+								label k = Y.size()*n+m-0.5*n*(n+1);
+								d[k] = tmpd;
 						}
 					}
 				}
 			}
 		}
 	}
+	Info << "Differential diffusion coefficients updated." << endl;
 }
-Info << "After differentialDiffusion block" << endl;
 
 forAll(groupSpecies,i)
 {
@@ -73,7 +68,7 @@ forAll(groupSpecies,i)
 		}		
 	}
 }
-Info << "After Lambda and Mu update" << endl;
+Info << "Lambda and Mu fields updated." << endl;
 
 forAll(Y,i)
 {
@@ -90,7 +85,6 @@ forAll(Y,i)
 			if(j != i)
 			{
 				label k = Y.size()*n+m-0.5*n*(n+1);
-                Info << "Diffusion loop i=" << i << " j=" << j << " k=" << k << endl;
 				DiNumerator += (Xj+1e-12) * composition.Wi(j);
 				DiDenominator += MW*(Xj+1e-12)/d[k];
 			} 
@@ -98,27 +92,26 @@ forAll(Y,i)
 		Diff[i] = DiNumerator*DUnit/ DiDenominator; //*********** Di m2/s*******************//
 	}
 }
-Info << "After differential diffusion diffusion coefficients" << endl;
+Info << "Diffusion coefficients Diff updated." << endl;
 
 forAll(Y,i)
 {
-    volScalarField& Xi = X[i];
-    volScalarField& Mui = Mu[i];
-    yhi *= 0;
-    forAll(Y,z)
-	{
+     volScalarField& Xi = X[i];
+     volScalarField& Mui = Mu[i];
+     yhi *= 0;
+     forAll (Y,z)
+	 {
 		volScalarField& Xz = X[z];
 		volScalarField& Muz = Mu[z];
 		yhi += Xz*0.353553*pow(1.0+Foam::sqrt(Mui/Muz)*pow025(composition.Wi(z)/composition.Wi(i)),2)/Foam::sqrt(1.0+composition.Wi(i)/composition.Wi(z));
-	}
-    mixMu += (Xi)*Mui/yhi;
-	mixLambdaA += Xi*Lambda[i];
-	mixLambdaB += Xi/Lambda[i];
+	 }
+     mixMu += (Xi)*Mui/yhi;
+	 mixLambdaA += Xi*Lambda[i];
+     mixLambdaB += Xi/Lambda[i];
 }
-Info << "After mixing properties calculation" << endl;
+Info << "mixMu, mixLambdaA, and mixLambdaB updated." << endl;
 
 mixAlpha = 0.5*(mixLambdaA+(1/mixLambdaB))/thermo.Cp();
-Info << "After computing mixAlpha" << endl;
 
 if(thermalDiffusion)
 {
@@ -149,8 +142,9 @@ if(thermalDiffusion)
 			}			
 		}		
 	}
+	Info << "Thermal diffusion ratios TDRatio_H and TDRatio_H2 updated." << endl;
 }
-Info << "After thermal diffusion block" << endl;
+
 
 if(differentialDiffusion)
 {
@@ -165,7 +159,6 @@ if(differentialDiffusion)
 }
 else
 {
-    Info << "WITHOUT differential diffusion"  << endl;
+    Info << "WITHOUT differential diffusion "  << endl;
 }
-
-Info << "Finished update transport properties" << endl;
+Info << "update transport properties complete." << endl;
