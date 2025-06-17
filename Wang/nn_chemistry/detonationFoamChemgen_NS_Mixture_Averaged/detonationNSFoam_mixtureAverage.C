@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     turbulence->validate();
     Info<< "\nStarting time loop\n" << endl;
 
-    #include "transport/readTranData.H"
+  //  #include "transport/readTranData.H"
     #include "transport/readBinaryDiff.H"
 //    #include "readThermalDiff.H"
     #include "transport/readSpeciesLambda.H"
