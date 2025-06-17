@@ -58,11 +58,11 @@ int main(int argc, char *argv[])
     turbulence->validate();
     Info<< "\nStarting time loop\n" << endl;
 
-    #include "readTranData.H"
-    #include "readBinaryDiff.H"
+    #include "transport/readTranData.H"
+    #include "transport/readBinaryDiff.H"
 //    #include "readThermalDiff.H"
-    #include "readSpeciesLambda.H"
-    #include "readSpeciesMu.H"
+    #include "transport/readSpeciesLambda.H"
+    #include "transport/readSpeciesMu.H"
 
     while (runTime.run())
     {
