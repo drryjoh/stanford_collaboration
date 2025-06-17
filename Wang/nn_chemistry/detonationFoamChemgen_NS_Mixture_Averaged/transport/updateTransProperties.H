@@ -1,38 +1,38 @@
-const double SMALL = 1e-12;
+Info << "Starting updateTransProperties..." << endl;
 
-mixMu *= 0;
-mixLambdaA *= 0; // reset the number to zero;
-mixLambdaB *= 0;
+// Reset accumulators
+mixMu = 0.0;
+mixLambdaA = 0.0;
+mixLambdaB = 0.0;
 
-MW *= 0;
+MW = 0.0;
 forAll(Y, i)
 {
-    MW += Y[i] / composition.W(i);
+    scalar Wi = composition.W(i);
+    if (Wi == 0.0)
+    {
+        FatalErrorInFunction << "composition.W(" << i << ") is zero! Division by zero avoided." << exit(FatalError);
+    }
+    MW += Y[i] / Wi;
 }
-
-if (mag(MW) < SMALL)
+if (MW == 0.0)
 {
-    Info << "Warning: MW is zero or near zero before inversion! MW = " << MW << endl;
-    MW = SMALL; // avoid division by zero, fallback value
+    FatalErrorInFunction << "Calculated MW denominator is zero! Check Y and composition.W." << exit(FatalError);
 }
-MW = 1 / MW;
+MW = 1.0 / MW;
 
 forAll(Y, i)
 {
-    X[i] = Y[i] * MW / composition.W(i);
+    scalar Wi = composition.W(i);
+    X[i] = Y[i] * MW / Wi;
 }
 
-// Check arguments for log, assuming T is a volScalarField and TUnit is scalar
-scalar minT = min(T.internalField());
-if (minT <= 0 || TUnit <= 0)
-{
-    Info << "Warning: Non-positive T or TUnit for log, min T = " << minT << ", TUnit = " << TUnit << endl;
-}
-// Proceed with log anyway; might still fail if invalid
 volScalarField tmpT = log(T / TUnit);
 
 if (differentialDiffusion)
 {
+    Info << "Calculating differential diffusion coefficients..." << endl;
+
     forAll(groupSpecies, i)
     {
         if (groupSpecies[i][0] != -1)
@@ -44,21 +44,23 @@ if (differentialDiffusion)
                     label m = max(groupSpecies[i][0], groupSpecies[j][0]);
                     label n = min(groupSpecies[i][0], groupSpecies[j][0]);
                     label k = Y.size() * n + m - 0.5 * n * (n + 1);
-                    volScalarField tmpd = 1e-4 * exp(Diff1[k] + tmpT * (Diff2[k] + tmpT * (Diff3[k] + tmpT * Diff4[k]))) / (p / 101325 / pUnit);
+
+                    scalar pCheck = p / 101325 / pUnit;
+                    if (pCheck == 0.0)
+                    {
+                        FatalErrorInFunction << "Pressure normalization is zero! Check p and pUnit." << exit(FatalError);
+                    }
+
+                    volScalarField tmpd = 1e-4 * exp(Diff1[k] + tmpT * (Diff2[k] + tmpT * (Diff3[k] + tmpT * Diff4[k]))) / pCheck;
 
                     forAll(groupSpecies[i], h)
                     {
                         forAll(groupSpecies[j], z)
                         {
-                            label m2 = max(groupSpecies[i][h], groupSpecies[j][z]);
-                            label n2 = min(groupSpecies[i][h], groupSpecies[j][z]);
-                            label k2 = Y.size() * n2 + m2 - 0.5 * n2 * (n2 + 1);
-                            d[k2] = tmpd;
-
-                            if (mag(d[k2].internalField()) < SMALL)
-                            {
-                                Info << "Warning: d[" << k2 << "] is zero or near zero!" << endl;
-                            }
+                            label m = max(groupSpecies[i][h], groupSpecies[j][z]);
+                            label n = min(groupSpecies[i][h], groupSpecies[j][z]);
+                            label k = Y.size() * n + m - 0.5 * n * (n + 1);
+                            d[k] = tmpd;
                         }
                     }
                 }
@@ -71,124 +73,122 @@ forAll(groupSpecies, i)
 {
     if (groupSpecies[i][0] != -1)
     {
-        Lambda[groupSpecies[i][0]] = lambdaUnit * 1e-5 * exp(Lambda1[groupSpecies[i][0]] + tmpT * (Lambda2[groupSpecies[i][0]] + tmpT * (Lambda3[groupSpecies[i][0]] + tmpT * Lambda4[groupSpecies[i][0]])));
-        Mu[groupSpecies[i][0]] = 0.1 * MuUnit * exp(Mu1[groupSpecies[i][0]] + tmpT * (Mu2[groupSpecies[i][0]] + tmpT * (Mu3[groupSpecies[i][0]] + tmpT * Mu4[groupSpecies[i][0]])));
+        label baseIdx = groupSpecies[i][0];
+
+        scalar tmpTVal = tmpT.internalField()[0];  // Assuming tmpT uniform for simplicity
+        Lambda[baseIdx] = lambdaUnit * 1e-5 * exp(Lambda1[baseIdx] + tmpTVal * (Lambda2[baseIdx] + tmpTVal * (Lambda3[baseIdx] + tmpTVal * Lambda4[baseIdx])));
+        Mu[baseIdx] = 0.1 * MuUnit * exp(Mu1[baseIdx] + tmpTVal * (Mu2[baseIdx] + tmpTVal * (Mu3[baseIdx] + tmpTVal * Mu4[baseIdx])));
 
         forAll(groupSpecies[i], j)
         {
             if (j > 0)
             {
-                Lambda[groupSpecies[i][j]] = Lambda[groupSpecies[i][0]];
-                Mu[groupSpecies[i][j]] = Mu[groupSpecies[i][0]];
+                Lambda[groupSpecies[i][j]] = Lambda[baseIdx];
+                Mu[groupSpecies[i][j]] = Mu[baseIdx];
             }
         }
     }
 }
 
+Info << "Computing Diff coefficients with differential diffusion..." << endl;
+
 forAll(Y, i)
 {
     if (differentialDiffusion)
     {
-        DiNumerator *= 0;
-        DiDenominator *= 0;
+        DiNumerator = 0.0;
+        DiDenominator = 0.0;
 
         for (label j = 0; j < Y.size(); j++)
         {
             label m = max(i, j);
             label n = min(i, j);
+
             volScalarField& Xj = X[j];
 
             if (j != i)
             {
                 label k = Y.size() * n + m - 0.5 * n * (n + 1);
 
-                DiNumerator += (Xj + 1e-12) * composition.W(j);
+                scalar dVal = d[k].internalField()[0]; // Assuming uniform fields
+                scalar XjVal = Xj.internalField()[0];
 
-                scalar denomMag = mag(d[k]);
-                if (denomMag < SMALL)
+                DiNumerator += (XjVal + 1e-12) * composition.W(j);
+                if (dVal == 0.0)
                 {
-                    Info << "Warning: d[" << k << "] near zero for i=" << i << ", j=" << j << endl;
-                    DiDenominator += SMALL; // prevent division by zero
+                    FatalErrorInFunction << "Diffusion coefficient d[" << k << "] is zero, division avoided." << exit(FatalError);
                 }
-                else
-                {
-                    DiDenominator += MW * (Xj + 1e-12) / d[k];
-                }
+                DiDenominator += MW * (XjVal + 1e-12) / dVal;
             }
         }
-
-        if (mag(DiDenominator) < SMALL)
-        {
-            Info << "Warning: DiDenominator near zero for i = " << i << endl;
-            Diff[i] = 0; // safe fallback
-        }
-        else
-        {
-            Diff[i] = DiNumerator * DUnit / DiDenominator;
-        }
+        Diff[i] = DiNumerator * DUnit / DiDenominator; // Di m2/s
     }
 }
+
+Info << "Calculating mixture viscosity and thermal conductivity..." << endl;
 
 forAll(Y, i)
 {
     volScalarField& Xi = X[i];
     volScalarField& Mui = Mu[i];
-    yhi *= 0;
+
+    yhi = 0.0;
 
     forAll(Y, z)
     {
         volScalarField& Xz = X[z];
         volScalarField& Muz = Mu[z];
 
-        volScalarField numerator = 1.0 + Foam::sqrt(Mui / Muz) * pow025(composition.W(z) / composition.W(i));
-        volScalarField denominator = Foam::sqrt(1.0 + composition.W(i) / composition.W(z));
-        
-        // yhi is a volScalarField, do field-wise addition
-        yhi += Xz * 0.353553 * (numerator * numerator) / denominator;
+        // Extract scalar values assuming fields are uniform; otherwise, consider field operations
+        scalar MuiVal = Mui.internalField()[0];
+        scalar MuzVal = Muz.internalField()[0];
+        scalar XiVal = Xi.internalField()[0];
+        scalar XzVal = Xz.internalField()[0];
+        scalar Wi = composition.W(i);
+        scalar Wz = composition.W(z);
+
+        if (MuzVal == 0.0 || Wi == 0.0 || Wz == 0.0)
+        {
+            FatalErrorInFunction << "Zero division risk in viscosity mixing calculation." << exit(FatalError);
+        }
+
+        scalar numerator = 1.0 + sqrt(MuiVal / MuzVal) * pow( Wz / Wi, 0.25 );
+        scalar denominator = sqrt(1.0 + Wi / Wz);
+
+        yhi += XzVal * 0.353553 * numerator * numerator / denominator;
     }
 
-    // Extract a scalar from the field to check if yhi is near zero anywhere
-    scalar yhiMinMag = gMin(mag(yhi).internalField());
-    if (yhiMinMag < SMALL)
+    scalar yhiMag = (yhi == 0.0) ? 1e-12 : yhi;  // Avoid zero division
+
+    scalar XiVal = Xi.internalField()[0];
+    scalar MuiVal = Mui.internalField()[0];
+
+    mixMu += XiVal * MuiVal / yhiMag;
+
+    scalar LambdaVal = Lambda[i].internalField()[0];
+    if (LambdaVal == 0.0)
     {
-        Info << "Warning: yhi near zero for i = " << i << endl;
-        // Possibly continue or handle accordingly
-        continue;
+        FatalErrorInFunction << "Lambda[" << i << "] is zero, division avoided." << exit(FatalError);
     }
 
-    mixMu += (Xi / yhi) * Mui;  // element-wise division and multiplication
-    mixLambdaA += Xi * Lambda[i];
-
-    if (mag(Lambda[i].internalField()).min() < SMALL)
-    {
-        Info << "Warning: Lambda[" << i << "] near zero!" << endl;
-        mixLambdaB += 0; // avoid division by zero
-    }
-    else
-    {
-        mixLambdaB += Xi / Lambda[i];
-    }
+    mixLambdaA += Xi.internalField()[0] * LambdaVal;
+    mixLambdaB += Xi.internalField()[0] / LambdaVal;
 }
 
-if (mag(mixLambdaB) < SMALL)
+scalar cpVal = CML::average(thermo.Cp().internalField());  // Extract scalar from field
+if (cpVal == 0.0)
 {
-    Info << "Warning: mixLambdaB near zero!" << endl;
-    mixLambdaB = SMALL;
+    FatalErrorInFunction << "Cp average value is zero! Check thermo.Cp() field." << exit(FatalError);
 }
 
-scalar cpVal = thermo.Cp();
-if (mag(cpVal) < SMALL)
-{
-    Info << "Warning: thermo.Cp() near zero!" << endl;
-    cpVal = SMALL;
-}
+mixAlpha = 0.5 * (mixLambdaA + (1.0 / mixLambdaB)) / cpVal;
 
-mixAlpha = 0.5 * (mixLambdaA + (1 / mixLambdaB)) / cpVal;
+Info << "mixMu: " << mixMu << ", mixAlpha: " << mixAlpha << endl;
 
 if (thermalDiffusion)
 {
-    TDRatio_H *= 0;
-    TDRatio_H2 *= 0;
+    TDRatio_H = 0.0;
+    TDRatio_H2 = 0.0;
     volScalarField tmpTT = T / TUnit;
 
     forAll(Y, i)
@@ -199,7 +199,9 @@ if (thermalDiffusion)
             {
                 if (j != i)
                 {
-                    TDRatio_H += X[i] * X[j] * (TDiff1[j] + tmpTT * (TDiff2[j] + tmpTT * (TDiff3[j] + tmpTT * TDiff4[j])));
+                    scalar tmpTTVal = tmpTT.internalField()[0];
+                    TDRatio_H += X[i].internalField()[0] * X[j].internalField()[0] *
+                                 (TDiff1[j] + tmpTTVal * (TDiff2[j] + tmpTTVal * (TDiff3[j] + tmpTTVal * TDiff4[j])));
                 }
             }
         }
@@ -210,7 +212,9 @@ if (thermalDiffusion)
             {
                 if (j != i)
                 {
-                    TDRatio_H2 += X[i] * X[j] * (TDiff1[j + Y.size()] + tmpTT * (TDiff2[j + Y.size()] + tmpTT * (TDiff3[j + Y.size()] + tmpTT * TDiff4[j + Y.size()])));
+                    scalar tmpTTVal = tmpTT.internalField()[0];
+                    TDRatio_H2 += X[i].internalField()[0] * X[j].internalField()[0] *
+                                  (TDiff1[j + Y.size()] + tmpTTVal * (TDiff2[j + Y.size()] + tmpTTVal * (TDiff3[j + Y.size()] + tmpTTVal * TDiff4[j + Y.size()])));
                 }
             }
         }
@@ -230,6 +234,7 @@ if (differentialDiffusion)
 }
 else
 {
-    Info << "WITHOUT differential diffusion " << endl;
+    Info << "WITHOUT differential diffusion" << endl;
 }
-Info << "update transport properties" << endl;
+
+Info << "Finished updateTransProperties." << endl;
