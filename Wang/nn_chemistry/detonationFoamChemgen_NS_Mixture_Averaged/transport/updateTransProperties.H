@@ -1,5 +1,3 @@
-Info << "Starting updateTransProperties..." << endl;
-
 mixMu *= 0;
 mixLambdaA *= 0 ; // reset the number to zero;
 mixLambdaB *= 0 ;
@@ -10,19 +8,15 @@ forAll(Y,i)
     MW += Y[i]/composition.Wi(i);
 }
 MW = 1/MW;
-Info << "Calculated MW = " << MW << endl;
-
 forAll(Y,i)
 {
     X[i] = Y[i]*MW/composition.Wi(i);
 }
-Info << "Calculated mole fractions X" << endl;
 
 volScalarField tmpT = log(T/TUnit);
 
 if(differentialDiffusion)
 {
-    Info << "Calculating differential diffusion coefficients..." << endl;
 	forAll(groupSpecies,i)
 	{
 		if(groupSpecies[i][0] != -1)
@@ -49,7 +43,6 @@ if(differentialDiffusion)
 			}
 		}
 	}
-	Info << "Differential diffusion coefficients updated." << endl;
 }
 
 forAll(groupSpecies,i)
@@ -68,7 +61,6 @@ forAll(groupSpecies,i)
 		}		
 	}
 }
-Info << "Lambda and Mu fields updated." << endl;
 
 forAll(Y,i)
 {
@@ -84,16 +76,15 @@ forAll(Y,i)
 
 			if(j != i)
 			{
-				label k = Y.size()*n+m-0.5*n*(n+1);
-				DiNumerator += (Xj+1e-12) * composition.Wi(j);
-				DiDenominator += MW*(Xj+1e-12)/d[k];
+			 label k = Y.size()*n+m-0.5*n*(n+1);
+			 DiNumerator += (Xj+1e-12) * composition.Wi(j);
+			 DiDenominator += MW*(Xj+1e-12)/d[k];
 			} 
 		}
 		Diff[i] = DiNumerator*DUnit/ DiDenominator; //*********** Di m2/s*******************//
 	}
 }
-Info << "Diffusion coefficients Diff updated." << endl;
-
+	
 forAll(Y,i)
 {
      volScalarField& Xi = X[i];
@@ -109,7 +100,6 @@ forAll(Y,i)
 	 mixLambdaA += Xi*Lambda[i];
      mixLambdaB += Xi/Lambda[i];
 }
-Info << "mixMu, mixLambdaA, and mixLambdaB updated." << endl;
 
 mixAlpha = 0.5*(mixLambdaA+(1/mixLambdaB))/thermo.Cp();
 
@@ -142,7 +132,6 @@ if(thermalDiffusion)
 			}			
 		}		
 	}
-	Info << "Thermal diffusion ratios TDRatio_H and TDRatio_H2 updated." << endl;
 }
 
 
@@ -150,7 +139,7 @@ if(differentialDiffusion)
 {
 	if(thermalDiffusion)
 	{
-		Info << "WITH differential diffusion and thermalDiffusion"  << endl;
+		Info << "WITH differential diffusion and  thermalDiffusion"  << endl;
 	}
 	else
 	{
@@ -161,4 +150,4 @@ else
 {
     Info << "WITHOUT differential diffusion "  << endl;
 }
-Info << "update transport properties complete." << endl;
+Info << "update transport properties" << endl;
