@@ -158,7 +158,9 @@ forAll(Y, i)
         yhi += XzVal * 0.353553 * numerator * numerator / denominator;
     }
 
-    scalar yhiMag = (yhi == 0.0) ? 1e-12 : yhi;  // Avoid zero division
+	scalar yhiMax = mag(yhi).max();
+
+	scalar yhiMag = (yhiMax < 1e-12) ? 1e-12 : yhiMax;
 
     scalar XiVal = Xi.internalField()[0];
     scalar MuiVal = Mui.internalField()[0];
