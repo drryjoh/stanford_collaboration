@@ -49,11 +49,11 @@ int main(int argc, char *argv[])
     #include "createFields.H"
     #include "createFieldRefs.H"
 
-    #include "readChemistryProperties.H"
-    #include "createDiffFields.H"
-    #include "createTDiffFields.H"
-    #include "createLambdaFields.H"
-    #include "createMuFields.H"
+    #include "transport/readChemistryProperties.H"
+    #include "transport/createDiffFields.H"
+    #include "transport/createTDiffFields.H"
+    #include "transport/createLambdaFields.H"
+    #include "transport/createMuFields.H"
 
     turbulence->validate();
     Info<< "\nStarting time loop\n" << endl;
