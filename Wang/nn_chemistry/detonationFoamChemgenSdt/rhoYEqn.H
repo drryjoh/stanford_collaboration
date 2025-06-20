@@ -11,13 +11,11 @@ tmp<fv::convectionScheme<scalar>> mvConvection
 
 Info << "delta_time = " << runTime.deltaT().value() << endl;
 {
-    auto RR_cemgen = chemgen.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+
+
+    auto RR = chemgen.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
     Qdot  = chemgen.Qdot(thermo, RR); 
     volScalarField Yt(0.0*Y[0]);
-
-    nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
-    auto RR_NN = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-    
 
     forAll(Y, i)
     {
@@ -30,7 +28,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
                 fvm::ddt(rho, Yi)
               + mvConvection->fvmDiv(rhoPhi, Yi)
              ==
-                RR_cemgen[i] + RR_NN[i]
+                RR[i]
             );
 
             YiEqn.relax();
