@@ -31,16 +31,16 @@ auto NN40(const std::array<Scalar, 10>& initial_input) -> std::array<Scalar, 10>
     // - -
 
     std::array<Scalar, 1024> layer_1_output;
-    forwardPass<Scalar, 1024>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 10, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 1024>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 10, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 10> layer_2_output;
-    forwardPass<Scalar, 10>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 1024, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 10>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 1024, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 1024> layer_3_output;
-    forwardPass<Scalar, 1024>(layer_3_output.data(), layer_2_output.data(), weights_3.data(), biases_3.data(), 10, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 1024>(layer_3_output.data(), layer_2_output.data(), weights_3.data(), biases_3.data(), 10, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 10> layer_4_output;
-    forwardPass<Scalar, 10>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear<Scalar>, 0.0);
+    forwardPass<Scalar, 10>(layer_4_output.data(), layer_3_output.data(), weights_4.data(), biases_4.data(), 1024, &linear_nn<Scalar>, 0.0);
 
     std::array<Scalar, 10> output_norms = {5.828493477e-02, 7.295104305e-05, 5.569313504e-07, 1.022886354e-06, 1.501403251e-07, 4.849870281e-07, 2.176264936e-07, 6.806755655e-07, 6.185653968e-10, 2.681344464e-11};
 
