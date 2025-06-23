@@ -55,12 +55,12 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
     activation_function(outputs, temp_outputs.data(), output_size, alpha);
 }
 
-#include "NN41.h"
+#include "NN30.h"
 
 std::array<Scalar, 8> predict_combustion(const std::array<Scalar, 10>& input)
 {
 
-    auto model_output = NN41<Scalar>(input); // Change input to desired features
+    auto model_output = NN30<Scalar>(input); // Change input to desired features
 
     std::array<Scalar, 8> output;
 //Normalization is removed as this is done further along in the process for the HOT projection case. See nn_interface.h
