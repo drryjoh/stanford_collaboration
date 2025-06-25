@@ -70,8 +70,7 @@ int main(int argc, char *argv[]) {
         #include "rhoEqn.H"
         #include "rhoUEqn.H"
         #include "rhoYEqn.H"
-        #inclu
-        de "rhoEEqn.H"
+        #include "rhoEEqn.H"
         scalar time_after = timer.elapsedTime();
         entire_time += time_after - time_before;
         Info << "Time to solve iterations complete system:          "<< time_after-time_before <<endl;
