@@ -28,9 +28,9 @@ auto NN42(const std::array<Scalar, 10>& initial_input) -> std::array<Scalar, 8> 
     std::array<Scalar, 8> layer_2_output;
     forwardPass<Scalar, 8>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 256, &linear_nn<Scalar>, 0.0);
 
-    std::array<Scalar, 10> output_norms = {5.076471031e-02, 5.819377635e-05, 4.398534158e-07, 8.094187751e-07, 1.190255723e-07, 3.826675323e-07, 1.603463290e-07, 5.397033452e-07, 3.623682377e-10, 2.022758830e-11};
+    std::array<Scalar, 8> output_norms = {4.398534158e-07, 8.094187751e-07, 1.190255723e-07, 3.826675323e-07, 1.603463290e-07, 5.397033452e-07, 3.623682377e-10, 2.022758830e-11};
 
-    std::array<Scalar, 10> output_mins = {6.354647522e-02, 6.027941714e-05, 2.572512701e-07, -5.630482336e-07, 8.249470059e-08, -2.833976526e-07, 9.981125328e-08, 3.845248264e-07, -1.976607454e-11, 2.028566426e-12};
+    std::array<Scalar, 8> output_mins = {2.572512701e-07, -5.630482336e-07, 8.249470059e-08, -2.833976526e-07, 9.981125328e-08, 3.845248264e-07, -1.976607454e-11, 2.028566426e-12};
 
     std::array<Scalar, 8> model_output;
     for (int i = 0; i < 8; i++) { model_output[i] = (layer_2_output.data()[i] * output_norms[i]) + output_mins[i]; } 
