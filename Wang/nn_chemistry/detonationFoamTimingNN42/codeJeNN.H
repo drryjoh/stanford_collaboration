@@ -65,7 +65,7 @@ std::array<Scalar, 8> predict_combustion(const std::array<Scalar, 10>& input)
     std::array<Scalar, 8> output;
 
     for (int i = 0; i < 8; i++) {
-        output[i] = model_output[i] + input[i]; // NN outputs change of state properties, transferred to real values
+        output[i] = model_output[i] + input[i + 2]; // NN outputs change of state properties, transferred to real values
     }
 
     return output;
