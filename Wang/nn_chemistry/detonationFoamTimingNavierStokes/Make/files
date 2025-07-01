@@ -1,3 +1,3 @@
-detonationEulerFoam.C
+detonationNSFoam_mixtureAverage.C
 
-EXE = $(FOAM_USER_APPBIN)/detonationEulerFoamTiming
+EXE = $(FOAM_USER_APPBIN)/detonationNSFoamTiming
