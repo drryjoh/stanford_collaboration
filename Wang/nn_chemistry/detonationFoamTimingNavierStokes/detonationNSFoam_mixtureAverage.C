@@ -49,24 +49,24 @@ int main(int argc, char *argv[])
     #include "createFields.H"
     #include "createFieldRefs.H"
 
-    #include "transport/readChemistryProperties.H"
-    #include "transport/createDiffFields.H"
-    #include "transport/createTDiffFields.H"
-    #include "transport/createLambdaFields.H"
-    #include "transport/createMuFields.H"
+    #include "readChemistryProperties.H"
+    #include "createDiffFields.H"
+    #include "createTDiffFields.H"
+    #include "createLambdaFields.H"
+    #include "createMuFields.H"
 
     turbulence->validate();
     Info<< "\nStarting time loop\n" << endl;
 
-    #include "transport/readTranData.H"
-    #include "transport/readBinaryDiff.H"
-   // #include "transport/readThermalDiff.H"
-    #include "transport/readSpeciesLambda.H"
-    #include "transport/readSpeciesMu.H"
+    #include "readTranData.H"
+    #include "readBinaryDiff.H"
+    #include "readThermalDiff.H"
+    #include "readSpeciesLambda.H"
+    #include "readSpeciesMu.H"
 
     while (runTime.run())
     {
-        #include "transport/updateTransProperties.H"
+        #include "updateTransProperties.H"
         #include "calculateDt.H"
         #include "detoCellular.H"
 
