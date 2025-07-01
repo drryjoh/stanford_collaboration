@@ -12,6 +12,7 @@
         )
     );
 
+  Info << "Here 1" << endl;
 
 const dimensionedScalar tdUnit
 (
@@ -19,39 +20,58 @@ const dimensionedScalar tdUnit
    dimensionSet(0,0,0,0,0,0,0),
     1.0
 );
+
+  Info << "Here 2" << endl;
+
 boolList tflags(2*Y.size(), true);
 forAll(Y,i)
 {
+	  Info << "Here 3" << endl;
+
 	if(groupSpecies[i][0] != -1)
 	{
+		  Info << "Here 4" << endl;
+
 		if(Y[i].name() == "H" || Y[i].name() == "H2")
 		{
+			  Info << "Here 5" << endl;
+
 			dictionary tdDict;
 			forAll(groupSpecies,j)
 			{
+				  Info << "Here 6" << endl;
+
 				if(groupSpecies[j][0] != -1)
 				{
+					  Info << "Here 7" << endl;
+
 					forAll(groupSpecies[j],z)
 					{
+						  Info << "Here 8" << endl;
 						bool foundDict = false;
 						if(thermoDiff.found(Y[i].name()+"-"+Y[groupSpecies[j][z]].name()))
 						{
+							  Info << "Here 9" << endl;
 							tdDict = thermoDiff.subDict(Y[i].name()+"-"+Y[groupSpecies[j][z]].name());
 							foundDict = true;
 						}
 						else if(thermoDiff.found(Y[groupSpecies[j][z]].name()+"-"+Y[i].name()))
 						{
+							  Info << "Here 10" << endl;
 							tdDict = thermoDiff.subDict(Y[groupSpecies[j][z]].name()+"-"+Y[i].name());
 							foundDict = true;
 						}
 						else 
 						{
+							  Info << "Here 11" << endl;
 							if( z == (groupSpecies[j].size()-1) )
 							{
+								  Info << "Here 12" << endl;
 								Info << "thermal diffsusion coefficient for " << Y[i].name() << " and " << endl;
 								Info << "(" << endl;
 								forAll(groupSpecies[j],z)
 								{
+									  Info << "Here 13" << endl;
 									Info << Y[groupSpecies[j][z]].name() << endl;
 								}
 								Info << ")" << endl;
