@@ -38,6 +38,7 @@ Description
 #include "fvcSmooth.H"
 #include "fluxScheme.H"
 #include "fvOptions.H"
+#include "clockTime.H"
 //CodeJeNN 
 #include "chemgen_interface.H"
 #include "IOmanip.H"
