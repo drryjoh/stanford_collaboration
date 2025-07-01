@@ -40,7 +40,6 @@ Description
 #include "fvOptions.H"
 #include "clockTime.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 int main(int argc, char *argv[])
 {
     #define NO_CONTROL
@@ -61,7 +60,7 @@ int main(int argc, char *argv[])
 
     #include "transport/readTranData.H"
     #include "transport/readBinaryDiff.H"
-    #include "transport/readThermalDiff.H"
+   // #include "transport/readThermalDiff.H"
     #include "transport/readSpeciesLambda.H"
     #include "transport/readSpeciesMu.H"
 
