@@ -5,12 +5,12 @@ mixLambdaB *= 0 ;
 MW *= 0;
 forAll(Y,i)
 {
-    MW += Y[i]/composition.Wi(i);
+    MW += Y[i]/composition.W(i);
 }
 MW = 1/MW;
 forAll(Y,i)
 {
-    X[i] = Y[i]*MW/composition.Wi(i);
+    X[i] = Y[i]*MW/composition.W(i);
 }
 
 volScalarField tmpT = log(T/TUnit);
@@ -77,7 +77,7 @@ forAll(Y,i)
 			if(j != i)
 			{
 			 label k = Y.size()*n+m-0.5*n*(n+1);
-			 DiNumerator += (Xj+1e-12) * composition.Wi(j);
+			 DiNumerator += (Xj+1e-12) * composition.W(j);
 			 DiDenominator += MW*(Xj+1e-12)/d[k];
 			} 
 		}
@@ -94,7 +94,7 @@ forAll(Y,i)
 	 {
 		volScalarField& Xz = X[z];
 		volScalarField& Muz = Mu[z];
-		yhi += Xz*0.353553*pow(1.0+Foam::sqrt(Mui/Muz)*pow025(composition.Wi(z)/composition.Wi(i)),2)/Foam::sqrt(1.0+composition.Wi(i)/composition.Wi(z));
+		yhi += Xz*0.353553*pow(1.0+Foam::sqrt(Mui/Muz)*pow025(composition.W(z)/composition.W(i)),2)/Foam::sqrt(1.0+composition.W(i)/composition.W(z));
 	 }
      mixMu += (Xi)*Mui/yhi;
 	 mixLambdaA += Xi*Lambda[i];
