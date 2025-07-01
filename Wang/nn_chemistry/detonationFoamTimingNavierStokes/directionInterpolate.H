@@ -1,6 +1,7 @@
 namespace Foam
 {
 
+//- Interpolate field vf according to direction dir
 template<class Type>
 tmp<GeometricField<Type, fvsPatchField, surfaceMesh>> interpolate
 (

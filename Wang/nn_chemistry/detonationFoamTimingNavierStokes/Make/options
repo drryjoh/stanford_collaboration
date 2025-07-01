@@ -1,4 +1,5 @@
 EXE_INC = \
+    -Itransport \
     -IfluxSchemes/lnInclude \
     -I$(LIB_SRC)/finiteVolume/lnInclude \
     -I$(LIB_SRC)/transportModels/compressible/lnInclude \

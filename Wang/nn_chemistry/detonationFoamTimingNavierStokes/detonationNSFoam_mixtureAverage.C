@@ -38,8 +38,8 @@ Description
 #include "fvcSmooth.H"
 #include "fluxScheme.H"
 #include "fvOptions.H"
-#include "clockTime.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
 int main(int argc, char *argv[])
 {
     #define NO_CONTROL
