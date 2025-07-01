@@ -10,6 +10,7 @@ tmp<fv::convectionScheme<scalar>> mvConvection
 );
 
 {
+    clockTime timer;
     scalar time_before_chemistry =  timer.elapsedTime();
     reaction->correct();
     scalar time_after_chemistry =  timer.elapsedTime();
