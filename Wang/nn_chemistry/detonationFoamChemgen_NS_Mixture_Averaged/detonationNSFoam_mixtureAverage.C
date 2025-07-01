@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 
     #include "transport/readTranData.H"
     #include "transport/readBinaryDiff.H"
-//    #include "readThermalDiff.H"
+    #include "transport/readThermalDiff.H"
     #include "transport/readSpeciesLambda.H"
     #include "transport/readSpeciesMu.H"
 
