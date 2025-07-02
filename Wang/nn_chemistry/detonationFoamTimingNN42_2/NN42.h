@@ -23,10 +23,10 @@ auto NN42(const std::array<Scalar, 10>& initial_input) -> std::array<Scalar, 8> 
     // - -
 
     std::array<Scalar, 512> layer_1_output;
-    forwardPass<Scalar, 512>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 10, &relu<Scalar>, 0.0);
+    forwardPass<Scalar, 512>(layer_1_output.data(), model_input.data(), weights_1.data(), biases_1.data(), 10, &relu_nn<Scalar>, 0.0);
 
     std::array<Scalar, 8> layer_2_output;
-    forwardPass<Scalar, 8>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 512, &linear<Scalar>, 0.0);
+    forwardPass<Scalar, 8>(layer_2_output.data(), layer_1_output.data(), weights_2.data(), biases_2.data(), 512, &linear_nn<Scalar>, 0.0);
 
     std::array<Scalar, 8> output_norms = {3.847651572e-07, 7.099737600e-07, 1.046495407e-07, 3.357521408e-07, 1.367027174e-07, 4.737721990e-07, 2.830233273e-10, 1.732561192e-11};
 
