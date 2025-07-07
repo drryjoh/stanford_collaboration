@@ -52,7 +52,7 @@ struct NNInterface
     {
         forAll(T, cell_index)
         {
-            if(T[cell_index] > 300.0)
+            if(T[cell_index] > 1500.0 && Y[5][cell_index]<0.090)
             {
                 UseNN[cell_index] = 1.0;
             }
