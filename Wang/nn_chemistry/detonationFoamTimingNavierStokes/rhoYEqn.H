@@ -19,24 +19,25 @@ forAll(Y,i)
 	volScalarField& Yi = Y[i];
 	volScalarField& Xi = X[i];
 	volScalarField& Diffi = Diff[i];
-	DiffError += (rho*Diffi*fvc::grad(Yi) + Yi*rho*Diffi*fvc::grad(MW)/MW);
-	if(thermalDiffusion)
-	{
-		if(Y[i].name() == "H")
-		{
-		   DiffError += (-rho*Diffi*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
-		}
-		else if(Y[i].name() == "H2")
-		{
-		   DiffError +=  (-rho*Diffi*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
-		}	
-	}
-}
+// 	DiffError += (rho*Diffi*fvc::grad(Yi) + Yi*rho*Diffi*fvc::grad(MW)/MW);
+// 	if(thermalDiffusion)
+// 	{
+// 		if(Y[i].name() == "H")
+// 		{
+// 		   DiffError += (-rho*Diffi*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+// 		}
+// 		else if(Y[i].name() == "H2")
+// 		{
+// 		   DiffError +=  (-rho*Diffi*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+// 		}	
+// 	}
+ }
 
 reaction->correct();
 Qdot = reaction->Qdot();
 volScalarField Yt(0.0*Y[0]);
-surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
+// surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
+ surfaceScalarField  phiUc = 0.0;
 
 forAll(Y, i)
 {
@@ -86,18 +87,21 @@ forAll(Y, i)
 			}
 		}
 		surfaceScalarField speicesFlux = fvc::interpolate(rho*Diffi*fvc::grad(Yi)+Yi*rho*Diffi*fvc::grad(MW)/MW+(-rho*Diff[i]*ThermalDiffRatio*fvc::grad(T)*Yi/(T*(Xi+SMALL)))-Yi*DiffError)& mesh.Sf();
+		/*
 		vk += fvc::interpolate(Hsi)*speicesFlux;
 		sumOfOtherSpeices += speicesFlux;
 		diffsh += fvc::laplacian(mixAlpha*HEi, Yi);
-
+		*/
 		fvScalarMatrix YEqn
 		(
 			fvm::ddt(rho, Yi)
 		  + mvConvection->fvmDiv(rhoPhi, Yi)
+		  /*
 		  - fvm::laplacian(rho*Diffi, Yi) 
 		  + mvConvection->fvmDiv(phiUc,Yi)     		  
 		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
+		  */
 		  ==
 			reaction->R(Yi)
 		);
@@ -137,9 +141,10 @@ forAll(Y, i)
 			HEiPatch[facei] = composition.Es(i, pp[facei], Tp[facei]);
 		}
 	}
-
+`	/*
 	vk += fvc::interpolate(Hsi)*-sumOfOtherSpeices;
 	diffsh += fvc::laplacian(mixAlpha*HEi, 1-Yt);	
+	*/
 }
 
 Y[inertIndex] = scalar(1) - Yt;

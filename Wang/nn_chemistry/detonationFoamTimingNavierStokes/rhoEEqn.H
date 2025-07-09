@@ -9,7 +9,7 @@ solve
 (
 	fvm::ddt(rho, e) 
   - fvc::ddt(rho, e)               
-  - fvm::laplacian(mixAlpha+turbulence->mut()/Prt, e)
+ //Removed: - fvm::laplacian(mixAlpha+turbulence->mut()/Prt, e)
   + diffsh
   - fvc::div(vk) 
   ==Qdot
