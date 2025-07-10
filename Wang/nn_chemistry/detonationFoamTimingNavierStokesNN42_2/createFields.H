@@ -174,6 +174,19 @@ volScalarField Qdot
     dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
 );
 
+volScalarField UseNN
+(
+    IOobject
+    (
+        "UseNN",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("UseNN", dimless, 0.0)
+);
 
 Info<< "Creating turbulence model\n" << endl;
 autoPtr<compressible::turbulenceModel> turbulence

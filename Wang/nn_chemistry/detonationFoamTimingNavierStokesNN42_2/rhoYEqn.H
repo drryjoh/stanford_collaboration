@@ -35,14 +35,13 @@ forAll(Y,i)
 /*
 reaction->correct();
 Qdot = reaction->Qdot();
-volScalarField Yt(0.0*Y[0]);
-surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 */
-
 nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
 auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
 Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
-    
+
+volScalarField Yt(0.0*Y[0]);
+surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 
 forAll(Y, i)
 {
@@ -105,7 +104,7 @@ forAll(Y, i)
 		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
 		  ==
-			reaction->R(Yi)
+			RR[i]
 		);
 
 	    YEqn.relax();
