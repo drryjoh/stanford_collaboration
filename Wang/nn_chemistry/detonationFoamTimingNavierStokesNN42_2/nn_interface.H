@@ -44,24 +44,48 @@ struct NNInterface
     }
 
     // Check if species names match
-    void useNN(
+void useNN(
     volScalarField& UseNN,
-    const PtrList<volScalarField>& Y,
+    const PtrList<volScalarField>& /*Y*/,  // Unused here, but kept for interface consistency
     const volScalarField& p,
-    const volScalarField& T)
+    const volScalarField& T,
+    const fvMesh& mesh)  // Need mesh to get cell positions
+{
+    // Step 1: Compute pressure gradient magnitude
+    volVectorField gradP = fvc::grad(p);
+
+    // Step 2: Find cell with maximum pressure gradient (shock front)
+    scalar maxGrad = -1.0;
+    label shockCell = -1;
+
+    forAll(p, cell_index)
     {
-        forAll(T, cell_index)
+        scalar gradMag = mag(gradP[cell_index]);
+        if (gradMag > maxGrad)
         {
-            if(T[cell_index] > 1500.0 && Y[5][cell_index]<0.090)
-            {
-                UseNN[cell_index] = 1.0;
-            }
-            else
-            {
-                UseNN[cell_index] = 0.0;
-            }
+            maxGrad = gradMag;
+            shockCell = cell_index;
         }
     }
+
+    scalar shockX = mesh.C()[shockCell].x();  // x-location of shock front
+
+    // Step 3: Mark UseNN = 1 behind shock or if threshold conditions met
+    forAll(T, cell_index)
+    {
+        scalar x = mesh.C()[cell_index].x();
+
+        if (x < shockX || p[cell_index] > 10000 || T[cell_index] > 500)
+        {
+            UseNN[cell_index] = 1.0;
+        }
+        else
+        {
+            UseNN[cell_index] = 0.0;
+        }
+    }
+}
+
 
 
     scalar rho_scalar( 
