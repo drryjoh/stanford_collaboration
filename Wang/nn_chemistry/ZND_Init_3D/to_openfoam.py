@@ -38,7 +38,7 @@ def write_openfoam_scalar_file(data, dimensions, name, location, boundary = "def
  
         frontAndBack
         {
-            type            empty;
+            type            zeroGradient;
         }
     }
     """
@@ -65,7 +65,7 @@ def write_openfoam_scalar_file(data, dimensions, name, location, boundary = "def
         }}
         frontAndBack
         {{
-            type            empty;
+            type            {boundary};
         }}
     }}
     """
@@ -124,7 +124,7 @@ def write_openfoam_vector_file(vectors, dimensions, name, location, boundary="de
  
         frontAndBack
         {
-            type            empty;
+            type            zeroGradient;
         }
     }
     """
@@ -151,7 +151,7 @@ def write_openfoam_vector_file(vectors, dimensions, name, location, boundary="de
         }}
         frontAndBack
         {{
-            type            empty;
+            type            {boundary};
         }}
     }}
     """
