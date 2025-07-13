@@ -14,7 +14,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
     scalar time_before_NN_chemistry =  timer.elapsedTime();
 
-    nnInterface.useNN(UseNN, Y, p, T); //check to see where to use NN
+    nnInterface.useNN(UseNN, T, U); //check to see where to use NN
     auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
     
     scalar time_after_NN_chemistry =  timer.elapsedTime();

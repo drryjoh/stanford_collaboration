@@ -47,12 +47,12 @@ struct NNInterface
     void useNN(
     volScalarField& UseNN,
     const PtrList<volScalarField>& Y,
-    const volScalarField& p,
-    const volScalarField& T)
+    const volScalarField& T,
+    const volVectorField& U)
     {
         forAll(T, cell_index)
         {
-            if(p[cell_index] > 7000 || T[cell_index] > 400)
+            if (mag(U[cell_index]) > 250)
             {
                 UseNN[cell_index] = 1.0;
             }
