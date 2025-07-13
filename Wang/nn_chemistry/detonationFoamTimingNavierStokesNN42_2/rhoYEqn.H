@@ -36,7 +36,7 @@ forAll(Y,i)
 reaction->correct();
 Qdot = reaction->Qdot();
 */
-nnInterface.useNN(UseNN, Y, p, T, mesh); //check to see where to use NN
+nnInterface.useNN(UseNN, T, U); //check to see where to use NN
 auto RR = nnInterface.solve(Y, p, T, UseNN, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
 Qdot  = nnInterface.Qdot(thermo, RR); // sum(RR_i, Hc_i)
 
