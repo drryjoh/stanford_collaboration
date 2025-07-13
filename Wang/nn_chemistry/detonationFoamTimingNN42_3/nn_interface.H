@@ -46,7 +46,6 @@ struct NNInterface
     // Check if species names match
     void useNN(
     volScalarField& UseNN,
-    const PtrList<volScalarField>& Y,
     const volScalarField& T,
     const volVectorField& U)
     {
