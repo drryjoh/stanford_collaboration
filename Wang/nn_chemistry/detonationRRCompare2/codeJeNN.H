@@ -55,9 +55,9 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
     activation_function(outputs, temp_outputs.data(), output_size, alpha);
 }
 
-#include "N42.h"
+#include "NN42.h"
 
-std::array<Scalar, 10> predict_combustion(const std::array<Scalar, 10>& input)
+std::array<Scalar, 8> predict_combustion(const std::array<Scalar, 10>& input)
 {
 
     auto model_output = NN42<Scalar>(input); // Change input to desired features
