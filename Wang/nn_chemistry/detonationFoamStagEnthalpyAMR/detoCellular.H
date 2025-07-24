@@ -1,4 +1,4 @@
-volScalarField magStagEnthalpy("magStagEnthalpy",mag(fvc::grad(rhoHStag)));  
+volScalarField magStagEnthalpy("magStagEnthalpy",mag(fvc::grad(HStag)));  
 
 for (label cellI=0; cellI<mesh.C().size(); cellI++)
 {
@@ -6,4 +6,4 @@ for (label cellI=0; cellI<mesh.C().size(); cellI++)
 }
 
 maxp.writeOpt() = IOobject::AUTO_WRITE;
-magGradrho.writeOpt() = IOobject::AUTO_WRITE;
+HStag.writeOpt() = IOobject::AUTO_WRITE;
