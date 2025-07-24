@@ -173,7 +173,7 @@ volScalarField Qdot
     mesh,
     dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
 );
-volScalarField rhoHStag
+volScalarField HStag
 (
     IOobject
     (

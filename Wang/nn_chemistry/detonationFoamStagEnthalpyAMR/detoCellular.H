@@ -6,4 +6,4 @@ for (label cellI=0; cellI<mesh.C().size(); cellI++)
 }
 
 maxp.writeOpt() = IOobject::AUTO_WRITE;
-HStag.writeOpt() = IOobject::AUTO_WRITE;
+magStagEnthalpy.writeOpt() = IOobject::AUTO_WRITE;
