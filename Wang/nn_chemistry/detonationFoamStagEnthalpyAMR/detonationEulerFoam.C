@@ -56,7 +56,6 @@ int main(int argc, char *argv[]) {
         mesh.update();                                
 
         fluxSchemeFields->update(rho,U,e,p,c,phi,rhoPhi,rhoUPhi,rhoEPhi);
-        scalar time_before =  timer.elapsedTime();
         #include "rhoEqn.H"
         #include "rhoUEqn.H"
         #include "rhoYEqn.H"
