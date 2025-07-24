@@ -1,6 +1,6 @@
 #!python3
 import cantera as ct
-gas = ct.Solution("FFCM2_H2_Ar.yaml")
+gas = ct.Solution("FFCMy_12.yaml")
 rxn_str_list = []
 for rxn_ind in range(gas.n_reactions):
     rxn = gas.reaction(rxn_ind)

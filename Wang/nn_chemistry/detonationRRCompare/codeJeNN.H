@@ -55,17 +55,17 @@ void forwardPass(Scalar* outputs, const Scalar* inputs, const Scalar* weights, c
     activation_function(outputs, temp_outputs.data(), output_size, alpha);
 }
 
-#include "NN28.h"
+#include "NN42.h"
 
-std::array<Scalar, 10> predict_combustion(const std::array<Scalar, 10>& input)
+std::array<Scalar, 8> predict_combustion(const std::array<Scalar, 10>& input)
 {
 
-    auto model_output = NN28<Scalar>(input); // Change input to desired features
+    auto model_output = NN42<Scalar>(input); // Change input to desired features
 
-    std::array<Scalar, 10> output;
+    std::array<Scalar, 8> output;
 
-    for (int i = 0; i < 10; i++) {
-        output[i] = model_output[i] + input[i]; // NN outputs change of state properties, transferred to real values
+    for (int i = 0; i < 8; i++) {
+        output[i] = model_output[i] + input[i+2]; // NN outputs change of state properties, transferred to real values
     }
 
     return output;
