@@ -7,16 +7,16 @@ import numpy as np
 import csv 
 
 #Set gas properties and mechansim
-P = 6670.0
+P = 101325
 T = 298
-X = 'H2:0.2,O2:0.1,AR:0.7'
+X = 'CH4:1,O2:2'
 
-gas1 = ct.Solution('FFCM2_H2_Ar.yaml')
+gas1 = ct.Solution('FFCMy_12.yaml')
 gas1.TPX = T, P, X
 phi = gas1.equivalence_ratio(fuel="H2",oxidizer="O2:1,AR:7")
-cj_speed, R2, plot_data = CJspeed(P, T, X, 'FFCM2_H2_Ar.yaml', fullOutput=True)
+cj_speed, R2, plot_data = CJspeed(P, T, X, 'FFCMy_12.yaml', fullOutput=True)
 
-gas = PostShock_fr(cj_speed, P, T, X, 'FFCM2_H2_Ar.yaml')
+gas = PostShock_fr(cj_speed, P, T, X, 'FFCMy_12.yaml')
 
 znd_out = zndsolve(gas,gas1,cj_speed,t_end=1e-3,advanced_output=True,Method='BDF',relTol=1e-20,absTol=1e-18)
 
