@@ -37,7 +37,6 @@ reaction->correct();
 Qdot = reaction->Qdot();
 volScalarField Yt(0.0*Y[0]);
 //surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
-surfaceScalarField  phiUc = 0.0;
 
 forAll(Y, i)
 {
