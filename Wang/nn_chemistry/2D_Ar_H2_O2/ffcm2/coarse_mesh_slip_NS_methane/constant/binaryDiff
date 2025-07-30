@@ -1,0 +1,657 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          binaryDiff;
+}
+
+// Scheme: transport fitting
+// Fitted by Josh Lipman for FFCM2 Hydrogen Submechansim. 6/16/2025
+//See polynomialfits.ipynb in stanford_collaboration
+//Temperature range is 300 to 6000
+
+CH2O-CH2O
+{
+Diff1	-2.051E+01	;
+Diff2	 4.486E+00	;
+Diff3	-2.818E-01	;
+Diff4	 9.094E-03	;
+}
+CH2O-N2
+{
+Diff1	-1.966E+01	;
+Diff2	 4.828E+00	;
+Diff3	-3.917E-01	;
+Diff4	 1.614E-02	;
+}
+CH3-CH2O
+{
+Diff1	-2.048E+01	;
+Diff2	 5.144E+00	;
+Diff3	-4.279E-01	;
+Diff4	 1.753E-02	;
+}
+CH3-CH3
+{
+Diff1	-1.571E+01	;
+Diff2	 3.508E+00	;
+Diff3	-2.324E-01	;
+Diff4	 9.714E-03	;
+}
+CH3-CH4
+{
+Diff1	-1.565E+01	;
+Diff2	 3.486E+00	;
+Diff3	-2.298E-01	;
+Diff4	 9.606E-03	;
+}
+CH3-CO
+{
+Diff1	-1.460E+01	;
+Diff2	 3.071E+00	;
+Diff3	-1.784E-01	;
+Diff4	 7.476E-03	;
+}
+CH3-CO2
+{
+Diff1	-1.780E+01	;
+Diff2	 4.186E+00	;
+Diff3	-3.151E-01	;
+Diff4	 1.308E-02	;
+}
+CH3-N2
+{
+Diff1	-1.457E+01	;
+Diff2	 3.065E+00	;
+Diff3	-1.776E-01	;
+Diff4	 7.446E-03	;
+}
+CH4-CH2O
+{
+Diff1	-2.095E+01	;
+Diff2	 5.300E+00	;
+Diff3	-4.453E-01	;
+Diff4	 1.817E-02	;
+}
+CH4-CH4
+{
+Diff1	-1.560E+01	;
+Diff2	 3.465E+00	;
+Diff3	-2.272E-01	;
+Diff4	 9.498E-03	;
+}
+CH4-CO
+{
+Diff1	-1.455E+01	;
+Diff2	 3.054E+00	;
+Diff3	-1.762E-01	;
+Diff4	 7.386E-03	;
+}
+CH4-CO2
+{
+Diff1	-1.774E+01	;
+Diff2	 4.162E+00	;
+Diff3	-3.122E-01	;
+Diff4	 1.296E-02	;
+}
+CH4-N2
+{
+Diff1	-1.453E+01	;
+Diff2	 3.047E+00	;
+Diff3	-1.753E-01	;
+Diff4	 7.351E-03	;
+}
+CO-CH2O
+{
+Diff1	-1.914E+01	;
+Diff2	 4.637E+00	;
+Diff3	-3.690E-01	;
+Diff4	 1.523E-02	;
+}
+CO-CO
+{
+Diff1	-1.374E+01	;
+Diff2	 2.711E+00	;
+Diff3	-1.334E-01	;
+Diff4	 5.608E-03	;
+}
+CO-CO2
+{
+Diff1	-1.656E+01	;
+Diff2	 3.683E+00	;
+Diff3	-2.539E-01	;
+Diff4	 1.060E-02	;
+}
+CO-N2
+{
+Diff1	-1.371E+01	;
+Diff2	 2.702E+00	;
+Diff3	-1.323E-01	;
+Diff4	 5.559E-03	;
+}
+CO2-CH2O
+{
+Diff1	-2.255E+01	;
+Diff2	 5.677E+00	;
+Diff3	-4.806E-01	;
+Diff4	 1.921E-02	;
+}
+CO2-CO2
+{
+Diff1	-2.021E+01	;
+Diff2	 4.909E+00	;
+Diff3	-4.011E-01	;
+Diff4	 1.651E-02	;
+}
+CO2-N2
+{
+Diff1	-1.653E+01	;
+Diff2	 3.675E+00	;
+Diff3	-2.530E-01	;
+Diff4	 1.055E-02	;
+}
+H-CH2O
+{
+Diff1	-1.880E+01	;
+Diff2	 5.152E+00	;
+Diff3	-4.289E-01	;
+Diff4	 1.757E-02	;
+}
+H-CH3
+{
+Diff1	-1.417E+01	;
+Diff2	 3.516E+00	;
+Diff3	-2.334E-01	;
+Diff4	 9.755E-03	;
+}
+H-CH4
+{
+Diff1	-1.410E+01	;
+Diff2	 3.495E+00	;
+Diff3	-2.308E-01	;
+Diff4	 9.647E-03	;
+}
+H-CO
+{
+Diff1	-1.293E+01	;
+Diff2	 3.078E+00	;
+Diff3	-1.792E-01	;
+Diff4	 7.512E-03	;
+}
+H-CO2
+{
+Diff1	-1.609E+01	;
+Diff2	 4.195E+00	;
+Diff3	-3.163E-01	;
+Diff4	 1.313E-02	;
+}
+H-H
+{
+Diff1	-1.317E+01	;
+Diff2	 3.524E+00	;
+Diff3	-2.344E-01	;
+Diff4	 9.796E-03	;
+}
+H-H2O
+{
+Diff1	-1.889E+01	;
+Diff2	 5.310E+00	;
+Diff3	-4.464E-01	;
+Diff4	 1.821E-02	;
+}
+H-HO2
+{
+Diff1	-1.313E+01	;
+Diff2	 3.177E+00	;
+Diff3	-1.916E-01	;
+Diff4	 8.025E-03	;
+}
+H-N2
+{
+Diff1	-1.290E+01	;
+Diff2	 3.072E+00	;
+Diff3	-1.785E-01	;
+Diff4	 7.482E-03	;
+}
+H-O
+{
+Diff1	-1.202E+01	;
+Diff2	 2.877E+00	;
+Diff3	-1.542E-01	;
+Diff4	 6.471E-03	;
+}
+H-O2
+{
+Diff1	-1.313E+01	;
+Diff2	 3.177E+00	;
+Diff3	-1.916E-01	;
+Diff4	 8.025E-03	;
+}
+H-OH
+{
+Diff1	-1.202E+01	;
+Diff2	 2.877E+00	;
+Diff3	-1.542E-01	;
+Diff4	 6.471E-03	;
+}
+H2-CH2O
+{
+Diff1	-1.503E+01	;
+Diff2	 3.627E+00	;
+Diff3	-2.471E-01	;
+Diff4	 1.031E-02	;
+}
+H2-CH3
+{
+Diff1	-1.140E+01	;
+Diff2	 2.295E+00	;
+Diff3	-8.103E-02	;
+Diff4	 3.408E-03	;
+}
+H2-CH4
+{
+Diff1	-1.136E+01	;
+Diff2	 2.284E+00	;
+Diff3	-7.970E-02	;
+Diff4	 3.352E-03	;
+}
+H2-CO
+{
+Diff1	-1.082E+01	;
+Diff2	 2.090E+00	;
+Diff3	-5.509E-02	;
+Diff4	 2.311E-03	;
+}
+H2-CO2
+{
+Diff1	-1.248E+01	;
+Diff2	 2.676E+00	;
+Diff3	-1.290E-01	;
+Diff4	 5.419E-03	;
+}
+H2-H
+{
+Diff1	-1.032E+01	;
+Diff2	 2.299E+00	;
+Diff3	-8.153E-02	;
+Diff4	 3.428E-03	;
+}
+H2-H2
+{
+Diff1	-9.366E+00	;
+Diff2	 1.770E+00	;
+Diff3	-1.391E-02	;
+Diff4	 5.442E-04	;
+}
+H2-H2O
+{
+Diff1	-1.553E+01	;
+Diff2	 3.934E+00	;
+Diff3	-2.847E-01	;
+Diff4	 1.185E-02	;
+}
+H2-HO2
+{
+Diff1	-1.088E+01	;
+Diff2	 2.135E+00	;
+Diff3	-6.072E-02	;
+Diff4	 2.550E-03	;
+}
+H2-N2
+{
+Diff1	-1.080E+01	;
+Diff2	 2.087E+00	;
+Diff3	-5.467E-02	;
+Diff4	 2.293E-03	;
+}
+H2-O
+{
+Diff1	-1.025E+01	;
+Diff2	 2.002E+00	;
+Diff3	-4.381E-02	;
+Diff4	 1.832E-03	;
+}
+H2-O2
+{
+Diff1	-1.088E+01	;
+Diff2	 2.135E+00	;
+Diff3	-6.072E-02	;
+Diff4	 2.550E-03	;
+}
+H2-OH
+{
+Diff1	-1.025E+01	;
+Diff2	 2.002E+00	;
+Diff3	-4.381E-02	;
+Diff4	 1.832E-03	;
+}
+H2O-CH2O
+{
+Diff1	-1.910E+01	;
+Diff2	 3.976E+00	;
+Diff3	-2.036E-01	;
+Diff4	 5.323E-03	;
+}
+H2O-CH3
+{
+Diff1	-2.058E+01	;
+Diff2	 5.303E+00	;
+Diff3	-4.456E-01	;
+Diff4	 1.818E-02	;
+}
+H2O-CH4
+{
+Diff1	-2.123E+01	;
+Diff2	 5.509E+00	;
+Diff3	-4.670E-01	;
+Diff4	 1.892E-02	;
+}
+H2O-CO
+{
+Diff1	-1.928E+01	;
+Diff2	 4.839E+00	;
+Diff3	-3.929E-01	;
+Diff4	 1.618E-02	;
+}
+H2O-CO2
+{
+Diff1	-2.232E+01	;
+Diff2	 5.699E+00	;
+Diff3	-4.770E-01	;
+Diff4	 1.882E-02	;
+}
+H2O-H2O
+{
+Diff1	-1.686E+01	;
+Diff2	 3.091E+00	;
+Diff3	-7.072E-02	;
+Diff4	-9.866E-04	;
+}
+H2O-N2
+{
+Diff1	-2.002E+01	;
+Diff2	 5.098E+00	;
+Diff3	-4.227E-01	;
+Diff4	 1.733E-02	;
+}
+HO2-CH2O
+{
+Diff1	-1.949E+01	;
+Diff2	 4.769E+00	;
+Diff3	-3.847E-01	;
+Diff4	 1.587E-02	;
+}
+HO2-CH3
+{
+Diff1	-1.484E+01	;
+Diff2	 3.169E+00	;
+Diff3	-1.906E-01	;
+Diff4	 7.985E-03	;
+}
+HO2-CH4
+{
+Diff1	-1.479E+01	;
+Diff2	 3.149E+00	;
+Diff3	-1.881E-01	;
+Diff4	 7.880E-03	;
+}
+HO2-CO
+{
+Diff1	-1.394E+01	;
+Diff2	 2.787E+00	;
+Diff3	-1.429E-01	;
+Diff4	 6.000E-03	;
+}
+HO2-CO2
+{
+Diff1	-1.688E+01	;
+Diff2	 3.798E+00	;
+Diff3	-2.681E-01	;
+Diff4	 1.117E-02	;
+}
+HO2-H2O
+{
+Diff1	-1.958E+01	;
+Diff2	 4.950E+00	;
+Diff3	-4.058E-01	;
+Diff4	 1.668E-02	;
+}
+HO2-HO2
+{
+Diff1	-1.416E+01	;
+Diff2	 2.872E+00	;
+Diff3	-1.535E-01	;
+Diff4	 6.443E-03	;
+}
+HO2-N2
+{
+Diff1	-1.392E+01	;
+Diff2	 2.781E+00	;
+Diff3	-1.422E-01	;
+Diff4	 5.972E-03	;
+}
+N2-N2
+{
+Diff1	-1.369E+01	;
+Diff2	 2.697E+00	;
+Diff3	-1.316E-01	;
+Diff4	 5.530E-03	;
+}
+O-CH2O
+{
+Diff1	-1.790E+01	;
+Diff2	 4.358E+00	;
+Diff3	-3.359E-01	;
+Diff4	 1.392E-02	;
+}
+O-CH3
+{
+Diff1	-1.367E+01	;
+Diff2	 2.871E+00	;
+Diff3	-1.534E-01	;
+Diff4	 6.437E-03	;
+}
+O-CH4
+{
+Diff1	-1.362E+01	;
+Diff2	 2.853E+00	;
+Diff3	-1.512E-01	;
+Diff4	 6.347E-03	;
+}
+O-CO
+{
+Diff1	-1.286E+01	;
+Diff2	 2.543E+00	;
+Diff3	-1.123E-01	;
+Diff4	 4.720E-03	;
+}
+O-CO2
+{
+Diff1	-1.543E+01	;
+Diff2	 3.437E+00	;
+Diff3	-2.237E-01	;
+Diff4	 9.356E-03	;
+}
+O-H2O
+{
+Diff1	-1.801E+01	;
+Diff2	 4.551E+00	;
+Diff3	-3.590E-01	;
+Diff4	 1.484E-02	;
+}
+O-HO2
+{
+Diff1	-1.302E+01	;
+Diff2	 2.614E+00	;
+Diff3	-1.212E-01	;
+Diff4	 5.094E-03	;
+}
+O-N2
+{
+Diff1	-1.284E+01	;
+Diff2	 2.538E+00	;
+Diff3	-1.117E-01	;
+Diff4	 4.697E-03	;
+}
+O-O
+{
+Diff1	-1.203E+01	;
+Diff2	 2.396E+00	;
+Diff3	-9.375E-02	;
+Diff4	 3.943E-03	;
+}
+O-OH
+{
+Diff1	-1.204E+01	;
+Diff2	 2.396E+00	;
+Diff3	-9.375E-02	;
+Diff4	 3.943E-03	;
+}
+O2-CH2O
+{
+Diff1	-2.001E+01	;
+Diff2	 4.950E+00	;
+Diff3	-4.058E-01	;
+Diff4	 1.669E-02	;
+}
+O2-CH3
+{
+Diff1	-1.484E+01	;
+Diff2	 3.169E+00	;
+Diff3	-1.906E-01	;
+Diff4	 7.985E-03	;
+}
+O2-CH4
+{
+Diff1	-1.479E+01	;
+Diff2	 3.149E+00	;
+Diff3	-1.881E-01	;
+Diff4	 7.880E-03	;
+}
+O2-CO
+{
+Diff1	-1.393E+01	;
+Diff2	 2.787E+00	;
+Diff3	-1.430E-01	;
+Diff4	 6.003E-03	;
+}
+O2-CO2
+{
+Diff1	-1.687E+01	;
+Diff2	 3.798E+00	;
+Diff3	-2.681E-01	;
+Diff4	 1.117E-02	;
+}
+O2-H2O
+{
+Diff1	-2.034E+01	;
+Diff2	 5.212E+00	;
+Diff3	-4.356E-01	;
+Diff4	 1.782E-02	;
+}
+O2-HO2
+{
+Diff1	-1.415E+01	;
+Diff2	 2.872E+00	;
+Diff3	-1.535E-01	;
+Diff4	 6.443E-03	;
+}
+O2-N2
+{
+Diff1	-1.391E+01	;
+Diff2	 2.781E+00	;
+Diff3	-1.422E-01	;
+Diff4	 5.972E-03	;
+}
+O2-O
+{
+Diff1	-1.302E+01	;
+Diff2	 2.614E+00	;
+Diff3	-1.212E-01	;
+Diff4	 5.094E-03	;
+}
+O2-O2
+{
+Diff1	-1.414E+01	;
+Diff2	 2.872E+00	;
+Diff3	-1.535E-01	;
+Diff4	 6.443E-03	;
+}
+O2-OH
+{
+Diff1	-1.304E+01	;
+Diff2	 2.614E+00	;
+Diff3	-1.212E-01	;
+Diff4	 5.094E-03	;
+}
+OH-CH2O
+{
+Diff1	-1.792E+01	;
+Diff2	 4.358E+00	;
+Diff3	-3.359E-01	;
+Diff4	 1.392E-02	;
+}
+OH-CH3
+{
+Diff1	-1.368E+01	;
+Diff2	 2.871E+00	;
+Diff3	-1.534E-01	;
+Diff4	 6.437E-03	;
+}
+OH-CH4
+{
+Diff1	-1.364E+01	;
+Diff2	 2.853E+00	;
+Diff3	-1.512E-01	;
+Diff4	 6.347E-03	;
+}
+OH-CO
+{
+Diff1	-1.288E+01	;
+Diff2	 2.543E+00	;
+Diff3	-1.123E-01	;
+Diff4	 4.720E-03	;
+}
+OH-CO2
+{
+Diff1	-1.545E+01	;
+Diff2	 3.437E+00	;
+Diff3	-2.237E-01	;
+Diff4	 9.356E-03	;
+}
+OH-H2O
+{
+Diff1	-1.803E+01	;
+Diff2	 4.551E+00	;
+Diff3	-3.590E-01	;
+Diff4	 1.484E-02	;
+}
+OH-HO2
+{
+Diff1	-1.304E+01	;
+Diff2	 2.614E+00	;
+Diff3	-1.212E-01	;
+Diff4	 5.094E-03	;
+}
+OH-N2
+{
+Diff1	-1.286E+01	;
+Diff2	 2.538E+00	;
+Diff3	-1.117E-01	;
+Diff4	 4.697E-03	;
+}
+OH-OH
+{
+Diff1	-1.206E+01	;
+Diff2	 2.396E+00	;
+Diff3	-9.375E-02	;
+Diff4	 3.943E-03	;
+}

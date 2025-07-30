@@ -1,0 +1,111 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          speciesLambda;
+}
+
+// Scheme: transport fitting
+// Fitted by Josh Lipman for FFCM2 Hydrogen Submechansim. 6/16/2025
+//See polynomialfits.ipynb in stanford_collaboration
+//Temperature range is 300 to 6000
+
+H2
+{
+Lambda1	 1.568E+01	;
+Lambda2	-3.288E+00	;
+Lambda3	 5.253E-01	;
+Lambda4	-2.232E-02	;
+}
+H
+{
+Lambda1	 1.378E+00	;
+Lambda2	 2.684E+00	;
+Lambda3	-2.587E-01	;
+Lambda4	 1.092E-02	;
+}
+O2
+{
+Lambda1	-2.930E+00	;
+Lambda2	 3.337E+00	;
+Lambda3	-3.375E-01	;
+Lambda4	 1.482E-02	;
+}
+O
+{
+Lambda1	 2.900E-01	;
+Lambda2	 2.658E+00	;
+Lambda3	-2.939E-01	;
+Lambda4	 1.420E-02	;
+}
+OH
+{
+Lambda1	 1.604E+01	;
+Lambda2	-4.067E+00	;
+Lambda3	 6.531E-01	;
+Lambda4	-2.905E-02	;
+}
+HO2
+{
+Lambda1	 6.100E+00	;
+Lambda2	-8.201E-01	;
+Lambda3	 2.945E-01	;
+Lambda4	-1.617E-02	;
+}
+H2O
+{
+Lambda1	 1.550E+01	;
+Lambda2	-5.546E+00	;
+Lambda3	 1.036E+00	;
+Lambda4	-5.243E-02	;
+}
+CH3
+{
+Lambda1	 5.463E+00	;
+Lambda2	-9.069E-01	;
+Lambda3	 3.668E-01	;
+Lambda4	-2.176E-02	;
+}
+CH4
+{
+Lambda1	-7.452E+00	;
+Lambda2	 4.206E+00	;
+Lambda3	-3.094E-01	;
+Lambda4	 8.858E-03	;
+}
+CO
+{
+Lambda1	 4.964E+00	;
+Lambda2	-1.306E-01	;
+Lambda3	 1.636E-01	;
+Lambda4	-9.259E-03	;
+}
+CO2
+{
+Lambda1	-1.532E+01	;
+Lambda2	 7.616E+00	;
+Lambda3	-8.207E-01	;
+Lambda4	 3.249E-02	;
+}
+CH2O
+{
+Lambda1	-7.196E+00	;
+Lambda2	 3.070E+00	;
+Lambda3	-5.746E-02	;
+Lambda4	-6.972E-03	;
+}
+N2
+{
+Lambda1	 7.047E+00	;
+Lambda2	-9.571E-01	;
+Lambda3	 2.732E-01	;
+Lambda4	-1.407E-02	;
+}

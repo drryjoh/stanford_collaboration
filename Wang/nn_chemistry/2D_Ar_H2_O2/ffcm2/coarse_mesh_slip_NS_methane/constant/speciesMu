@@ -1,0 +1,111 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          speciesMu;
+}
+
+// Scheme: transport fitting
+// Fitted by Josh Lipman for FFCM2 Hydrogen Submechansim. 6/16/2025
+//See polynomialfits.ipynb in stanford_collaboration
+//Temperature range is 300 to 6000
+
+H2
+{
+Mu1	-1.318E+01	;
+Mu2	 7.120E-01	;
+Mu3	-7.850E-03	;
+Mu4	 2.975E-04	;
+}
+H
+{
+Mu1	-1.809E+01	;
+Mu2	 2.647E+00	;
+Mu3	-2.535E-01	;
+Mu4	 1.068E-02	;
+}
+O2
+{
+Mu1	-1.521E+01	;
+Mu2	 1.833E+00	;
+Mu3	-1.508E-01	;
+Mu4	 6.370E-03	;
+}
+O
+{
+Mu1	-1.360E+01	;
+Mu2	 1.280E+00	;
+Mu3	-8.046E-02	;
+Mu4	 3.388E-03	;
+}
+OH
+{
+Mu1	-1.357E+01	;
+Mu2	 1.280E+00	;
+Mu3	-8.046E-02	;
+Mu4	 3.388E-03	;
+}
+HO2
+{
+Mu1	-1.519E+01	;
+Mu2	 1.833E+00	;
+Mu3	-1.508E-01	;
+Mu4	 6.370E-03	;
+}
+H2O
+{
+Mu1	-1.634E+01	;
+Mu2	 1.150E+00	;
+Mu3	 5.592E-02	;
+Mu4	-6.640E-03	;
+}
+CH3
+{
+Mu1	-1.791E+01	;
+Mu2	 2.626E+00	;
+Mu3	-2.508E-01	;
+Mu4	 1.057E-02	;
+}
+CH4
+{
+Mu1	-1.770E+01	;
+Mu2	 2.571E+00	;
+Mu3	-2.440E-01	;
+Mu4	 1.029E-02	;
+}
+CO
+{
+Mu1	-1.485E+01	;
+Mu2	 1.636E+00	;
+Mu3	-1.258E-01	;
+Mu4	 5.312E-03	;
+}
+CO2
+{
+Mu1	-2.242E+01	;
+Mu2	 4.457E+00	;
+Mu3	-4.754E-01	;
+Mu4	 1.977E-02	;
+}
+CH2O
+{
+Mu1	-2.096E+01	;
+Mu2	 3.130E+00	;
+Mu3	-2.316E-01	;
+Mu4	 6.731E-03	;
+}
+N2
+{
+Mu1	-1.480E+01	;
+Mu2	 1.623E+00	;
+Mu3	-1.241E-01	;
+Mu4	 5.240E-03	;
+}
