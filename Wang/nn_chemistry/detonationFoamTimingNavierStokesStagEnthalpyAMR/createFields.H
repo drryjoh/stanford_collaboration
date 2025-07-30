@@ -177,11 +177,11 @@ volScalarField HStag
 (
     IOobject
     (
-        "rhoHStag",
+        "HStag",
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
     thermo.he() + thermo.p()/thermo.rho() + 0.5*magSqr(U)
 );
