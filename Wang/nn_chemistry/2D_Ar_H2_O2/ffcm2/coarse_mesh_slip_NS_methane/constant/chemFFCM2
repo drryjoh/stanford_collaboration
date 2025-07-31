@@ -22,7 +22,7 @@ reactions
     un-named-reaction-0
     {
             type            reversibleArrheniusReaction;
-            reaction        H + O2 = O + OH;
+            reaction        "H + O2 = O + OH";
             A               1.09e+11;
             beta            0;
             Ta              7704.29;
@@ -30,7 +30,7 @@ reactions
     un-named-reaction-1
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + O = H + OH;
+            reaction        "H2 + O = H + OH";
             A               3.82e+09;
             beta            0;
             Ta              4000.6;
@@ -38,7 +38,7 @@ reactions
     un-named-reaction-2
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + O = H + OH;
+            reaction        "H2 + O = H + OH";
             A               8.79e+11;
             beta            0;
             Ta              9651.75;
@@ -46,7 +46,7 @@ reactions
     un-named-reaction-3
     {
             type            reversibleArrheniusReaction;
-            reaction        H2 + OH = H + H2O;
+            reaction        "H2 + OH = H + H2O";
             A               2.16e+05;
             beta            1.51;
             Ta              1729.57;
@@ -54,7 +54,7 @@ reactions
     un-named-reaction-4
     {
             type            reversibleArrheniusReaction;
-            reaction        2 OH = H2O + O;
+            reaction        "2 OH = H2O + O";
             A               33.5;
             beta            2.42;
             Ta              -970.207;
@@ -62,7 +62,7 @@ reactions
     un-named-reaction-5
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        H2 + M = 2 H + M;
+            reaction        "H2 + M = 2 H + M";
             A               4.58e+16;
             beta            -1.4;
             Ta              52531.1;
@@ -88,7 +88,7 @@ reactions
     un-named-reaction-6
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        H + O + M = OH + M;
+            reaction        "H + O + M = OH + M";
             A               4.71e+12;
             beta            -1;
             Ta              0;
@@ -114,7 +114,7 @@ reactions
     un-named-reaction-7
     {
             type            reversiblethirdBodyArrheniusReaction;
-            reaction        H2O + M = H + OH + M;
+            reaction        "H2O + M = H + OH + M";
             A               6.06e+24;
             beta            -3.32;
             Ta              60788.9;
@@ -140,7 +140,7 @@ reactions
     un-named-reaction-8
     {
             type            reversibleArrheniusReaction;
-            reaction        2 H2O = H + H2O + OH;
+            reaction        "2 H2O = H + H2O + OH";
             A               1.01e+23;
             beta            -2.44;
             Ta              60487;
@@ -148,7 +148,7 @@ reactions
     un-named-reaction-9
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        H + O2 (+M) = HO2 (+M);
+            reaction        "H + O2 (+M) = HO2 (+M)";
             k0
         {
             A               1.91e+15;
@@ -193,7 +193,7 @@ reactions
     un-named-reaction-10
     {
             type            reversibleArrheniusReaction;
-            reaction        H + HO2 = H2 + O2;
+            reaction        "H + HO2 = H2 + O2";
             A               3680;
             beta            2.09;
             Ta              -732.184;
@@ -201,7 +201,7 @@ reactions
     un-named-reaction-11
     {
             type            reversibleArrheniusReaction;
-            reaction        H + HO2 = 2 OH;
+            reaction        "H + HO2 = 2 OH";
             A               7.08e+10;
             beta            0;
             Ta              150.966;
@@ -209,7 +209,7 @@ reactions
     un-named-reaction-12
     {
             type            reversibleArrheniusReaction;
-            reaction        H + HO2 = H2O + O;
+            reaction        "H + HO2 = H2O + O";
             A               1.45e+09;
             beta            0;
             Ta              0;
@@ -217,7 +217,7 @@ reactions
     un-named-reaction-13
     {
             type            reversibleArrheniusReaction;
-            reaction        HO2 + O = O2 + OH;
+            reaction        "HO2 + O = O2 + OH";
             A               1.63e+10;
             beta            0;
             Ta              -223.933;
@@ -225,7 +225,7 @@ reactions
     un-named-reaction-14
     {
             type            reversibleArrheniusReaction;
-            reaction        HO2 + OH = H2O + O2;
+            reaction        "HO2 + OH = H2O + O2";
             A               7e+09;
             beta            0;
             Ta              -550.019;
@@ -233,7 +233,7 @@ reactions
     un-named-reaction-15
     {
             type            reversibleArrheniusReaction;
-            reaction        HO2 + OH = H2O + O2;
+            reaction        "HO2 + OH = H2O + O2";
             A               4.5e+11;
             beta            0;
             Ta              5500.19;
@@ -241,7 +241,7 @@ reactions
     un-named-reaction-16
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        CO + O (+M) = CO2 (+M);
+            reaction        "CO + O (+M) = CO2 (+M)";
             k0
         {
             A               1.4e+15;
@@ -279,7 +279,7 @@ reactions
     un-named-reaction-17
     {
             type            reversibleArrheniusReaction;
-            reaction        CO + O2 = CO2 + O;
+            reaction        "CO + O2 = CO2 + O";
             A               2.53e+09;
             beta            0;
             Ta              24003.6;
@@ -287,7 +287,7 @@ reactions
     un-named-reaction-18
     {
             type            reversibleArrheniusReaction;
-            reaction        CO + OH = CO2 + H;
+            reaction        "CO + OH = CO2 + H";
             A               84.6;
             beta            2.05;
             Ta              -179.146;
@@ -295,7 +295,7 @@ reactions
     un-named-reaction-19
     {
             type            reversibleArrheniusReaction;
-            reaction        CO + OH = CO2 + H;
+            reaction        "CO + OH = CO2 + H";
             A               8.64e+09;
             beta            -0.664;
             Ta              167.069;
@@ -303,7 +303,7 @@ reactions
     un-named-reaction-20
     {
             type            reversibleArrheniusReaction;
-            reaction        CO + HO2 = CO2 + OH;
+            reaction        "CO + HO2 = CO2 + OH";
             A               157;
             beta            2.18;
             Ta              9029.77;
@@ -311,7 +311,7 @@ reactions
     un-named-reaction-21
     {
             type            reversibleArrheniusReaction;
-            reaction        CH4 + H = CH3 + H2;
+            reaction        "CH4 + H = CH3 + H2";
             A               3070;
             beta            2.5;
             Ta              3818.43;
@@ -319,7 +319,7 @@ reactions
     un-named-reaction-22
     {
             type            reversibleArrheniusReaction;
-            reaction        CH4 + O = CH3 + OH;
+            reaction        "CH4 + O = CH3 + OH";
             A               2.31e+05;
             beta            1.56;
             Ta              4269.82;
@@ -327,7 +327,7 @@ reactions
     un-named-reaction-23
     {
             type            reversibleArrheniusReaction;
-            reaction        CH4 + OH = CH3 + H2O;
+            reaction        "CH4 + OH = CH3 + H2O";
             A               1000;
             beta            2.18;
             Ta              1230.87;
@@ -335,7 +335,7 @@ reactions
     un-named-reaction-24
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        CH3 + H (+M) = CH4 (+M);
+            reaction        "CH3 + H (+M) = CH4 (+M)";
             k0
         {
             A               6.35e+29;
@@ -380,7 +380,7 @@ reactions
     un-named-reaction-25
     {
             type            reversibleArrheniusReaction;
-            reaction        CH3 + O = CH2O + H;
+            reaction        "CH3 + O = CH2O + H";
             A               1.08e+11;
             beta            0;
             Ta              0;
@@ -388,7 +388,7 @@ reactions
     un-named-reaction-26
     {
             type            reversibleArrheniusReaction;
-            reaction        CH3 + O => CO + H + H2;
+            reaction        "CH3 + O => CO + H + H2";
             A               2.31e+10;
             beta            0;
             Ta              0;
@@ -396,7 +396,7 @@ reactions
     un-named-reaction-27
     {
             type            reversibleArrheniusReaction;
-            reaction        CH3 + HO2 = CH4 + O2;
+            reaction        "CH3 + HO2 = CH4 + O2";
             A               116;
             beta            2.35;
             Ta              -765.9;
@@ -404,7 +404,7 @@ reactions
     un-named-reaction-28
     {
             type            reversibleArrheniusReaction;
-            reaction        CH3 + HO2 => CH2O + H + OH;
+            reaction        "CH3 + HO2 => CH2O + H + OH";
             A               2.08e+10;
             beta            0;
             Ta              -296.9;
@@ -412,7 +412,7 @@ reactions
     un-named-reaction-29
     {
             type            reversibleArrheniusReaction;
-            reaction        CH3 + O2 => CH2O + H + O;
+            reaction        "CH3 + O2 => CH2O + H + O";
             A               2.51e+09;
             beta            0;
             Ta              14239.6;
@@ -420,7 +420,7 @@ reactions
     un-named-reaction-30
     {
             type            reversibleArrheniusReaction;
-            reaction        CH3 + O2 = CH2O + OH;
+            reaction        "CH3 + O2 = CH2O + OH";
             A               0.0228;
             beta            2.53;
             Ta              4915.45;
@@ -428,7 +428,7 @@ reactions
     un-named-reaction-31
     {
             type            reversibleArrheniusReaction;
-            reaction        CH2O + CH3 => CH4 + CO + H;
+            reaction        "CH2O + CH3 => CH4 + CO + H";
             A               0.0106;
             beta            3.36;
             Ta              2168.88;
@@ -436,7 +436,7 @@ reactions
     un-named-reaction-32
     {
             type            reversibleArrheniusTroeFallOffReaction;
-            reaction        CH2O (+M) = CO + H2 (+M);
+            reaction        "CH2O (+M) = CO + H2 (+M)";
             k0
         {
             A               4.4e+35;
@@ -481,7 +481,7 @@ reactions
     un-named-reaction-33
     {
             type            reversibleArrheniusReaction;
-            reaction        CH2O + H => CO + H + H2;
+            reaction        "CH2O + H => CO + H + H2";
             A               5.67e+09;
             beta            0.361;
             Ta              2319.34;
@@ -489,7 +489,7 @@ reactions
     un-named-reaction-34
     {
             type            reversibleArrheniusReaction;
-            reaction        CH2O + H => CO + H + H2;
+            reaction        "CH2O + H => CO + H + H2";
             A               1.14e+10;
             beta            0.582;
             Ta              7243.85;
@@ -497,7 +497,7 @@ reactions
     un-named-reaction-35
     {
             type            reversibleArrheniusReaction;
-            reaction        CH2O + O => CO + H + OH;
+            reaction        "CH2O + O => CO + H + OH";
             A               4.16e+08;
             beta            0.57;
             Ta              1389.89;
@@ -505,7 +505,7 @@ reactions
     un-named-reaction-36
     {
             type            reversibleArrheniusReaction;
-            reaction        CH2O + OH => CO + H + H2O;
+            reaction        "CH2O + OH => CO + H + H2O";
             A               7.82e+04;
             beta            1.63;
             Ta              -530.897;
@@ -513,7 +513,7 @@ reactions
     un-named-reaction-37
     {
             type            reversibleArrheniusReaction;
-            reaction        CH2O + O2 => CO + H + HO2;
+            reaction        "CH2O + O2 => CO + H + HO2";
             A               244;
             beta            2.5;
             Ta              18347.4;
