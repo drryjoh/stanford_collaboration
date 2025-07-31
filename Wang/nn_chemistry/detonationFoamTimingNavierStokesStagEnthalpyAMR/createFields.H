@@ -177,7 +177,7 @@ volScalarField HStag
 (
     IOobject
     (
-        "HStag",
+        "Hstag",
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,

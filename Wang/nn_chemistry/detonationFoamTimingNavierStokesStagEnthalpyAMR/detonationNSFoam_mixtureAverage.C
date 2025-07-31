@@ -68,6 +68,7 @@ int main(int argc, char *argv[])
     {
         #include "updateTransProperties.H"
         #include "calculateDt.H"
+        HStag = thermo.he() + thermo.p()/thermo.rho() + 0.5*magSqr(U);
         #include "detoCellular.H"
 
         mesh.update();               
@@ -80,7 +81,6 @@ int main(int argc, char *argv[])
         #include "rhoEEqn.H"
 
         turbulence->correct();
-
         runTime.write();
     }
 
