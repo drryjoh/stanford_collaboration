@@ -7,7 +7,7 @@ import numpy as np
 import csv 
 
 #Set gas properties and mechansim
-P = 22300
+P = 10000
 T = 298
 X = 'CH4:1,O2:2,N2:1'
 
@@ -52,7 +52,7 @@ species_array = znd_out['species'].T
 #create output array
 out_array = np.zeros((len(x_array),n_cols))
 
-file_name = 'ffcm2methane_2'
+file_name = 'ffcm2methane_10kpa'
 #stack things up here
 out_array[:,0] = x_array
 out_array[:,1] = p_array
