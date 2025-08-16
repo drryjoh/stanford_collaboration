@@ -58,17 +58,16 @@ int main(int argc, char *argv[])
     turbulence->validate();
     Info<< "\nStarting time loop\n" << endl;
 
-    #include "readTranData.H"
-    #include "readBinaryDiff.H"
+   // #include "readTranData.H"
+   // #include "readBinaryDiff.H"
    // #include "readThermalDiff.H"
-    #include "readSpeciesLambda.H"
+  //  #include "readSpeciesLambda.H"
     #include "readSpeciesMu.H"
 
     while (runTime.run())
     {
         #include "updateTransProperties.H"
-        #include "calculateDt.H"
-        HStag = thermo.he() + thermo.p()/thermo.rho() + 0.5*magSqr(U);
+      //  #include "calculateDt.H"
         #include "detoCellular.H"
 
         mesh.update();               
@@ -81,6 +80,7 @@ int main(int argc, char *argv[])
         #include "rhoEEqn.H"
 
         turbulence->correct();
+
         runTime.write();
     }
 

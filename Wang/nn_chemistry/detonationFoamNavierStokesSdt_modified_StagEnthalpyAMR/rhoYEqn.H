@@ -19,24 +19,24 @@ forAll(Y,i)
 	volScalarField& Yi = Y[i];
 	volScalarField& Xi = X[i];
 	volScalarField& Diffi = Diff[i];
-	DiffError += (rho*Diffi*fvc::grad(Yi) + Yi*rho*Diffi*fvc::grad(MW)/MW);
-	if(thermalDiffusion)
-	{
-		if(Y[i].name() == "H")
-		{
-		   DiffError += (-rho*Diffi*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
-		}
-		else if(Y[i].name() == "H2")
-		{
-		   DiffError +=  (-rho*Diffi*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
-		}	
-	}
+	// DiffError += (rho*Diffi*fvc::grad(Yi) + Yi*rho*Diffi*fvc::grad(MW)/MW);
+	// if(thermalDiffusion)
+	// {
+	// 	if(Y[i].name() == "H")
+	// 	{
+	// 	   DiffError += (-rho*Diffi*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+	// 	}
+	// 	else if(Y[i].name() == "H2")
+	// 	{
+	// 	   DiffError +=  (-rho*Diffi*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+	// 	}	
+	// }
 }
 
-reaction->correct();
-Qdot = reaction->Qdot();
+auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+Qdot  = chemgen.Qdot(thermo, RR); 
 volScalarField Yt(0.0*Y[0]);
-surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
+//surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 
 forAll(Y, i)
 {
@@ -47,21 +47,21 @@ forAll(Y, i)
 		volScalarField& Diffi = Diff[i];
 		volScalarField  ThermalDiffRatio = TDRatio_H*0;
 		
-		if(thermalDiffusion)
-		{
-			if(Y[i].name() == "H")
-			{
-			   ThermalDiffRatio = TDRatio_H;
-			}
-			else if(Y[i].name() == "H2")
-			{
-			   ThermalDiffRatio = TDRatio_H2;
-			}		   
-			else
-			{
-			   ThermalDiffRatio *= 0;
-			}
-		}			
+		// if(thermalDiffusion)
+		// {
+		// 	if(Y[i].name() == "H")
+		// 	{
+		// 	   ThermalDiffRatio = TDRatio_H;
+		// 	}
+		// 	else if(Y[i].name() == "H2")
+		// 	{
+		// 	   ThermalDiffRatio = TDRatio_H2;
+		// 	}		   
+		// 	else
+		// 	{
+		// 	   ThermalDiffRatio *= 0;
+		// 	}
+		// }			
 		
 				for(label icell = 0; icell < rho.size(); icell++)
 		{
@@ -94,12 +94,14 @@ forAll(Y, i)
 		(
 			fvm::ddt(rho, Yi)
 		  + mvConvection->fvmDiv(rhoPhi, Yi)
+		  /*
 		  - fvm::laplacian(rho*Diffi, Yi) 
 		  + mvConvection->fvmDiv(phiUc,Yi)     		  
 		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
+		  */
 		  ==
-			reaction->R(Yi)
+			RR[i]
 		);
 
 	    YEqn.relax();
@@ -137,9 +139,10 @@ forAll(Y, i)
 			HEiPatch[facei] = composition.Es(i, pp[facei], Tp[facei]);
 		}
 	}
-
+/*
 	vk += fvc::interpolate(Hsi)*-sumOfOtherSpeices;
 	diffsh += fvc::laplacian(mixAlpha*HEi, 1-Yt);	
+*/
 }
 
 Y[inertIndex] = scalar(1) - Yt;
