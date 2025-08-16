@@ -1,103 +1,99 @@
-#!python3
 import cantera as ct
 
-gas = ct.Solution("FFCMy_12.yaml")
+work_dir = "."
+mech_file_name = "ffcmy9reduced30"
 
-# --- Species block ---
+gas = ct.Solution("ffcmy9reduced30.yaml")
+#gas = ct.Solution("{}/{}.cti".format(work_dir, mech_file_name))
+print("Species No.: {}. Reaction No.: {}".format(gas.n_species, gas.n_reactions))
+
 spec_str = "\n".join(gas.species_names)
 
 rxn_str_list = []
-
 for rxn_ind in range(gas.n_reactions):
     rxn = gas.reaction(rxn_ind)
+    tp = type(rxn)
     rxn_eq = rxn.equation.replace("<=>", "=")
     extra_str = ""
-    tp_str = ""
-    eff_str = ""
 
-    # --- Third-body efficiencies ---
-    if hasattr(rxn, "efficiencies") and rxn.efficiencies:
+    if hasattr(rxn, "efficiencies"):
         eff_list = []
-        for sp in gas.species_names:
-            eff = rxn.efficiencies.get(sp, 1.0)
-            eff_list.append(f"({sp} {eff})")
+        for sp_ind in range(gas.n_species):
+            sp = gas.species_name(sp_ind)
+            eff = rxn.efficiencies[sp] if sp in rxn.efficiencies else 1.0
+            eff_list.append("({} {})".format(sp, eff))
         eff_str = "\n".join(eff_list)
-        eff_str = f"""coeffs
+        eff_str = f"""coeffs          
 {gas.n_species}
 (
 {eff_str}
 )
 ;"""
 
-    # --- Falloff reactions ---
-    if rxn.reaction_type == "falloff":
+    if tp == ct._cantera.FalloffReaction:
         tp_str = "reversibleArrheniusTroeFallOffReaction"
-
-        # Access the Arrhenius objects properly
-        k0 = rxn.falloff.arrhenius_low
-        kInf = rxn.falloff.arrhenius_high
-
+        params = rxn.falloff.parameters
         rate_str = f"""k0
-{{
-    A               {k0.pre_exponential_factor:.4g};
-    beta            {k0.temperature_exponent:.3g};
-    Ta              {k0.activation_energy/ct.gas_constant:.6g};
-}}
-kInf
-{{
-    A               {kInf.pre_exponential_factor:.4g};
-    beta            {kInf.temperature_exponent:.3g};
-    Ta              {kInf.activation_energy/ct.gas_constant:.6g};
-}}"""
-
-        # Troe parameters (if present)
-        if hasattr(rxn.falloff, "parameters") and len(rxn.falloff.parameters) == 4:
-            p = rxn.falloff.parameters
+        {{
+            A               {rxn.low_rate.pre_exponential_factor:.4g};
+            beta            {rxn.low_rate.temperature_exponent:.3g};
+            Ta              {rxn.low_rate.activation_energy/ct.gas_constant:.6g};
+        }}
+        kInf
+        {{
+            A               {rxn.high_rate.pre_exponential_factor:.4g};
+            beta            {rxn.high_rate.temperature_exponent:.3g};
+            Ta              {rxn.high_rate.activation_energy/ct.gas_constant:.6g};
+        }}"""
+        if len(params) > 0:
             rate_str += f"""
-F
-{{
-    alpha           {p[0]:.4g};
-    Tsss            {p[1]:.3g};
-    Ts              {p[2]:.6g};
-    Tss             {p[3]:.6g};
-}}"""
-
-        if eff_str:
+        F
+        {{
+            alpha           {params[0]:.4g};
+            Tsss            {params[1]:.3g};
+            Ts              {params[2]:.6g};
+            Tss             {params[3]:.6g};
+        }}"""
+        if hasattr(rxn, "efficiencies"):
             extra_str += f"""
-thirdBodyEfficiencies
-{{
-{eff_str}
-}}"""
-
-    # --- Three-body reactions ---
-    elif rxn.reaction_type == "three-body":
-        tp_str = "reversiblethirdBodyArrheniusReaction"
+        thirdBodyEfficiencies
+        {{
+            {eff_str}
+        }}"""
+    elif tp == ct._cantera.PlogReaction:
+        tp_str = "reversibleArrheniusPLOG"
+        rr = rxn.rates[0][1]
+        rate_str = f"""A               {rr.pre_exponential_factor:.4g};
+            beta            {rr.temperature_exponent:.3g};
+            Ta              {rr.activation_energy/ct.gas_constant:.6g};
+            ArrheniusData
+(
+"""
+        for pres, rr in rxn.rates:
+            rate_str += f"""({pres:.6g} {rr.pre_exponential_factor:.4g} {rr.temperature_exponent:.3g} {rr.activation_energy/ct.gas_constant:.6g})
+"""
+        rate_str += ");"
+    else:
         rr = rxn.rate
         rate_str = f"""A               {rr.pre_exponential_factor:.4g};
-beta            {rr.temperature_exponent:.3g};
-Ta              {rr.activation_energy/ct.gas_constant:.6g};"""
-        if eff_str:
+            beta            {rr.temperature_exponent:.3g};
+            Ta              {rr.activation_energy/ct.gas_constant:.6g};"""
+
+        if tp == ct._cantera.ThreeBodyReaction and "M" in rxn_eq:
+            tp_str = "reversiblethirdBodyArrheniusReaction"
+
             extra_str += f"""
-{eff_str}"""
+        {eff_str}"""
+        else:
+            tp_str = "reversibleArrheniusReaction"
 
-    # --- Elementary reactions ---
-    else:  # "elementary" or other
-        tp_str = "reversibleArrheniusReaction"
-        rr = rxn.rate
-        rate_str = f"""A               {rr.pre_exponential_factor:.4g};
-beta            {rr.temperature_exponent:.3g};
-Ta              {rr.activation_energy/ct.gas_constant:.6g};"""
-
-    # --- Assemble reaction block ---
     cur_str = f"""    un-named-reaction-{rxn_ind}
-{{
-    type            {tp_str};
-    reaction        {rxn_eq};
-    {rate_str}{extra_str}
-}}"""
+    {{
+            type            {tp_str};
+            reaction        {rxn_eq};
+            {rate_str}{extra_str}
+    }}"""
     rxn_str_list.append(cur_str)
-
-# --- Final output ---
 rxn_str = "\n".join(rxn_str_list)
 
 out_str = f"""species
@@ -113,7 +109,5 @@ reactions
 }}
 """
 
-with open("chemFFCM2_generated", "w") as f:
+with open("{}/{}.foam".format(work_dir, mech_file_name), "w") as f:
     f.write(out_str)
-
-print("Conversion completed: chemFFCM2_generated")
