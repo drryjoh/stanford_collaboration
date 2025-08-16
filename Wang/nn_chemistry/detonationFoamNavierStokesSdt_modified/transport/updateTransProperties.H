@@ -49,13 +49,13 @@ forAll(groupSpecies,i)
 {
 	if(groupSpecies[i][0] != -1)
 	{
-	//	Lambda[groupSpecies[i][0]] = lambdaUnit*1e-5*exp(Lambda1[groupSpecies[i][0]] + tmpT*(Lambda2[groupSpecies[i][0]]+ tmpT*(Lambda3[groupSpecies[i][0]]+tmpT*Lambda4[groupSpecies[i][0]])));
+		Lambda[groupSpecies[i][0]] = lambdaUnit*1e-5*exp(Lambda1[groupSpecies[i][0]] + tmpT*(Lambda2[groupSpecies[i][0]]+ tmpT*(Lambda3[groupSpecies[i][0]]+tmpT*Lambda4[groupSpecies[i][0]])));
 		Mu[groupSpecies[i][0]] = 0.1*MuUnit*exp(Mu1[groupSpecies[i][0]] + tmpT*(Mu2[groupSpecies[i][0]]+tmpT*(Mu3[groupSpecies[i][0]]+tmpT*Mu4[groupSpecies[i][0]])));		
 		forAll(groupSpecies[i],j)
 		{
 			if(j > 0)
 			{
-			//	Lambda[groupSpecies[i][j]] = Lambda[groupSpecies[i][0]];
+				Lambda[groupSpecies[i][j]] = Lambda[groupSpecies[i][0]];
 				Mu[groupSpecies[i][j]] = Mu[groupSpecies[i][0]];
 			}
 		}		
