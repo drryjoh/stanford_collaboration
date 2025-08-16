@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     while (runTime.run())
     {
         #include "updateTransProperties.H"
-      //  #include "calculateDt.H"
+        #include "calculateDt.H"
         #include "detoCellular.H"
 
         mesh.update();               
