@@ -7,11 +7,11 @@ import numpy as np
 import csv 
 
 #Set gas properties and mechansim
-P = 22300
+P = 0.2 * 101325
 T = 298
-X = 'CH4:1,O2:2,N2:7.52'
+X = 'C2H4:1,O2:3,N2:4' #Should be argon, but for now just testing to get working in OF
 
-gas1 = ct.Solution('FFCMy_12.yaml')
+gas1 = ct.Solution('./mechanism/ffcmy9reduced30.yaml')
 gas1.TPX = T, P, X
 
 
@@ -24,9 +24,9 @@ for name, Y in zip(species, mass_fractions):
     print(f"{name}: {Y:.6e}")
 print(f"Density: {gas1.density:.4f} kg/m³")
 
-cj_speed, R2, plot_data = CJspeed(P, T, X, 'FFCMy_12.yaml', fullOutput=True)
+cj_speed, R2, plot_data = CJspeed(P, T, X, './mechanism/ffcmy9reduced30.yaml', fullOutput=True)
 
-gas = PostShock_fr(cj_speed, P, T, X, 'FFCMy_12.yaml')
+gas = PostShock_fr(cj_speed, P, T, X, './mechanism/ffcmy9reduced30.yaml')
 
 znd_out = zndsolve(gas,gas1,cj_speed,t_end=1e-3,advanced_output=True,Method='BDF',relTol=1e-20,absTol=1e-18)
 
@@ -62,7 +62,7 @@ species_array = znd_out['species'].T
 #create output array
 out_array = np.zeros((len(x_array),n_cols))
 
-file_name = 'ffcm2methane'
+file_name = 'ffcm2ethylene'
 #stack things up here
 out_array[:,0] = x_array
 out_array[:,1] = p_array
