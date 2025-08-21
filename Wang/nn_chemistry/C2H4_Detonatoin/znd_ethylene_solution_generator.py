@@ -13,6 +13,7 @@ X = 'C2H4:1,O2:3,N2:4' #Should be argon, but for now just testing to get working
 
 gas1 = ct.Solution('./mechanism/ffcmy9reduced30.yaml')
 gas1.TPX = T, P, X
+print(gas1.density)
 
 
 # Get species names and mass fractions
