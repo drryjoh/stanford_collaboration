@@ -64,7 +64,7 @@ for rxn_ind in range(gas.n_reactions):
         {{
             {eff_str}
         }}"""
-    elif tp == "pressure-dependent-Arrhenius":
+    elif tp == "pressure-dependent-Arrhenius":  #NOTE: This should be PLOG but Openfoam does not have a native PLOG reader build it (it is an add in). We are using Chemgen for the chemistry regardless, so this should not matter.
         tp_str = "reversibleArrheniusPLOG"
         rr = rxn.rate.rates[0][1]
         rate_str = f"""A               {rr.pre_exponential_factor:.4g};
@@ -97,7 +97,7 @@ for rxn_ind in range(gas.n_reactions):
     cur_str = f"""    un-named-reaction-{rxn_ind}
     {{
             type            {tp_str};
-            reaction        {rxn_eq};
+            reaction        "{rxn_eq}";
             {rate_str}{extra_str}
     }}"""
     rxn_str_list.append(cur_str)
