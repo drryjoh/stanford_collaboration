@@ -3,101 +3,83 @@
 
 #ifdef CHEMGEN_PRECONDITIONER_JACOBI
 
-SpeciesJacobian inverse_diagonal(SpeciesJacobian J) 
+ChemicalState inverse_diagonal(SpeciesJacobian J) 
 {
-    SpeciesJacobian M_inv = {};
-    for (int i = 0; i < n_species; ++i)
+    ChemicalState diag_inv;
+    for (int i = 0; i < n_variables; ++i)
     {
-        M_inv[i][i] = std::abs(J[i][i]) > 1e-14 ? 1.0 / J[i][i] : 0.0;
+        diag_inv[i] = std::abs(J[i][i]) > 1e-14 ? 1.0 / J[i][i] : 0.0;
     }
-    return M_inv;
-}
-
-
-SpeciesJacobian apply_diagonal(SpeciesJacobian P, SpeciesJacobian A) 
-{
-    SpeciesJacobian M = {};
-    for (int i = 0; i < n_species; ++i)
-    {
-        for (int j = 0; j < n_species; ++j)
-        {
-            M[i][j] = P[i][i] * A[i][j];
-        }
-    }
-    return M;
-}
-
-
-Species apply_diagonal(SpeciesJacobian P, Species b) 
-{
-    Species m = {};
-    for (int i = 0; i < n_species; ++i)
-    {
-        m[i] = P[i][i] * b[i];
-    }
-    return m;
+    return diag_inv;
 }
 #endif
 
 #ifdef CHEMGEN_PRECONDITIONER_GAUSS_SEIDEL
 
-Species
-apply_gauss_seidel(SpeciesJacobian A, Species v)
+ChemicalState
+apply_gauss_seidel(SpeciesJacobian A, ChemicalState v)
 {
-    Species z = {};
-    for (int i = 0; i < n_species; ++i)
+    ChemicalState z = {};
+    for (int i = 0; i < n_variables; ++i)
     {
-        scalar sum = 0.0;
+        double sum = 0.0;
         for (int j = 0; j < i; ++j)
             sum += A[i][j] * z[j]; // Already computed values of z
 
         // Diagonal + lower
-        scalar diag = A[i][i];
-        z[i] = (v[i] - sum) / (std::abs(diag) > 1e-14 ? diag : 1.0); // Avoid div by zero
+        double diag = A[i][i];
+        z[i] = (v[i] - sum) / (std::abs(diag) > 100.*std::numeric_limits<double>::epsilon() ? diag : 1.0); // Avoid div by zero
     }
     return z;
 }
 #endif
 
 
-Species
-gmres_solve(const SpeciesJacobian& A, const Species& b, scalar abs_tol = 1e-8, scalar rel_tol = 1e-4) 
+ChemicalState
+gmres_solve(const SpeciesJacobian& A, const ChemicalState& b, double abs_tol=linear_abs_tol_default, double rel_tol=linear_rel_tol_default)
 {
     int max_iter = 100;
-    Species x = {};
-    Species cs = {};
-    Species sn = {};
+    ChemicalState x = {};
+    ChemicalState cs = {};
+    ChemicalState sn = {};
+
+    // Note: if initial guess for x is nonzero, need to replace b below with (b - A*x)
 #ifdef CHEMGEN_PRECONDITIONER_JACOBI
-    SpeciesJacobian P = inverse_diagonal(A);
-    SpeciesJacobian A_ = apply_diagonal(P, A);
-    Species b_ = apply_diagonal(P, b);
+    ChemicalState diag_inv = inverse_diagonal(A);
+    ChemicalState r = diag_inv * (b);
+#elif defined(CHEMGEN_PRECONDITIONER_GAUSS_SEIDEL)
+    ChemicalState r = apply_gauss_seidel(A, b);
 #else
-    SpeciesJacobian A_ = A;
-    Species b_ = b;
+    ChemicalState r = b;
 #endif
 
-    Species r = b_ - (A_ * x);
-    scalar norm2_r = norm2(r);
-    scalar norm2_A = norm2(A_);
-    
-    if (norm2_r < abs_tol)
+    double norm2_r = norm2(r);
+
+    if (norm2_r < std::numeric_limits<double>::epsilon())
     {
+        // std::cout << "# GMRES iterations = 0" << std::endl;
         return x;
     }
 
-    std::array<Species, n_species + 1> V = {};
+    std::array<ChemicalState, n_variables + 1> V = {};
     V[0] = scale_gen(inv_gen(norm2_r), r);
 
-    std::array<std::array<scalar, n_species + 1>, n_species + 1> H = {};
-    std::array<scalar, n_species + 1> g = {};
+    std::array<std::array<double, n_variables>, n_variables + 1> H = {};
+    std::array<double, n_variables + 1> g = {};
     g[0] = norm2(r);
 
     int final_iter = 0;
 
-    for (int j = 0; j < n_species; ++j)
+    for (int j = 0; j < n_variables; ++j)
     {
         final_iter = j;
-        Species w = A_ * V[j];
+
+        ChemicalState w = A * V[j];
+#ifdef CHEMGEN_PRECONDITIONER_JACOBI
+        w = diag_inv * w;
+#elif defined(CHEMGEN_PRECONDITIONER_GAUSS_SEIDEL)
+        w = apply_gauss_seidel(A, w);
+#endif
 
         // Modified Gram-Schmidt
         for (int i = 0; i <= j; ++i)
@@ -107,21 +89,20 @@ gmres_solve(const SpeciesJacobian& A, const Species& b, scalar abs_tol = 1e-8, s
         }
 
         H[j+1][j] = norm2(w);
-        if (H[j+1][j] < abs_tol * norm2_A)
-            break;
-        V[j+1] = scale_gen(inv_gen(H[j+1][j]),w);
+
+        V[j+1] = scale_gen(inv_gen(H[j+1][j]),w); // not used if j == n_variables - 1
 
         // Apply Givens rotations to new column of H
         for (int i = 0; i < j; ++i)
         {
-            scalar temp = cs[i] * H[i][j] + sn[i] * H[i+1][j];
+            double temp = cs[i] * H[i][j] + sn[i] * H[i+1][j];
             H[i+1][j] = -sn[i] * H[i][j] + cs[i] * H[i+1][j];
             H[i][j] = temp;
         }
         // Compute new Givens rotation
-        scalar a = H[j][j];
-        scalar b_h = H[j+1][j];
-        scalar r_val = std::sqrt(a * a + b_h * b_h);
+        double a = H[j][j];
+        double b_h = H[j+1][j];
+        double r_val = std::sqrt(a * a + b_h * b_h);
         cs[j] = a / r_val;
         sn[j] = b_h / r_val;
 
@@ -129,31 +110,34 @@ gmres_solve(const SpeciesJacobian& A, const Species& b, scalar abs_tol = 1e-8, s
         H[j][j] = r_val;
         H[j+1][j] = 0.0;
         
-        g[j+1] = 0.0; // Ensure valid memory before rotation
-        scalar temp_g = cs[j] * g[j] + sn[j] * g[j+1];
-        g[j+1] = -sn[j] * g[j] + cs[j] * g[j+1];
+        double temp_g = cs[j] * g[j];
+        g[j+1] = -sn[j] * g[j];
         g[j] = temp_g;
         
         // Convergence check
-        scalar res_norm = std::abs(g[j+1]);
+        double res_norm = std::abs(g[j+1]);
         if (res_norm < abs_tol || res_norm < rel_tol * norm2_r)
             break;
     }
 
-
-    // Solve least squares problem Hy = g using back-substitution on H (upper triangular approx)
-    std::array<scalar, n_species> y = {};
+    // Solve least squares problem Hy = g using back-substitution on H (upper triangular, rectangular)
+    std::array<double, n_variables> y = {};
     for (int i = final_iter; i >= 0; --i)
     {
-        scalar sum = 0;
+        double sum = 0;
         for (int j = i + 1; j <= final_iter; ++j)
             sum += H[i][j] * y[j];
         y[i] = (g[i] - sum) / H[i][i];
-
     }
-    Species result = {};
-    for (int i = 0; i < n_species; ++i)
+
+    ChemicalState result = {};
+    for (int i = 0; i < final_iter + 1; ++i)
         result = result + y[i] * V[i];
+
+    if (final_iter + 1 < n_variables)
+    {
+        // std::cout << "# GMRES iterations = " << final_iter + 1 << std::endl;
+    }
 
     return result;
 }
