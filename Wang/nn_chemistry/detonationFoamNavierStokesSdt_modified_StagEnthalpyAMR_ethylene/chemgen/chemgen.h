@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <array>
 #include <iostream>  // For printing the result to the console
-#include "default_parameters.h"
 #include "types_inl.h"
 #include "multiply_divide.h"
 #include "pow_gen.h"
@@ -21,9 +20,10 @@
 #include "reactions.h"
 #include "source.h"
 #include "chemical_state_functions.h"
+#include "default_parameters.h"
 #include "rk4.h"
 #include "linear_solvers.h"
-#include "backwards_euler.h"
+#include "backward_euler.h"
 #include "sdirk.h"
 #include "rosenbroc.h"
 #include "yass.h"
