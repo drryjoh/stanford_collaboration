@@ -130,7 +130,7 @@ struct ChemgenInterface
                     concentrations[i] = C0[i];
                 }
 
-                auto source_out = source(concentrations, T[cell_index]);
+                auto source_out = source_species(concentrations, T[cell_index]);
 
                 for (label i = 0; i < n_species; ++i)
                 {
