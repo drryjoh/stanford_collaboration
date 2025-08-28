@@ -139,10 +139,10 @@ forAll(Y, i)
 			HEiPatch[facei] = composition.Es(i, pp[facei], Tp[facei]);
 		}
 	}
-
+/*
 	vk += fvc::interpolate(Hsi)*-sumOfOtherSpeices;
 	diffsh += fvc::laplacian(mixAlpha*HEi, 1-Yt);	
-
+*/
 }
 
 Y[inertIndex] = scalar(1) - Yt;
