@@ -34,11 +34,11 @@ def cleanup(arr, tol=1e-20):
 
 
 #Set gas properties and mechanism
-P = 0.2 * 101325
+P = 15000
 T = 298
-X = 'C2H4:1,O2:3,N2:4' #Should be argon, but for now just testing to get working in OF
+X = 'C2H4:1,O2:3.75,N2:4.75' #Should be argon, but for now just testing to get working in OF
 
-gas1 = ct.Solution('./mechanism/ffcmy9reduced30.yaml')
+gas1 = ct.Solution('./mechanism/ffcmy9reduced_lean24.yaml')
 gas1.TPX = T, P, X
 print(gas1.density)
 
@@ -52,9 +52,9 @@ for name, Y in zip(species, mass_fractions):
     print(f"{name}: {Y:.6e}")
 print(f"Density: {gas1.density:.4f} kg/m³")
 
-cj_speed, R2, plot_data = CJspeed(P, T, X, './mechanism/ffcmy9reduced30.yaml', fullOutput=True)
+cj_speed, R2, plot_data = CJspeed(P, T, X, './mechanism/ffcmy9reduced_lean24.yaml', fullOutput=True)
 
-gas = PostShock_fr(cj_speed, P, T, X, './mechanism/ffcmy9reduced30.yaml')
+gas = PostShock_fr(cj_speed, P, T, X, './mechanism/ffcmy9reduced_lean24.yaml')
 
 znd_out = run_znd_safe(gas, gas1, cj_speed, t_end=1e-3)
 
@@ -88,7 +88,7 @@ species_array = cleanup(znd_out['species'].T)
 #create output array
 out_array = np.zeros((len(x_array),n_cols))
 
-file_name = 'ffcm2ethylene'
+file_name = 'ffcm2ethylene_24'
 #stack things up here
 out_array[:,0] = x_array
 out_array[:,1] = p_array
