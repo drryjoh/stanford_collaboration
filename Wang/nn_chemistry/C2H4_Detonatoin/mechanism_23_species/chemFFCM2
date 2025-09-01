@@ -1,0 +1,40 @@
+species
+23
+(
+H2
+H
+O
+O2
+OH
+H2O
+HO2
+CH
+CH2
+CH3
+CH4
+CO
+CO2
+HCO
+CH2O
+CH3O
+C2H2
+C2H3
+C2H4
+HCCO
+CH2CO
+CH3CO
+N2
+)
+;
+
+reactions
+{
+un-named-reaction-0
+{
+        type            reversibleArrheniusReaction;
+        reaction        "H + O2 = O + OH";
+        A               1.04e+11;
+        beta            0;
+        Ta              7704.29;
+}
+}
