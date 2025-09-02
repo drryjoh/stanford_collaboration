@@ -106,8 +106,8 @@ forAll(Y, i)
 		// Apply relaxation if needed
 		YEqn.relax();
 
-		// Solve the equation: right-hand side = 0
-		solve(YEqn == 0.0);
+		// Solve the equation; RHS is zero by default
+		solve(YEqn);
 
 		// Post-processing
 		Yi.max(0.0);
