@@ -91,51 +91,29 @@ forAll(Y, i)
 		sumOfOtherSpeices += speicesFlux;
 		diffsh += fvc::laplacian(mixAlpha*HEi, Yi);
 
+		dimensionedScalar zeroSource("zeroSource", RR[i].dimensions(), 0.0);
 		fvScalarMatrix YEqn
 		(
 			fvm::ddt(rho, Yi)
-		+ mvConvection->fvmDiv(rhoPhi, Yi)
-		/*
-		- fvm::laplacian(rho*Diffi, Yi) 
-		+ mvConvection->fvmDiv(phiUc,Yi)     		  
-		- fvc::laplacian(rho*Diffi*Yi/MW,MW)
-		- fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
-		*/
+		  + mvConvection->fvmDiv(rhoPhi, Yi)
+		  /*
+		  - fvm::laplacian(rho*Diffi, Yi) 
+		  + mvConvection->fvmDiv(phiUc,Yi)     		  
+		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
+		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
+		  */
+		  ==
+		  zeroSource
+		//	RR[i]
 		);
 
-		// Apply relaxation if needed
-		YEqn.relax();
+	    YEqn.relax();
 
-		// Solve the equation; RHS is zero by default
-		solve(YEqn);
-
-		// Post-processing
-		Yi.max(0.0);
-		Yi.correctBoundaryConditions();
-		Yt += Yi;
-
-		// fvScalarMatrix YEqn
-		// (
-		// 	fvm::ddt(rho, Yi)
-		//   + mvConvection->fvmDiv(rhoPhi, Yi)
-		//   /*
-		//   - fvm::laplacian(rho*Diffi, Yi) 
-		//   + mvConvection->fvmDiv(phiUc,Yi)     		  
-		//   - fvc::laplacian(rho*Diffi*Yi/MW,MW)
-		//   - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
-		//   */
-		//   ==
-		//     0.0
-		// //	RR[i]
-		// );
-
-	    // YEqn.relax();
-
-	    // YEqn.solve(mesh.solver("Yi"));
+	    YEqn.solve(mesh.solver("Yi"));
 	    
-	    // Yi.max(0.0);
-	    // Yi.correctBoundaryConditions();
-	    // Yt += Yi;
+	    Yi.max(0.0);
+	    Yi.correctBoundaryConditions();
+	    Yt += Yi;
 	}
 }
 
