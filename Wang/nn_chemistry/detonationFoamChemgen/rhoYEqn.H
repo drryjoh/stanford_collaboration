@@ -28,8 +28,8 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
                 fvm::ddt(rho, Yi)
               + mvConvection->fvmDiv(rhoPhi, Yi)
              ==
-                0.0
-                //RR[i]
+             0
+                RR[i]
             );
 
             YiEqn.relax();

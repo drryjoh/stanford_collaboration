@@ -33,8 +33,9 @@ forAll(Y,i)
 	// }
 }
 
-auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-Qdot  = chemgen.Qdot(thermo, RR); 
+//auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+//Qdot  = chemgen.Qdot(thermo, RR); 
+Qdot = 0.0;
 volScalarField Yt(0.0*Y[0]);
 //surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 
@@ -101,7 +102,8 @@ forAll(Y, i)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
 		  */
 		  ==
-			RR[i]
+		    0.0
+		//	RR[i]
 		);
 
 	    YEqn.relax();
