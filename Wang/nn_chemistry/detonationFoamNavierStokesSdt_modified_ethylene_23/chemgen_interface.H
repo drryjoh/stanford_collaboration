@@ -124,17 +124,22 @@ struct ChemgenInterface
                     C0[i] = Y0[i]/mw[i] * rho0;
                 }            
 
+                ChemicalState chemical_state;
                 Species concentrations;
                 for (label i = 0; i < n_species; ++i)
                 {
+                    chemical_state[i+1] = C0[i];
                     concentrations[i] = C0[i];
                 }
 
-                auto source_out = source_species(concentrations, T[cell_index]);
+                scalar internal_energy = internal_energy_volume_specific(concentrations, T[cell_index]);
+                chemical_state[0] = internal_energy;
+
+                auto source_out = yass(chemical_state, dt);
 
                 for (label i = 0; i < n_species; ++i)
                 {
-                    sourceField[i][cell_index] = source_out[i] * mw[i];
+                    sourceField[i][cell_index] = ((source_out[i+1] - concentrations[i]) / dt) * mw[i];
                 }    
             }
         }

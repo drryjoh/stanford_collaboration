@@ -7,11 +7,11 @@ import numpy as np
 import csv 
 
 #Set gas properties and mechansim
-P = 101325
+P = 6670
 T = 298
-X = 'CH4:1,O2:2'
+X = 'H2:2,O2:1,AR:7'
 
-gas1 = ct.Solution('FFCMy_12.yaml')
+gas1 = ct.Solution('FFCM2_H2_Ar.yaml')
 gas1.TPX = T, P, X
 
 
@@ -25,9 +25,9 @@ for name, Y in zip(species, mass_fractions):
 print(f"Density: {gas1.density:.4f} kg/m³")
 
 
-cj_speed, R2, plot_data = CJspeed(P, T, X, 'FFCMy_12.yaml', fullOutput=True)
-
-gas = PostShock_fr(cj_speed, P, T, X, 'FFCMy_12.yaml')
+cj_speed, R2, plot_data = CJspeed(P, T, X, 'FFCM2_H2_Ar.yaml', fullOutput=True)
+print("CJ SPEED:  ", cj_speed)
+gas = PostShock_fr(cj_speed, P, T, X, 'FFCM2_H2_Ar.yaml')
 
 znd_out = zndsolve(gas,gas1,cj_speed,t_end=1e-3,advanced_output=True,Method='BDF',relTol=1e-20,absTol=1e-18)
 
