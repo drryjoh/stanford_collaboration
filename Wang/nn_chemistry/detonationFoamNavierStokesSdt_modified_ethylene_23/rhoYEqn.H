@@ -33,9 +33,9 @@ forAll(Y,i)
 	// }
 }
 
-//auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-//Qdot  = chemgen.Qdot(thermo, RR); 
-Qdot = 0.0;
+auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
+Qdot  = chemgen.Qdot(thermo, RR); 
+//Qdot = 0.0;
 volScalarField Yt(0.0*Y[0]);
 //surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 
