@@ -7,9 +7,9 @@ import numpy as np
 import csv 
 
 #Set gas properties and mechansim
-P = 40000
+P = 30000
 T = 298
-X = 'H2:2,O2:1,N2:3.76'
+X = 'H2:2,O2:1,N2:2'
 
 gas1 = ct.Solution('FFCM2_H2_N2.yaml')
 gas1.TPX = T, P, X
@@ -63,7 +63,7 @@ species_array = znd_out['species'].T
 #create output array
 out_array = np.zeros((len(x_array),n_cols))
 
-file_name = 'ffcm2hydrogenair'
+file_name = 'ffcm2hydrogenair30'
 #stack things up here
 out_array[:,0] = x_array
 out_array[:,1] = p_array
