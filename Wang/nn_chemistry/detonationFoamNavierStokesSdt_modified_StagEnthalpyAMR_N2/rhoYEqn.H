@@ -101,7 +101,7 @@ forAll(Y, i)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
 		  */
 		  ==
-			RR[i]
+	      RR[i]
 		);
 
 	    YEqn.relax();

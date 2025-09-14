@@ -35,7 +35,6 @@ forAll(Y,i)
 
 auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
 Qdot  = chemgen.Qdot(thermo, RR); 
-//Qdot = 0.0;
 volScalarField Yt(0.0*Y[0]);
 //surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 
@@ -91,7 +90,6 @@ forAll(Y, i)
 		sumOfOtherSpeices += speicesFlux;
 		diffsh += fvc::laplacian(mixAlpha*HEi, Yi);
 
-		dimensionedScalar zeroSource("zeroSource", RR[i].dimensions(), 0.0);
 		fvScalarMatrix YEqn
 		(
 			fvm::ddt(rho, Yi)
@@ -103,8 +101,7 @@ forAll(Y, i)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
 		  */
 		  ==
-		  zeroSource
-		//	RR[i]
+	      RR[i]
 		);
 
 	    YEqn.relax();

@@ -29,7 +29,7 @@ cj_speed, R2, plot_data = CJspeed(P, T, X, 'FFCM2_H2_N2.yaml', fullOutput=True)
 print("CJ SPEED:  ", cj_speed)
 gas = PostShock_fr(cj_speed, P, T, X, 'FFCM2_H2_N2.yaml')
 
-znd_out = zndsolve(gas,gas1,cj_speed,t_end=1e-3,advanced_output=True,Method='BDF',relTol=1e-20,absTol=1e-18)
+znd_out = zndsolve(gas,gas1,cj_speed,t_end=1e-3,advanced_output=True,Method='LSODA',relTol=1e-12,absTol=1e-18)
 
 species_names_array = znd_out['gas1'].species_names
 n_species = len(species_names_array)
