@@ -28,6 +28,8 @@ Description
     Calculates the mean and maximum wave speed based Courant Numbers.
 
 \*---------------------------------------------------------------------------*/
+Info<< "Made it here " << endl;
+
 bool adjustTimeStep = runTime.controlDict().lookupOrDefault("adjustTimeStep", true);
 scalar maxCo = runTime.controlDict().lookupOrDefault<scalar>("maxCo", 1.0);
 scalar maxDeltaT = runTime.controlDict().lookupOrDefault<scalar>("maxDeltaT", 1e-7);
@@ -63,24 +65,24 @@ surfaceScalarField aphiv_neg("aphiv_neg", phiv_neg + aSf_ref);
 
 amaxSf = max(mag(aphiv_pos), mag(aphiv_neg));
 
-if (mesh.nInternalFaces())
-{
-    scalarField sumAmaxSf(fvc::surfaceSum(amaxSf)().primitiveField());
+// if (mesh.nInternalFaces())
+// {
+//     scalarField sumAmaxSf(fvc::surfaceSum(amaxSf)().primitiveField());
 
-    CoNum = 0.5*gMax(sumAmaxSf/mesh.V().field())*runTime.deltaTValue();
-}
+//     CoNum = 0.5*gMax(sumAmaxSf/mesh.V().field())*runTime.deltaTValue();
+// }
 
-Info<< "Max Courant Numbers = "<< CoNum << endl;
+// Info<< "Max Courant Numbers = "<< CoNum << endl;
 
-if (adjustTimeStep)
-{
-    scalar maxDeltaTFact = maxCo/(CoNum + small);
-    scalar deltaTFact = min(min(maxDeltaTFact, 1.0 + 0.1*maxDeltaTFact), 1.2);
+// if (adjustTimeStep)
+// {
+//     scalar maxDeltaTFact = maxCo/(CoNum + small);
+//     scalar deltaTFact = min(min(maxDeltaTFact, 1.0 + 0.1*maxDeltaTFact), 1.2);
  
-    runTime.setDeltaT(min(deltaTFact*runTime.deltaTValue(), maxDeltaT));
+//     runTime.setDeltaT(min(deltaTFact*runTime.deltaTValue(), maxDeltaT));
  
-    Info<< "deltaT = " <<  runTime.deltaTValue() << endl;
-}
+//     Info<< "deltaT = " <<  runTime.deltaTValue() << endl;
+// }
 
 runTime++;
 Info<< "Time = " << runTime.timeName() << nl << endl;

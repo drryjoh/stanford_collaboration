@@ -33,8 +33,8 @@ forAll(Y,i)
 	// }
 }
 
-auto RR = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
-Qdot  = chemgen.Qdot(thermo, RR); 
+reaction->correct();
+Qdot = reaction->Qdot();
 volScalarField Yt(0.0*Y[0]);
 //surfaceScalarField  phiUc = fvc::interpolate(DiffError) & mesh.Sf();
 
@@ -94,14 +94,12 @@ forAll(Y, i)
 		(
 			fvm::ddt(rho, Yi)
 		  + mvConvection->fvmDiv(rhoPhi, Yi)
-		  /*
-		  - fvm::laplacian(rho*Diffi, Yi) 
-		  + mvConvection->fvmDiv(phiUc,Yi)     		  
-		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
-		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
-		  */
+		//   - fvm::laplacian(rho*Diffi, Yi) 
+		//   + mvConvection->fvmDiv(phiUc,Yi)     		  
+		//   - fvc::laplacian(rho*Diffi*Yi/MW,MW)
+		//   - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T)
 		  ==
-	      RR[i]
+			reaction->R(Yi)
 		);
 
 	    YEqn.relax();
@@ -139,10 +137,9 @@ forAll(Y, i)
 			HEiPatch[facei] = composition.Es(i, pp[facei], Tp[facei]);
 		}
 	}
-/*
-	vk += fvc::interpolate(Hsi)*-sumOfOtherSpeices;
-	diffsh += fvc::laplacian(mixAlpha*HEi, 1-Yt);	
-*/
+
+	// vk += fvc::interpolate(Hsi)*-sumOfOtherSpeices;
+	// diffsh += fvc::laplacian(mixAlpha*HEi, 1-Yt);	
 }
 
 Y[inertIndex] = scalar(1) - Yt;
