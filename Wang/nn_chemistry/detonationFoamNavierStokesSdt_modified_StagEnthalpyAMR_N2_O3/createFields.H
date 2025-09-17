@@ -173,18 +173,18 @@ volScalarField Qdot
     mesh,
     dimensionedScalar("Qdot", dimEnergy/dimVolume/dimTime, 0.0)
 );
-// volScalarField HStag
-// (
-//     IOobject
-//     (
-//         "Hstag",
-//         runTime.timeName(),
-//         mesh,
-//         IOobject::NO_READ,
-//         IOobject::AUTO_WRITE
-//     ),
-//     thermo.he() + thermo.p()/thermo.rho() + 0.5*magSqr(U)
-// );
+volScalarField HStag
+(
+    IOobject
+    (
+        "Hstag",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    thermo.he() + thermo.p()/thermo.rho() + 0.5*magSqr(U)
+);
 
 
 Info<< "Creating turbulence model\n" << endl;
