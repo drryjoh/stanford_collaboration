@@ -43,26 +43,6 @@ struct ChemgenInterface
         Info << "Check complete species are consistent" << endl;
     }
 
-    // Check if species names match
-    // void useNN(
-    // volScalarField& UseNN,
-    // const PtrList<volScalarField>& Y,
-    // const volScalarField& p,
-    // const volScalarField& T)
-    // {
-    //     forAll(T, cell_index)
-    //     {
-    //         if(T[cell_index] > 1500.0 && Y[5][cell_index]<0.090)
-    //         {
-    //             UseNN[cell_index] = 1.0;
-    //         }
-    //         else
-    //         {
-    //             UseNN[cell_index] = 0.0;
-    //         }
-    //     }
-    // }
-
     scalar rho_scalar( 
         scalarList Y, 
         scalar p, 
@@ -85,7 +65,6 @@ struct ChemgenInterface
         const PtrList<volScalarField>& Y,
         const volScalarField& p,
         const volScalarField& T,
-       // const volScalarField& UseNN,
         scalar dt) const
     {
         PtrList<volScalarField> sourceField(Y.size());
