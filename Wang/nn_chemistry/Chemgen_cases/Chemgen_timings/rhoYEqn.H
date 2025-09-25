@@ -16,12 +16,11 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     auto RR_cemgen = chemgen.solve(Y, p, T, runTime.deltaT().value()); //get the linearized source term, (C1_i-C0_i)/dt*W_i
     Qdot  = chemgen.Qdot(thermo, RR_cemgen);
     scalar time_after_chemistry_rank =  timer.elapsedTime();
-    scalar chemistry_time_rank = time_after_chemistry_rank - time_before_fluid_rank;
+    scalar chemistry_time_rank = time_after_chemistry_rank - time_before_chemistry_rank;
 
 
-    chemistry_time = reduce(chemistry_time_rank, sumOp<scalar>());
+    scalar chemistry_time = reduce(chemistry_time_rank, sumOp<scalar>());
     running_chemistry_time += chemistry_time;
-
     //end chemistry block
 
 
