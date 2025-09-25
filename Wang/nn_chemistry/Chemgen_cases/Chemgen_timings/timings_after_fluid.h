@@ -1,9 +1,9 @@
-    scalar time_after_fluid_rank =  timer.elapsedTime();
+    time_after_fluid_rank =  timer.elapsedTime();
     scalar fluid_time_rank = time_after_fluid_rank - time_before_fluid_rank;
 
 
     reduce(fluid_time_rank, sumOp<scalar>());
-    scalar fluid_time = fluid_time_rank - chemistry_time;
+    fluid_time = fluid_time_rank - chemistry_time;
     running_fluid_time += fluid_time;
 
     Info << "Time for entire fluid solve:     " << fluid_time;

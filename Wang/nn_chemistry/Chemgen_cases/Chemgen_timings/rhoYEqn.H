@@ -20,7 +20,7 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
 
 
     reduce(chemistry_time_rank, sumOp<scalar>());
-    scalar chemistry_time = chemistry_time_rank;
+    chemistry_time = chemistry_time_rank;
     running_chemistry_time += chemistry_time;
     //end chemistry block
 
