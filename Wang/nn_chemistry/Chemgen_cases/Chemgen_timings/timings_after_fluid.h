@@ -8,5 +8,5 @@
     Info << "Time for entire fluid solve:     " << fluid_time;
     Info << "Time for entire chemistry solve: " << chemistry_time;
     Info << "Running fluid solve time       : " << running_fluid_time;
-    Info << "Running chemsitry solve time   : " << running_chemistry_time;
-    Info << "Chemsitry Cost   :               " << running_chemistry_time/(running_fluid_time + running_chemistry_time);
+        Info << "Running chemistry solve time   : " << running_chemistry_time;
+    Info << "Chemistry Cost   :               " << running_chemistry_time/(running_fluid_time + running_chemistry_time);
