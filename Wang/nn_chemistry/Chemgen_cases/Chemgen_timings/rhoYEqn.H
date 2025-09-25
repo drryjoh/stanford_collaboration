@@ -19,7 +19,8 @@ Info << "delta_time = " << runTime.deltaT().value() << endl;
     scalar chemistry_time_rank = time_after_chemistry_rank - time_before_chemistry_rank;
 
 
-    scalar chemistry_time = reduce(chemistry_time_rank, sumOp<scalar>());
+    reduce(chemistry_time_rank, sumOp<scalar>());
+    scalar chemistry_time = chemistry_time_rank;
     running_chemistry_time += chemistry_time;
     //end chemistry block
 

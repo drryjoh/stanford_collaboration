@@ -2,7 +2,8 @@
     scalar fluid_time_rank = time_after_fluid_rank - time_before_fluid_rank;
 
 
-    scalar fluid_time = reduce(fluid_time_rank, sumOp<scalar>()) - chemistry_time;
+    reduce(fluid_time_rank, sumOp<scalar>());
+    scalar fluid_time = fluid_time_rank - chemistry_time;
     running_fluid_time += fluid_time;
 
     Info << "Time for entire fluid solve:     " << fluid_time;
